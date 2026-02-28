@@ -33,7 +33,7 @@ const initialState: FormState = {
   message: "",
 };
 
-export function ContactForm({ source = "website" }: { source?: string }) {
+export function ContactForm({ source = "website", submitLabel }: { source?: string; submitLabel?: string }) {
   const [state, setState] = useState<FormState>(initialState);
   const [status, setStatus] = useState<
     | { kind: "idle" }
@@ -168,7 +168,7 @@ export function ContactForm({ source = "website" }: { source?: string }) {
           className="w-full px-5 py-3"
           disabled={!canSubmit || status.kind === "submitting"}
         >
-          {status.kind === "submitting" ? "Submitting..." : "Submit"}
+          {status.kind === "submitting" ? "Submitting..." : submitLabel ?? "Submit"}
         </Button>
       </div>
     </form>

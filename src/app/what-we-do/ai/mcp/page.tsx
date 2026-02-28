@@ -9,15 +9,20 @@ import { Accordion } from "@/components/marketing/Accordion";
 import {
   ArrowRight,
   BarChart3,
+  Briefcase,
   CheckCircle2,
+  ChevronDown,
   Cloud,
   Code2,
   Database,
   FileStack,
   Film,
+  Folder,
+  FolderOpen,
   GitBranch,
+  Github,
+  Globe,
   GraduationCap,
-  Handshake,
   Landmark,
   MessageSquare,
   Server,
@@ -31,7 +36,6 @@ import {
   Users,
   Wrench,
   Zap,
-  Clock,
 } from "lucide-react";
 import { getApiBase } from "@/lib/apiBase";
 
@@ -137,13 +141,11 @@ function McpCtaForm() {
   const [state, setState] = useState({
     name: "",
     email: "",
+    phoneCode: "+91",
     phone: "",
+    service: "MCP Server Development",
     company: "",
-    country: "",
-    budget: "",
-    startDate: "",
-    projectDescription: "",
-    agreePrivacy: false,
+    message: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -151,9 +153,8 @@ function McpCtaForm() {
     () =>
       state.name.trim().length >= 2 &&
       state.email.trim().length >= 5 &&
-      state.projectDescription.trim().length >= 10 &&
-      state.agreePrivacy,
-    [state.name, state.email, state.projectDescription, state.agreePrivacy]
+      state.message.trim().length >= 10,
+    [state.name, state.email, state.message]
   );
 
   async function handleSubmit(e: React.FormEvent) {
@@ -161,20 +162,18 @@ function McpCtaForm() {
     if (!canSubmit || status === "submitting") return;
     setStatus("submitting");
     try {
-      const message =
-        [state.country && `Country: ${state.country}`, state.startDate && `Start Date: ${state.startDate}`, state.projectDescription]
-          .filter(Boolean)
-          .join("\n\n") || state.projectDescription;
+      const phone = state.phone.trim() ? `${state.phoneCode} ${state.phone}` : undefined;
       const res = await fetch(`${getApiBase()}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: state.name,
           email: state.email,
-          phone: state.phone || undefined,
+          phone: phone || undefined,
           company: state.company || undefined,
-          budget: state.budget || undefined,
-          message,
+          service: state.service || undefined,
+          budget: undefined,
+          message: state.message,
           source: "mcp",
         }),
       });
@@ -183,13 +182,11 @@ function McpCtaForm() {
         setState({
           name: "",
           email: "",
+          phoneCode: "+91",
           phone: "",
+          service: "MCP Server Development",
           company: "",
-          country: "",
-          budget: "",
-          startDate: "",
-          projectDescription: "",
-          agreePrivacy: false,
+          message: "",
         });
       } else setStatus("error");
     } catch {
@@ -197,122 +194,114 @@ function McpCtaForm() {
     }
   }
 
-  const fieldClass =
-    "h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/25";
+  const inputClass =
+    "h-11 w-full rounded-xl border border-slate-200 bg-slate-50/80 px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-300";
   const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="space-y-4">
-          <label className={labelClass}>Your Name</label>
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <p className="text-sm font-semibold text-slate-900">
+        Let&apos;s listen to what you&apos;ve got and we are here to provide you a solution.
+      </p>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className={labelClass}>Full Name <span className="text-rose-500">*</span></label>
           <input
             type="text"
             value={state.name}
             onChange={(e) => setState((s) => ({ ...s, name: e.target.value }))}
-            className={fieldClass}
-            placeholder="Your Name"
+            className={inputClass}
+            placeholder="Full Name"
             required
           />
-          <label className={labelClass}>Your Email</label>
+        </div>
+        <div>
+          <label className={labelClass}>Business Email <span className="text-rose-500">*</span></label>
           <input
             type="email"
             value={state.email}
             onChange={(e) => setState((s) => ({ ...s, email: e.target.value }))}
-            className={fieldClass}
-            placeholder="Your Email"
+            className={inputClass}
+            placeholder="you@company.com"
             required
           />
+        </div>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
           <label className={labelClass}>Phone Number</label>
-          <input
-            type="text"
-            value={state.phone}
-            onChange={(e) => setState((s) => ({ ...s, phone: e.target.value }))}
-            className={fieldClass}
-            placeholder="Phone Number"
-          />
-          <label className={labelClass}>Company Name</label>
-          <input
-            type="text"
-            value={state.company}
-            onChange={(e) => setState((s) => ({ ...s, company: e.target.value }))}
-            className={fieldClass}
-            placeholder="Company Name"
-          />
-          <label className={labelClass}>Country</label>
-          <input
-            type="text"
-            value={state.country}
-            onChange={(e) => setState((s) => ({ ...s, country: e.target.value }))}
-            className={fieldClass}
-            placeholder="Country"
-          />
-          <label className={labelClass}>Budget</label>
-          <input
-            type="text"
-            value={state.budget}
-            onChange={(e) => setState((s) => ({ ...s, budget: e.target.value }))}
-            className={fieldClass}
-            placeholder="Budget"
-          />
-          <label className={labelClass}>Start Date</label>
-          <input
-            type="text"
-            value={state.startDate}
-            onChange={(e) => setState((s) => ({ ...s, startDate: e.target.value }))}
-            className={fieldClass}
-            placeholder="Start Date"
-          />
+          <div className="flex rounded-xl border border-slate-200 bg-slate-50/80 overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500/25 focus-within:border-indigo-300">
+            <select
+              value={state.phoneCode}
+              onChange={(e) => setState((s) => ({ ...s, phoneCode: e.target.value }))}
+              className="h-11 border-0 bg-transparent pl-3 pr-8 text-sm text-slate-900 focus:outline-none focus:ring-0"
+            >
+              <option value="+91">+91</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+              <option value="+81">+81</option>
+              <option value="+49">+49</option>
+            </select>
+            <input
+              type="tel"
+              value={state.phone}
+              onChange={(e) => setState((s) => ({ ...s, phone: e.target.value }))}
+              className="h-11 flex-1 border-0 bg-transparent px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0"
+              placeholder="Phone number"
+            />
+          </div>
         </div>
         <div>
-          <label className={labelClass}>Project Description</label>
-          <textarea
-            value={state.projectDescription}
-            onChange={(e) => setState((s) => ({ ...s, projectDescription: e.target.value }))}
-            rows={12}
-            className="min-h-[280px] w-full resize-y rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/25"
-            placeholder="Describe your project..."
+          <label className={labelClass}>Select Services <span className="text-rose-500">*</span></label>
+          <select
+            value={state.service}
+            onChange={(e) => setState((s) => ({ ...s, service: e.target.value }))}
+            className={inputClass}
             required
-          />
+          >
+            <option>MCP Server Development</option>
+            <option>AI Chatbots</option>
+            <option>AI Agents</option>
+            <option>AI Consulting</option>
+            <option>RAG Development</option>
+            <option>Software Development</option>
+          </select>
         </div>
       </div>
-      <label className="flex cursor-pointer items-start gap-3">
-        <input
-          type="checkbox"
-          checked={state.agreePrivacy}
-          onChange={(e) => setState((s) => ({ ...s, agreePrivacy: e.target.checked }))}
-          className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500/25"
-        />
-        <span className="text-sm text-slate-600">I agree to the privacy policy.</span>
-      </label>
       <div>
-        <button
-          type="submit"
-          disabled={!canSubmit || status === "submitting"}
-          className="h-12 w-full rounded-lg bg-slate-900 px-6 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-60 sm:w-auto sm:min-w-[140px]"
-        >
-          {status === "submitting" ? "Submitting..." : status === "success" ? "Sent!" : "Submit"}
-        </button>
+        <label className={labelClass}>Company Name</label>
+        <input
+          type="text"
+          value={state.company}
+          onChange={(e) => setState((s) => ({ ...s, company: e.target.value }))}
+          className={inputClass}
+          placeholder="Company Name"
+        />
       </div>
+      <div>
+        <label className={labelClass}>Brief Your Requirement <span className="text-rose-500">*</span></label>
+        <textarea
+          value={state.message}
+          onChange={(e) => setState((s) => ({ ...s, message: e.target.value }))}
+          rows={5}
+          className="min-h-[120px] w-full resize-y rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-300"
+          placeholder="Share your goals and requirements..."
+          required
+        />
+      </div>
+      {status === "success" && (
+        <p className="text-sm text-emerald-600">Thanks! We received your message and will reply soon.</p>
+      )}
       {status === "error" && (
         <p className="text-sm text-rose-600">Something went wrong. Please try again.</p>
       )}
-      <div className="grid gap-4 border-t border-slate-200 pt-10 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          { icon: Clock, value: "5+", label: "Years Experience" },
-          { icon: CheckCircle2, value: "40+", label: "Projects Delivered" },
-          { icon: Users, value: "50+", label: "Team Members" },
-          { icon: Handshake, value: "20+", label: "Industry Partners" },
-        ].map(({ icon: Icon, value, label }) => (
-          <div key={label} className="flex items-center gap-4">
-            <Icon className="h-8 w-8 shrink-0 text-slate-600" />
-            <div>
-              <div className="text-xl font-semibold text-slate-900">{value}</div>
-              <div className="text-sm text-slate-600">{label}</div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <button
+        type="submit"
+        disabled={!canSubmit || status === "submitting"}
+        className="h-12 w-full rounded-xl bg-slate-900 px-6 text-sm font-semibold uppercase tracking-wide text-white hover:bg-slate-800 disabled:opacity-60"
+      >
+        {status === "submitting" ? "Submitting..." : "Submit"}
+      </button>
     </form>
   );
 }
@@ -382,38 +371,74 @@ export default function McpPage() {
 
   return (
     <div className="space-y-16">
-      {/* Breadcrumbs */}
-      <nav className="text-sm text-slate-600">
-        <Link href="/" className="hover:text-slate-900">Home</Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do" className="hover:text-slate-900">What We Do</Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do/ai" className="hover:text-slate-900">AI</Link>
-        <span className="mx-2">/</span>
-        <span className="font-semibold text-slate-900">MCP</span>
-      </nav>
-
-      {/* Hero */}
-      <section className="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
+      {/* Hero - Bitontree style: light bg, left = breadcrumbs + title + paragraph + CTA, right = MCP architecture diagram */}
+      <section className="rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 shadow-[0_4px_20px_rgba(2,6,23,0.06)] sm:p-12">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
-            <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-              MCP Server Development & Overview
+            <nav className="text-sm text-slate-500">
+              <Link href="/" className="hover:text-slate-700">Home</Link>
+              <span className="mx-1.5">&#62;</span>
+              <Link href="/what-we-do" className="hover:text-slate-700">Services</Link>
+              <span className="mx-1.5">&#62;</span>
+              <span className="text-slate-800 font-medium">Mcp Server Development Company</span>
+            </nav>
+            <h1 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              MCP Server Development Company
             </h1>
-            <p className="mt-4 text-base leading-7 text-slate-600">
-              Transform the modern application landscape with MCP (Model Context Protocol) server development. We build secure, scalable tool servers that let AI agents interact with your data and systems in a standardized, reliable way.
-            </p>
-            <p className="mt-3 text-base leading-7 text-slate-600">
-              With extensive experience in AI infrastructure and integrations, we design MCP servers that expose the right capabilities—from databases and APIs to internal workflows—so your agents can execute tasks safely and efficiently.
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
+              We build robust MCP servers with AI integration and 99.99% uptime. Our focus is on performance, scalability, security, and automation—so your applications are ready for AI-driven use cases. From tool orchestration to resource management, we deliver production-grade MCP infrastructure that fits your stack.
             </p>
             <div className="mt-8">
-              <ButtonLink href="/our-work" variant="dark" className="px-6 py-3">
-                View our projects
+              <ButtonLink href="/lets-talk" variant="dark" className="rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide">
+                Consult our AI experts
               </ButtonLink>
             </div>
           </div>
-          <div className="lg:pl-4">
-            <McpHeroForm />
+          <div className="rounded-2xl border border-slate-200/70 bg-slate-50/90 p-6 shadow-sm lg:p-8">
+            {/* MCP architecture diagram: Host Application > MCP Client > MCP Server > Tools | Resources > icons */}
+            <div className="flex flex-col items-center gap-0">
+              <div className="w-full rounded-lg border border-slate-200 bg-white p-4">
+                <div className="text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Host Application</div>
+                <div className="mt-3 rounded-lg border-2 border-dashed border-sky-400 bg-sky-50/50 p-3 text-center">
+                  <span className="text-sm font-semibold text-slate-800">MCP Client</span>
+                </div>
+              </div>
+              <ChevronDown className="my-1 h-6 w-6 shrink-0 text-slate-400" aria-hidden />
+              <div className="w-full rounded-lg border-2 border-sky-500 bg-white py-3 text-center">
+                <span className="text-sm font-bold text-slate-900">MCP Server</span>
+              </div>
+              <div className="my-2 flex w-full gap-4">
+                <div className="flex-1 border-t-2 border-dashed border-slate-300" />
+                <div className="flex-1 border-t-2 border-dashed border-slate-300" />
+              </div>
+              <div className="grid w-full grid-cols-2 gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-center text-sm font-medium text-slate-700">Tools</div>
+                  <div className="mt-2 flex gap-2 border-t-2 border-dashed border-slate-200 pt-2">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600">
+                      <Github className="h-5 w-5" />
+                    </div>
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-sky-500">
+                      <MessageSquare className="h-5 w-5" />
+                    </div>
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-amber-500">
+                      <FolderOpen className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-center text-sm font-medium text-slate-700">Resources</div>
+                  <div className="mt-2 flex gap-2 border-t-2 border-dashed border-slate-200 pt-2">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-sky-600">
+                      <Database className="h-5 w-5" />
+                    </div>
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-amber-50 text-amber-600">
+                      <Folder className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -641,14 +666,38 @@ export default function McpPage() {
         <Accordion items={faqs} defaultOpenIndex={0} variant="arrow" />
       </section>
 
-      {/* Ready to Transform - Contact CTA (exact screenshot layout) */}
+      {/* Discover how we can help - Bitontree-style two columns: left stats, right form */}
       <section className="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Ready to Transform Your Business with MCP Server?
-        </h2>
-        <p className="mt-3 text-slate-600">Fill out the form below to get started.</p>
-        <div className="mt-8">
-          <McpCtaForm />
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              Discover how we can help your business grow
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">
+              Connect with PSV Enterprises: Reach out for tailored software solutions and seamless collaboration. Let&apos;s turn your ideas into powerful realities together.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {[
+                { icon: Briefcase, value: "6+", label: "Years Of Experience" },
+                { icon: Users, value: "40+", label: "Skilled Professionals" },
+                { icon: CheckCircle2, value: "105+", label: "Projects Delivered" },
+                { icon: Globe, value: "35+", label: "Global Clientele Served" },
+              ].map(({ icon: Icon, value, label }) => (
+                <div key={label} className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-semibold text-slate-900">{value}</div>
+                    <div className="text-sm text-slate-600">{label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_4px_20px_rgba(2,6,23,0.08)] sm:p-8">
+            <McpCtaForm />
+          </div>
         </div>
       </section>
     </div>

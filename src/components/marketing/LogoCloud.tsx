@@ -1,12 +1,15 @@
-export function LogoCloud() {
+export function LogoCloud({ title, hideTitle }: { title?: string; hideTitle?: boolean } = {}) {
   const logos = ["ClientOne", "ClientTwo", "ClientThree", "ClientFour", "ClientFive", "ClientSix"];
+  const heading = title ?? "Trusted by ambitious teams";
 
   return (
     <div className="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
-      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-        Trusted by ambitious teams
-      </div>
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      {!hideTitle && (
+        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          {heading}
+        </div>
+      )}
+      <div className={`grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 ${hideTitle ? "" : "mt-4"}`}>
         {logos.map((l) => (
           <div
             key={l}
