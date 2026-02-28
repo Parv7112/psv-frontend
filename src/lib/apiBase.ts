@@ -1,0 +1,4 @@
+export function getApiBase() {
+  return process.env.NEXT_PUBLIC_API_BASE_URL?.trim() || "http://localhost:4000";
+}
+
