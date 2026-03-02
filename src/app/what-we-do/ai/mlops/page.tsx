@@ -231,7 +231,7 @@ export default function MlopsPage() {
             const StepIcon = step.icon;
             return (
             <div key={step.num} className="flex items-center gap-4">
-              <div className="flex flex-col items-center rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)] min-w-[200px]">
+              <div className="flex w-full flex-col items-center rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)] sm:w-auto">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-700">
                   <StepIcon className="h-6 w-6" />
                 </div>
@@ -272,7 +272,7 @@ export default function MlopsPage() {
             { tag: "AI", title: "Model Registry and CI/CD for Healthcare", desc: "Governed model lifecycle with audit trails and rollback.", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=240&fit=crop", tech: "MLflow, Azure ML" },
             { tag: "MLOps", title: "Real-Time Inference at Scale", desc: "Low-latency serving and A/B testing for recommendation models.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=240&fit=crop", tech: "PyTorch, Docker" },
           ].map((p) => (
-            <article key={p.title} className="w-[320px] shrink-0 snap-center overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
+            <article key={p.title} className="w-[85vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(2,6,23,0.06)] sm:w-[320px]">
               <div className="relative h-40 bg-slate-200">
                 <Image src={p.image} alt="" fill className="object-cover" sizes="320px" />
               </div>

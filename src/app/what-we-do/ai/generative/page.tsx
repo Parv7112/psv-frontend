@@ -213,7 +213,7 @@ export default function GenerativeAiPage() {
             { tag: "Generative AI", title: "Custom LLM Integration for Enterprise", desc: "Secure, governed integration of large language models into internal tools and dashboards.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=240&fit=crop" },
             { tag: "AI & ML", title: "Predictive Analytics and Recommendation Engine", desc: "Real-time recommendations and forecasting powered by ML and generative models.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop" },
           ].map((p) => (
-            <article key={p.title} className="w-[320px] shrink-0 snap-center overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
+            <article key={p.title} className="w-[85vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(2,6,23,0.06)] sm:w-[320px]">
               <div className="relative h-40 bg-slate-200">
                 <Image src={p.image} alt="" fill className="object-cover" sizes="320px" />
               </div>

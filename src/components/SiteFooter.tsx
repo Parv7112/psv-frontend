@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "./Container";
 import { ButtonLink } from "./Button";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
@@ -34,21 +35,16 @@ export function SiteFooter() {
       <Container>
         <div className="grid gap-10 py-12 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <div className="flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 ring-1 ring-white/10">
-                <span className="text-sm font-black tracking-tight text-white">
-                  PSV
-                </span>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-white">
-                  PSV Enterprises
-                </div>
-                <div className="text-xs text-slate-400">
-                  MERN • AI • Mobile Apps
-                </div>
-              </div>
-            </div>
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/logo.png"
+                alt="PSV Enterprises"
+                width={380}
+                height={130}
+                className="h-12 w-auto"
+              />
+            </Link>
+            <div className="mt-2 text-xs text-slate-400">MERN • AI • Mobile Apps</div>
 
             <p className="mt-4 text-sm leading-6 text-slate-400">
               We build modern web platforms, AI-enabled solutions, and
@@ -58,7 +54,7 @@ export function SiteFooter() {
 
             <div className="mt-5 flex items-center gap-3 text-xs text-slate-400">
               <Mail className="h-4 w-4" />
-              <span>hello@psventerprises.com</span>
+              <span>hr@psventerprises.com</span>
             </div>
 
             <div className="mt-6 flex items-center gap-3">

@@ -13,15 +13,22 @@ import {
   Users,
   Briefcase,
   CheckCircle2,
+  Lightbulb,
   Clock,
   Award,
   Shield,
-  Settings,
-  Rocket,
+  Layers,
+  PencilRuler,
+  MousePointer2,
+  Search,
+  FlaskConical,
+  Palette,
+  MonitorSmartphone,
+  Accessibility,
+  LayoutDashboard,
   Handshake,
   TrendingUp,
   Lock,
-  Zap,
   Stethoscope,
   ShoppingCart,
   GraduationCap,
@@ -29,33 +36,26 @@ import {
   Landmark,
   Building2,
   MessageSquare,
-  Bug,
-  RefreshCw,
-  ActivitySquare,
-  LifeBuoy,
-  MonitorCheck,
-  GitMerge,
-  CloudCog,
-  Wrench,
-  AlertCircle,
-  Lightbulb,
-  HeartHandshake,
+  Settings,
+  Rocket,
+  Eye,
+  Zap,
 } from "lucide-react";
 
 const accentDot = (
   <span className="ml-1 inline-block h-2 w-2 rounded-full bg-lime-400" aria-hidden />
 );
 
-export default function MaintenancePage() {
+export default function UiUxPage() {
   const [relatedTab, setRelatedTab] = useState<"all" | "software" | "other">("all");
 
   const relatedServices = [
     { title: "Custom Software Development", href: "/what-we-do/software/custom", category: "software" as const },
     { title: "Web Application Development", href: "/what-we-do/software/web-app", category: "software" as const },
     { title: "Mobile App Development", href: "/what-we-do/software/mobile", category: "software" as const },
-    { title: "ERP Development", href: "/what-we-do/software/erp", category: "software" as const },
-    { title: "UI/UX Designing", href: "/what-we-do/other/ui-ux", category: "other" as const },
+    { title: "Website Development", href: "/what-we-do/software/website", category: "software" as const },
     { title: "Offshore Development Centre", href: "/what-we-do/other/offshore", category: "other" as const },
+    { title: "Support and Maintenance", href: "/what-we-do/other/maintenance", category: "other" as const },
   ];
 
   const relatedFiltered =
@@ -67,91 +67,84 @@ export default function MaintenancePage() {
 
   const faqs = [
     {
-      question: "What is included in your software support and maintenance services?",
+      question: "What is UI/UX design and why does it matter?",
       answer:
-        "Our support and maintenance services include bug fixing, performance monitoring, security patching, OS and dependency updates, feature enhancements, database optimisation, and 24/7 uptime monitoring. We tailor the scope to your product and SLA requirements.",
+        "UI (User Interface) design focuses on the visual layout—buttons, colours, typography, and components. UX (User Experience) design focuses on the entire end-to-end journey a user takes through your product. Together they determine whether users find your product easy, enjoyable, and worth returning to. Good UI/UX directly impacts conversion rates, retention, and customer satisfaction.",
     },
     {
-      question: "Do you support software built by other teams?",
+      question: "What is your UI/UX design process?",
       answer:
-        "Yes. We regularly take over maintenance of applications built by other agencies or internal teams. We start with a thorough codebase audit to understand the architecture, document undocumented areas, and create a maintenance plan before making any changes.",
+        "We follow a research-first, iterative process: Discovery & Research → User Personas & Journey Mapping → Information Architecture → Wireframing → Visual Design → Interactive Prototyping → Usability Testing → Handoff. We work in close collaboration with your team at every step.",
     },
     {
-      question: "What SLA response times do you offer?",
+      question: "Do you design for both web and mobile?",
       answer:
-        "Our standard SLA tiers are: Critical issues (P1) — 1-hour response, 4-hour resolution. High priority (P2) — 4-hour response, 8-hour resolution. Medium priority (P3) — 24-hour response. Low priority (P4) — 72-hour response. Custom SLAs are available for enterprise clients.",
+        "Yes. We design responsive web interfaces, native iOS apps, native Android apps, and cross-platform mobile apps. Each design is tailored to the platform's guidelines (Apple HIG for iOS, Material Design for Android) while maintaining your brand identity.",
     },
     {
-      question: "How do you handle emergency production issues?",
+      question: "What tools do you use for design and prototyping?",
       answer:
-        "We maintain an on-call rotation for production emergencies. Critical issues are escalated immediately via our monitoring stack (alerts routed through PagerDuty or Slack). Our team assesses, hot-fixes, and deploys resolutions with a full post-mortem and root cause analysis delivered within 24 hours.",
+        "Our primary tools are Figma for design and prototyping, FigJam for workshops and user journey mapping, and Maze or UserTesting for usability research. We deliver fully annotated design files and developer-ready component libraries.",
     },
     {
-      question: "Can you add new features while also maintaining the existing system?",
+      question: "Can you redesign an existing product?",
       answer:
-        "Absolutely. Most of our maintenance clients also use our team for incremental feature development. We prioritise stability first—ensuring no regression from new features—and use feature flags and staged rollouts to minimise risk.",
+        "Absolutely. We start with a UX audit of your current product—identifying pain points, drop-off points, and accessibility issues—then propose a phased redesign roadmap that minimises disruption while improving the experience significantly.",
     },
   ];
 
   const processSteps = [
-    { num: "01", icon: ActivitySquare, title: "Codebase Audit", desc: "We review your existing codebase, infrastructure, and documentation to understand the current state and risks." },
-    { num: "02", icon: AlertCircle, title: "Issue Triage & Backlog", desc: "Existing bugs, technical debt, and enhancement requests are catalogued, prioritised, and planned into sprints." },
-    { num: "03", icon: MonitorCheck, title: "Monitoring Setup", desc: "We configure uptime monitoring, error tracking, and alerting so issues are caught before users report them." },
-    { num: "04", icon: Wrench, title: "Ongoing Fixes & Updates", desc: "Bugs are fixed, dependencies updated, and security patches applied on a continuous, scheduled basis." },
-    { num: "05", icon: GitMerge, title: "Feature Enhancements", desc: "Incremental improvements and new features are developed and deployed safely using CI/CD pipelines." },
-    { num: "06", icon: BarChart3, title: "Reporting & Review", desc: "Monthly reports cover incidents resolved, uptime metrics, performance improvements, and planned work." },
+    { num: "01", icon: Search, title: "Discovery & Research", desc: "Stakeholder interviews, competitor analysis, and user research to define the problem space." },
+    { num: "02", icon: Users, title: "User Personas & Journey Maps", desc: "Build empathy-driven personas and map the end-to-end user journey to surface pain points." },
+    { num: "03", icon: Layers, title: "Information Architecture", desc: "Define the content hierarchy, navigation structure, and interaction model." },
+    { num: "04", icon: PencilRuler, title: "Wireframing", desc: "Low-fidelity wireframes to validate layout and flow before committing to visual design." },
+    { num: "05", icon: Palette, title: "Visual Design", desc: "High-fidelity UI with your brand system—colours, typography, components, and motion." },
+    { num: "06", icon: FlaskConical, title: "Prototype & Test", desc: "Interactive prototypes tested with real users to validate before development handoff." },
   ];
 
   const testimonials = [
     {
-      quote: "PSV took over maintenance of our legacy CRM and reduced production incidents by 70% in the first three months. They treat it like their own product.",
-      name: "Nathan G.",
-      role: "Head of Technology",
-      company: "SalesPath",
-      avatar: "https://i.pravatar.cc/150?img=14",
+      quote: "PSV redesigned our SaaS dashboard and reduced support tickets by 35%. The research phase alone surfaced issues we'd been ignoring for two years.",
+      name: "Meera K.",
+      role: "Product Manager",
+      company: "DataHive",
+      avatar: "https://i.pravatar.cc/150?img=47",
     },
     {
-      quote: "We've had zero downtime incidents since PSV took over our infrastructure monitoring. Their SLA response time is consistently under 30 minutes for critical issues.",
-      name: "Priya M.",
-      role: "CTO",
-      company: "BookingGrid",
-      avatar: "https://i.pravatar.cc/150?img=49",
-    },
-    {
-      quote: "The monthly reports are incredibly detailed. We know exactly what was fixed, what was deployed, and what's coming next. Total transparency.",
-      name: "Lucas B.",
-      role: "Product Director",
-      company: "FinTrack",
-      avatar: "https://i.pravatar.cc/150?img=60",
+      quote: "Their Figma handoff was the cleanest I've ever received. Every component annotated, every state covered. Development went faster than any previous project.",
+      name: "James R.",
+      role: "Engineering Lead",
+      company: "FlowStack",
+      avatar: "https://i.pravatar.cc/150?img=52",
     },
   ];
 
   const blogPosts = [
     {
-      tag: "Maintenance",
-      title: "Why Software Maintenance Is the Most Underrated Engineering Investment",
-      snippet: "The hidden cost of ignored technical debt—and how proactive maintenance saves money long-term.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop",
-      author: "PSV Team",
-      date: "Oct 2024",
-      avatar: "https://i.pravatar.cc/150?img=12",
-    },
-    {
-      tag: "DevOps",
-      title: "Building a Zero-Downtime Deployment Pipeline for Production Apps",
-      snippet: "A practical guide to blue-green deployments, canary releases, and feature flags.",
-      image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=240&fit=crop",
+      tag: "UX Design",
+      title: "The 10 UX Heuristics Every Product Team Should Know",
+      snippet: "Nielsen's 10 usability heuristics remain the gold standard for evaluating interface quality.",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=240&fit=crop",
       author: "PSV Team",
       date: "Sep 2024",
       avatar: "https://i.pravatar.cc/150?img=12",
     },
     {
-      tag: "Security",
-      title: "The 5 Most Common Security Vulnerabilities Found in Production Web Apps",
-      snippet: "Real patterns from security audits and how to eliminate them from your codebase.",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=240&fit=crop",
+      tag: "UI Design",
+      title: "Design Tokens: The Foundation of a Scalable Design System",
+      snippet: "How to structure colour, spacing, and typography tokens that scale across products.",
+      image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=240&fit=crop",
       author: "PSV Team",
       date: "Aug 2024",
+      avatar: "https://i.pravatar.cc/150?img=12",
+    },
+    {
+      tag: "Research",
+      title: "5 User Research Methods That Fit Any Budget",
+      snippet: "From guerrilla testing to moderated sessions—how to pick the right method for your stage.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop",
+      author: "PSV Team",
+      date: "Jul 2024",
       avatar: "https://i.pravatar.cc/150?img=12",
     },
   ];
@@ -166,7 +159,7 @@ export default function MaintenancePage() {
         <span className="mx-2">/</span>
         <Link href="/what-we-do" className="hover:text-slate-900">Other Services</Link>
         <span className="mx-2">/</span>
-        <span className="font-semibold text-slate-900">Support and Maintenance Services</span>
+        <span className="font-semibold text-slate-900">UI/UX Design &amp; Development Services</span>
       </nav>
 
       {/* ─── HERO ────────────────────────────────────────────────── */}
@@ -175,12 +168,12 @@ export default function MaintenancePage() {
           <div>
             <p className="text-sm font-medium uppercase tracking-wide text-slate-500">Other Services</p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Support and Maintenance Services
+              UI/UX Design &amp; Development Services
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
-              Keep your software running at peak performance. We provide proactive monitoring, rapid
-              bug fixing, security patching, performance optimisation, and feature enhancements—so your
-              product stays reliable, secure, and competitive.
+              We create user interfaces and experiences that are intuitive, beautiful, and built around
+              real user needs. From research and wireframing to pixel-perfect visual design and
+              developer-ready prototypes, we deliver design that drives results.
             </p>
             <div className="mt-8">
               <ButtonLink
@@ -193,69 +186,34 @@ export default function MaintenancePage() {
             </div>
           </div>
 
-          {/* Right — dashboard / monitoring visual */}
+          {/* Right — design mockup visual */}
           <div className="relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-4 shadow-[0_4px_20px_rgba(2,6,23,0.08)]">
+            {/* Mock browser frame */}
             <div className="rounded-xl bg-slate-100 p-3">
               <div className="mb-2 flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                <span className="ml-3 flex items-center gap-1.5 rounded-full bg-white px-3 py-0.5 text-xs font-medium text-slate-600 shadow-sm">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  System Monitoring
-                </span>
               </div>
-              <div className="relative h-44 overflow-hidden rounded-lg bg-gradient-to-br from-slate-800 to-slate-900">
+              <div className="relative h-48 overflow-hidden rounded-lg bg-gradient-to-br from-indigo-600 to-sky-500">
                 <Image
-                  src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=400&fit=crop"
-                  alt="System monitoring dashboard"
+                  src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop"
+                  alt="UI/UX design work"
                   fill
-                  className="object-cover opacity-20"
+                  className="object-cover opacity-50 mix-blend-overlay"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                {/* Mock uptime bars */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6">
-                  <div className="w-full">
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>API Server</span>
-                      <span className="text-emerald-400">99.99% uptime</span>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 40 }).map((_, i) => (
-                        <div key={i} className={`h-4 flex-1 rounded-sm ${i === 11 ? "bg-amber-400" : "bg-emerald-500"}`} />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="w-full">
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>Web App</span>
-                      <span className="text-emerald-400">100% uptime</span>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 40 }).map((_, i) => (
-                        <div key={i} className="h-4 flex-1 rounded-sm bg-emerald-500" />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="w-full">
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>Database</span>
-                      <span className="text-emerald-400">99.97% uptime</span>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 40 }).map((_, i) => (
-                        <div key={i} className={`h-4 flex-1 rounded-sm ${i === 23 ? "bg-red-400" : "bg-emerald-500"}`} />
-                      ))}
-                    </div>
-                  </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                  <Palette className="h-10 w-10 opacity-80" />
+                  <span className="mt-2 text-sm font-semibold tracking-wide">Design System</span>
                 </div>
               </div>
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2">
               {[
-                { label: "Avg Response", value: "<1hr" },
-                { label: "Uptime SLA", value: "99.9%" },
-                { label: "Issues Fixed", value: "500+" },
+                { label: "Screens", value: "200+" },
+                { label: "Components", value: "500+" },
+                { label: "Satisfaction", value: "98%" },
               ].map(({ label, value }) => (
                 <div key={label} className="rounded-lg bg-slate-50 p-2.5 text-center">
                   <div className="text-lg font-bold text-slate-900">{value}</div>
@@ -271,7 +229,7 @@ export default function MaintenancePage() {
       <section className="rounded-2xl border border-slate-200/70 bg-slate-50/60 px-6 py-4">
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Featured projects</p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-          {["SalesPath CRM", "BookingGrid Platform", "FinTrack Dashboard", "MediBook App", "LogiFlow API", "EduKids Portal"].map((name, i, arr) => (
+          {["DataHive Dashboard", "FlowStack SaaS", "NovaCorp Site", "MediBook App", "EduKids Platform", "ShopSnap Mobile"].map((name, i, arr) => (
             <span key={name} className="inline-flex items-center gap-4">
               <Link href="/our-work" className="font-medium text-slate-800 hover:text-indigo-600">{name}</Link>
               {i < arr.length - 1 && <span className="text-slate-300">|</span>}
@@ -280,49 +238,83 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ─── SUPPORT AND MAINTENANCE SERVICES WE PROVIDE ─────────── */}
+      {/* ─── UI/UX DESIGN SERVICES WE PROVIDE ───────────────────── */}
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Support and Maintenance Services We Provide{accentDot}
+            UI/UX Design Services We Provide{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Comprehensive post-launch support covering every aspect of keeping your software healthy,
-            secure, and continuously improving.
+            A full spectrum of design services—from early-stage research to design system delivery—
+            tailored to your product stage and business goals.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              icon: MonitorCheck,
-              title: "24/7 Uptime Monitoring",
-              desc: "Round-the-clock monitoring of your servers, APIs, and databases with instant alerting and on-call response for critical incidents.",
+              icon: Search,
+              title: "User Research & UX Audit",
+              desc: "In-depth interviews, surveys, heuristic evaluations, and analytics reviews to understand your users and find friction points.",
             },
             {
-              icon: Bug,
-              title: "Bug Fixing & Hotfixes",
-              desc: "Rapid identification and resolution of production bugs with SLA-backed response times and thorough root cause analysis.",
+              icon: PencilRuler,
+              title: "UX Strategy & Wireframing",
+              desc: "Clickable low-fidelity wireframes and journey maps that define structure, navigation, and interaction flows before visual design.",
             },
             {
-              icon: Shield,
-              title: "Security Patching",
-              desc: "Regular dependency audits, CVE monitoring, and proactive patching to keep your application protected from known vulnerabilities.",
+              icon: Palette,
+              title: "UI Visual Design",
+              desc: "High-fidelity screens with cohesive visual language—colours, typography, icons, spacing, and motion design.",
             },
             {
-              icon: RefreshCw,
-              title: "Dependency & OS Updates",
-              desc: "Scheduled updates for frameworks, libraries, and runtime environments to prevent breaking changes and maintain compatibility.",
+              icon: MousePointer2,
+              title: "Interactive Prototyping",
+              desc: "Figma prototypes that feel like real products—used for stakeholder demos, user testing, and developer alignment.",
             },
             {
-              icon: Zap,
-              title: "Performance Optimisation",
-              desc: "Database query tuning, caching strategy improvements, and frontend performance audits to keep response times fast.",
+              icon: Accessibility,
+              title: "Design System Creation",
+              desc: "Scalable component libraries and design tokens that keep your product consistent across every screen and team.",
             },
             {
-              icon: CloudCog,
-              title: "Infrastructure Management",
-              desc: "Cloud infrastructure monitoring, cost optimisation, scaling configuration, and backup management across AWS, GCP, and Azure.",
+              icon: MonitorSmartphone,
+              title: "Responsive & Mobile Design",
+              desc: "Designs that look and feel perfect on every device—desktop, tablet, and native iOS/Android interfaces.",
             },
+          ].map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
+                <Icon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 font-bold text-slate-900">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── WHY BEGIN WITH US ────────────────────────────────────── */}
+      <section className="space-y-10">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Why to Begin with Us for UI/UX Designing Services{accentDot}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            We combine analytical rigour with creative craft to deliver designs that users love and
+            businesses can measure.
+          </p>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { icon: Users, title: "User-Centred Approach", desc: "Every design decision is grounded in research and validated with real users before development starts." },
+            { icon: Lightbulb, title: "Research-First Process", desc: "We invest in understanding the problem deeply before proposing solutions—this saves rework and speeds delivery." },
+            { icon: Award, title: "Pixel-Perfect Execution", desc: "Our designs are not just beautiful—they're implementation-ready with annotated specs and component libraries." },
+            { icon: Clock, title: "Fast Turnaround", desc: "Streamlined processes and tooling (Figma, FigJam) mean designs move quickly without sacrificing quality." },
+            { icon: Handshake, title: "Collaborative Partnership", desc: "We work as an extension of your team—sharing progress daily, incorporating feedback in real time." },
+            { icon: TrendingUp, title: "Measurable Impact", desc: "We define design KPIs upfront and measure success by real outcomes—conversion, task completion, and NPS." },
           ].map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
@@ -357,10 +349,10 @@ export default function MaintenancePage() {
           <article className="grid overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-[0_4px_20px_rgba(2,6,23,0.08)] lg:grid-cols-2">
             <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-indigo-600 to-sky-500">
               <Image
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=480&fit=crop"
-                alt="SalesPath CRM"
+                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=480&fit=crop"
+                alt="DataHive Dashboard"
                 fill
-                className="object-cover opacity-30 mix-blend-overlay"
+                className="object-cover opacity-40 mix-blend-overlay"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -368,7 +360,7 @@ export default function MaintenancePage() {
                   <div className="relative h-36">
                     <Image
                       src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=350&fit=crop"
-                      alt="CRM dashboard"
+                      alt="Dashboard UI"
                       fill
                       className="object-cover"
                       sizes="224px"
@@ -377,17 +369,17 @@ export default function MaintenancePage() {
                 </div>
               </div>
               <div className="absolute left-5 top-5">
-                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">CRM Platform</span>
+                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">SaaS Dashboard</span>
               </div>
             </div>
             <div className="flex flex-col justify-center p-8">
-              <h3 className="text-2xl font-bold text-slate-900">SalesPath CRM – Ongoing Maintenance</h3>
+              <h3 className="text-2xl font-bold text-slate-900">DataHive – Analytics Dashboard Redesign</h3>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                Took over full maintenance of a legacy CRM platform with significant technical debt.
-                Resolved 140+ open bugs within the first quarter, reduced page load time by 55%, and
-                achieved 99.97% uptime with proactive monitoring.
+                Full UX audit and redesign of a B2B analytics platform. Reduced average time-on-task
+                by 40%, increased trial-to-paid conversion by 28%, and cut support tickets by 35%
+                within the first quarter post-launch.
               </p>
-              <p className="mt-4 text-sm font-medium text-slate-500">Node.js · React · PostgreSQL · Redis · AWS</p>
+              <p className="mt-4 text-sm font-medium text-slate-500">Figma · User Research · Design System · Usability Testing</p>
               <div className="mt-6">
                 <Link
                   href="/our-work"
@@ -406,8 +398,8 @@ export default function MaintenancePage() {
                 <div className="w-56 overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-xl backdrop-blur-sm">
                   <div className="relative h-36">
                     <Image
-                      src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=350&fit=crop"
-                      alt="Booking platform monitoring"
+                      src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=350&fit=crop"
+                      alt="Mobile app design"
                       fill
                       className="object-cover"
                       sizes="224px"
@@ -416,17 +408,17 @@ export default function MaintenancePage() {
                 </div>
               </div>
               <div className="absolute left-5 top-5">
-                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">Booking Platform</span>
+                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">Mobile App</span>
               </div>
             </div>
             <div className="flex flex-col justify-center p-8">
-              <h3 className="text-2xl font-bold text-slate-900">BookingGrid – Platform Reliability Retainer</h3>
+              <h3 className="text-2xl font-bold text-slate-900">MediBook – Healthcare App Design</h3>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                Continuous support and infrastructure management for a high-traffic booking platform
-                processing 50K+ transactions daily. Zero critical incidents in 18 months of
-                engagement, with monthly performance reports and quarterly architecture reviews.
+                End-to-end UX/UI design for a patient-facing healthcare app covering appointment
+                booking, video consultations, and medical records. Designed to WCAG AA accessibility
+                standards with a 4.8-star App Store rating on launch.
               </p>
-              <p className="mt-4 text-sm font-medium text-slate-500">Python · Django · MySQL · Celery · GCP</p>
+              <p className="mt-4 text-sm font-medium text-slate-500">Figma · Accessibility · iOS & Android Design · Prototyping</p>
               <div className="mt-6">
                 <Link
                   href="/our-work"
@@ -440,6 +432,28 @@ export default function MaintenancePage() {
         </div>
       </section>
 
+      {/* ─── DARK CTA BANNER ─────────────────────────────────────── */}
+      <section className="rounded-3xl bg-slate-900 px-8 py-14 text-center">
+        <p className="text-sm font-semibold uppercase tracking-widest text-lime-400">
+          Transform Your Vision with Expertise
+        </p>
+        <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">
+          Let&apos;s Build the Perfect UI/UX Bridge
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-slate-300">
+          Share your product idea and we&apos;ll design an experience your users will love and your team
+          can build with confidence.
+        </p>
+        <div className="mt-8">
+          <Link
+            href="/lets-talk"
+            className="inline-flex items-center gap-2 rounded-lg bg-lime-400 px-6 py-3 text-sm font-bold text-slate-900 hover:bg-lime-300"
+          >
+            Get Started <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
       {/* ─── INDUSTRIES WE SERVE ─────────────────────────────────── */}
       <section className="space-y-10">
         <div className="text-center">
@@ -447,8 +461,8 @@ export default function MaintenancePage() {
             Industries We Serve{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            We maintain and support software across every major industry—from fintech and healthcare to
-            e-commerce and logistics.
+            We design for products across every vertical—bringing domain empathy and industry-specific
+            UX knowledge to every engagement.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
@@ -473,36 +487,47 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ─── DARK CTA BANNER ─────────────────────────────────────── */}
-      <section className="rounded-3xl bg-slate-900 px-8 py-14 text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-lime-400">
-          Your Business Needs Reliable Support
-        </p>
-        <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">
-          New Maintenance Needs in Your Business, Report!
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-slate-300">
-          Tell us about your application and we&apos;ll set up a maintenance plan that keeps it running
-          at 99.9%+ uptime with rapid response to every incident.
-        </p>
-        <div className="mt-8">
-          <Link
-            href="/lets-talk"
-            className="inline-flex items-center gap-2 rounded-lg bg-lime-400 px-6 py-3 text-sm font-bold text-slate-900 hover:bg-lime-300"
-          >
-            Get Started <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
-
-      {/* ─── OUR SUPPORT AND MAINTENANCE PROCESS ─────────────────── */}
+      {/* ─── KEY PRINCIPLES ──────────────────────────────────────── */}
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Our Support and Maintenance Service Process{accentDot}
+            Key Principles for UI/UX in Business Services{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            A structured approach from initial audit to continuous, reliable operations.
+            The foundational design principles we apply to every engagement.
+          </p>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { icon: Eye, title: "Clarity Over Complexity", desc: "Remove cognitive load. Every screen should communicate one primary action clearly." },
+            { icon: Accessibility, title: "Accessibility by Default", desc: "WCAG AA compliance, sufficient colour contrast, keyboard navigation, and screen-reader support built in from day one." },
+            { icon: Zap, title: "Performance-Aware Design", desc: "Designs optimised for fast load times—lean assets, efficient animations, and lazy-load-friendly layouts." },
+            { icon: Layers, title: "Scalable Design Systems", desc: "Atomic component libraries that scale with your product and keep every screen consistent." },
+            { icon: LayoutDashboard, title: "Data-Driven Iteration", desc: "We use analytics and usability data to continuously improve designs after launch." },
+            { icon: Shield, title: "Trust & Security Signalling", desc: "Design patterns that communicate security, reliability, and brand trust to users at every touchpoint." },
+          ].map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
+                <Icon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 font-bold text-slate-900">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── OUR UI/UX DESIGNING PROCESS ─────────────────────────── */}
+      <section className="space-y-10">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Our UI/UX Designing Process{accentDot}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            A structured, proven approach from first brief to developer-ready design.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -529,20 +554,20 @@ export default function MaintenancePage() {
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Why Shortlisted for Support and Maintenance Services?{accentDot}
+            Why Choose Us for UI/UX Designing Services?{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            We&apos;re not just reactive—we&apos;re proactive. We prevent issues before they affect your users.
+            We don&apos;t just make things look good—we make them work better for the people who use them.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { icon: Clock, title: "SLA-Backed Response", desc: "Guaranteed response times for every severity level with formal SLA agreements and penalty clauses for critical violations." },
-            { icon: MonitorCheck, title: "Proactive Monitoring", desc: "We catch issues before users do—24/7 monitoring with anomaly detection, alert thresholds, and on-call rotations." },
-            { icon: Shield, title: "Security-First", desc: "Regular security audits, dependency vulnerability scanning, and rapid patching keep your system protected year-round." },
-            { icon: Lightbulb, title: "Deep Product Knowledge", desc: "We invest time understanding your product's business logic and architecture—so we fix problems without creating new ones." },
-            { icon: Handshake, title: "Transparent Communication", desc: "Monthly reports, incident post-mortems, and a dedicated Slack channel mean you always know the status of your system." },
-            { icon: TrendingUp, title: "Continuous Improvement", desc: "We don't just maintain the status quo—we identify and implement incremental improvements that make your product better every quarter." },
+            { icon: Briefcase, title: "Full-Service Design", desc: "Research, UX, UI, prototyping, testing, and handoff—all under one roof with no handoff gaps." },
+            { icon: Users, title: "Dedicated Design Team", desc: "A senior designer, UX researcher, and design system specialist assigned to your project." },
+            { icon: Rocket, title: "Rapid Delivery", desc: "First wireframes within the first week. Visual designs in the third. Prototype by end of week four." },
+            { icon: Settings, title: "Developer Collaboration", desc: "We work alongside your engineering team to ensure every design translates perfectly into code." },
+            { icon: Award, title: "Proven Track Record", desc: "60+ products designed, with an average of 35% improvement in key UX metrics post-launch." },
+            { icon: Lock, title: "IP Protection", desc: "All design files, assets, and documentation are fully owned by you from day one." },
           ].map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
@@ -558,44 +583,32 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ─── KEY BENEFITS ────────────────────────────────────────── */}
+      {/* ─── OUR PORTFOLIO ────────────────────────────────────────── */}
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Key Benefits of Utilising Support and Maintenance Services{accentDot}
+            Our Portfolio for UI/UX Designing Services{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            A well-maintained system is faster, safer, and more cost-effective to operate than one
-            that&apos;s left to accumulate debt.
+            A snapshot of the work we&apos;ve done across industries and product types.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            {
-              icon: Rocket,
-              title: "Reduced Downtime",
-              desc: "Proactive monitoring and rapid incident response mean fewer outages and significantly less lost revenue from system failures.",
-            },
-            {
-              icon: Lock,
-              title: "Lower Long-Term Costs",
-              desc: "Fixing small issues before they become big ones is dramatically cheaper. Proactive maintenance reduces total cost of ownership by up to 40%.",
-            },
-            {
-              icon: HeartHandshake,
-              title: "Better User Experience",
-              desc: "Faster, more reliable, and consistently bug-free software leads directly to higher user satisfaction, retention, and conversion rates.",
-            },
-          ].map(({ icon: Icon, title, desc }) => (
-            <div
-              key={title}
-              className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
-                <Icon className="h-6 w-6" />
+            { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=360&fit=crop", label: "Analytics Dashboard" },
+            { src: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=360&fit=crop", label: "Mobile Fitness App" },
+            { src: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=360&fit=crop", label: "Design System" },
+            { src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=360&fit=crop", label: "Healthcare Portal" },
+            { src: "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&h=360&fit=crop", label: "E-commerce Redesign" },
+            { src: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=360&fit=crop", label: "SaaS Onboarding" },
+          ].map(({ src, label }) => (
+            <div key={label} className="group relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
+              <div className="relative h-48">
+                <Image src={src} alt={label} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
               </div>
-              <h3 className="mt-4 font-bold text-slate-900">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{desc}</p>
+              <div className="p-4">
+                <span className="font-semibold text-slate-900">{label}</span>
+              </div>
             </div>
           ))}
         </div>
@@ -608,10 +621,10 @@ export default function MaintenancePage() {
             What Our Clients Say{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Technology leaders who trust PSV Enterprises to keep their software running.
+            Product leaders who transformed their user experience with PSV Enterprises.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {testimonials.map((t) => (
             <div
               key={t.name}
@@ -726,7 +739,7 @@ export default function MaintenancePage() {
             Frequently Asked Questions{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Common questions about our support and maintenance services, SLAs, and process.
+            Common questions about UI/UX design, our process, and deliverables.
           </p>
         </div>
         <Accordion items={faqs} defaultOpenIndex={0} variant="arrow" />
@@ -740,15 +753,14 @@ export default function MaintenancePage() {
               Discover how we can help your business grow
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">
-              Tell us about your software and we&apos;ll put together a maintenance plan that fits your
-              business and budget.
+              Tell us about your product and we&apos;ll design an experience your users will love.
             </p>
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               {[
                 { icon: Briefcase, value: "4+", label: "Years of Experience" },
-                { icon: Users, value: "50+", label: "Apps Maintained" },
-                { icon: BarChart3, value: "99.9%", label: "Avg Uptime Delivered" },
-                { icon: CheckCircle2, value: "500+", label: "Issues Resolved" },
+                { icon: Users, value: "60+", label: "Products Designed" },
+                { icon: BarChart3, value: "6+", label: "Countries Served" },
+                { icon: CheckCircle2, value: "35+", label: "Happy Clients" },
               ].map(({ icon: Icon, value, label }) => (
                 <div key={label} className="flex items-center gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
@@ -765,7 +777,7 @@ export default function MaintenancePage() {
           <div className="rounded-2xl border border-slate-200/70 bg-slate-50/80 p-6 shadow-sm sm:p-8">
             <p className="text-sm font-semibold text-slate-900">Let&apos;s listen to your project idea!</p>
             <div className="mt-6">
-              <ContactForm source="support-maintenance" submitLabel="SEND MESSAGE" />
+              <ContactForm source="ui-ux-design" submitLabel="SEND MESSAGE" />
             </div>
           </div>
         </div>

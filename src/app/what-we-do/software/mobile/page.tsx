@@ -10,52 +10,55 @@ import { LogoCloud } from "@/components/marketing/LogoCloud";
 import {
   ArrowRight,
   BarChart3,
-  Users,
-  Briefcase,
-  CheckCircle2,
-  Clock,
-  Award,
-  Shield,
-  Settings,
-  Rocket,
-  Handshake,
-  TrendingUp,
-  Lock,
+  ShieldCheck,
   Zap,
-  Stethoscope,
-  ShoppingCart,
-  GraduationCap,
-  Truck,
-  Landmark,
-  Building2,
-  MessageSquare,
-  Bug,
-  RefreshCw,
-  ActivitySquare,
-  LifeBuoy,
-  MonitorCheck,
-  GitMerge,
-  CloudCog,
-  Wrench,
-  AlertCircle,
+  Users,
+  Rocket,
+  Code2,
+  Settings,
+  TrendingUp,
+  Award,
   Lightbulb,
-  HeartHandshake,
+  Clock,
+  CheckCircle2,
+  Handshake,
+  Lock,
+  Briefcase,
+  MessageSquare,
+  PencilRuler,
+  Search,
+  Shield,
+  Smartphone,
+  Tablet,
+  Globe,
+  Bell,
+  Landmark,
+  Stethoscope,
+  GraduationCap,
+  ShoppingCart,
+  Truck,
+  Gamepad2,
+  RefreshCw,
+  MonitorSmartphone,
+  CloudUpload,
 } from "lucide-react";
 
 const accentDot = (
   <span className="ml-1 inline-block h-2 w-2 rounded-full bg-lime-400" aria-hidden />
 );
 
-export default function MaintenancePage() {
+export default function MobilePage() {
   const [relatedTab, setRelatedTab] = useState<"all" | "software" | "other">("all");
 
   const relatedServices = [
     { title: "Custom Software Development", href: "/what-we-do/software/custom", category: "software" as const },
     { title: "Web Application Development", href: "/what-we-do/software/web-app", category: "software" as const },
-    { title: "Mobile App Development", href: "/what-we-do/software/mobile", category: "software" as const },
     { title: "ERP Development", href: "/what-we-do/software/erp", category: "software" as const },
-    { title: "UI/UX Designing", href: "/what-we-do/other/ui-ux", category: "other" as const },
-    { title: "Offshore Development Centre", href: "/what-we-do/other/offshore", category: "other" as const },
+    { title: "Website Development", href: "/what-we-do/software/website", category: "software" as const },
+    { title: "API Development", href: "/what-we-do/software/apis", category: "software" as const },
+    { title: "SaaS & Dashboards", href: "/what-we-do/software/saas", category: "software" as const },
+    { title: "UI/UX Design", href: "/what-we-do/software/ui-ux", category: "software" as const },
+    { title: "DevOps & Deployment", href: "/what-we-do/other/devops", category: "other" as const },
   ];
 
   const relatedFiltered =
@@ -67,91 +70,84 @@ export default function MaintenancePage() {
 
   const faqs = [
     {
-      question: "What is included in your software support and maintenance services?",
+      question: "What is mobile app development?",
       answer:
-        "Our support and maintenance services include bug fixing, performance monitoring, security patching, OS and dependency updates, feature enhancements, database optimisation, and 24/7 uptime monitoring. We tailor the scope to your product and SLA requirements.",
+        "Mobile app development is the process of designing and building applications for iOS and Android devices. It covers native app development (Swift/Kotlin), cross-platform development (React Native/Flutter), UI/UX design, backend integration, and App Store/Play Store deployment.",
     },
     {
-      question: "Do you support software built by other teams?",
+      question: "Should I build a native app or a cross-platform app?",
       answer:
-        "Yes. We regularly take over maintenance of applications built by other agencies or internal teams. We start with a thorough codebase audit to understand the architecture, document undocumented areas, and create a maintenance plan before making any changes.",
+        "Native apps (Swift for iOS, Kotlin for Android) offer the best performance and platform-specific UX. Cross-platform frameworks like React Native and Flutter share up to 95% of code and are ideal when you need to ship on both platforms quickly with a shared codebase. We'll help you choose based on your budget, timeline, and performance requirements.",
     },
     {
-      question: "What SLA response times do you offer?",
+      question: "How long does mobile app development take?",
       answer:
-        "Our standard SLA tiers are: Critical issues (P1) — 1-hour response, 4-hour resolution. High priority (P2) — 4-hour response, 8-hour resolution. Medium priority (P3) — 24-hour response. Low priority (P4) — 72-hour response. Custom SLAs are available for enterprise clients.",
+        "A focused MVP mobile app typically takes 10–16 weeks. A full-featured app with backend services, third-party integrations, and both iOS/Android builds can take 4–8 months. We deliver in iterative sprints so you can test and provide feedback throughout.",
     },
     {
-      question: "How do you handle emergency production issues?",
+      question: "How do you handle App Store and Google Play submission?",
       answer:
-        "We maintain an on-call rotation for production emergencies. Critical issues are escalated immediately via our monitoring stack (alerts routed through PagerDuty or Slack). Our team assesses, hot-fixes, and deploys resolutions with a full post-mortem and root cause analysis delivered within 24 hours.",
+        "We handle the full submission process—creating your developer accounts if needed, preparing screenshots, metadata, and compliance documentation, and managing the review process for both the Apple App Store and Google Play Store.",
     },
     {
-      question: "Can you add new features while also maintaining the existing system?",
+      question: "Do you provide post-launch support and updates?",
       answer:
-        "Absolutely. Most of our maintenance clients also use our team for incremental feature development. We prioritise stability first—ensuring no regression from new features—and use feature flags and staged rollouts to minimise risk.",
+        "Yes. We provide SLA-backed maintenance plans covering OS updates, bug fixes, performance monitoring, and feature additions. Mobile OS updates (iOS/Android) can break apps, so ongoing maintenance is critical.",
     },
   ];
 
   const processSteps = [
-    { num: "01", icon: ActivitySquare, title: "Codebase Audit", desc: "We review your existing codebase, infrastructure, and documentation to understand the current state and risks." },
-    { num: "02", icon: AlertCircle, title: "Issue Triage & Backlog", desc: "Existing bugs, technical debt, and enhancement requests are catalogued, prioritised, and planned into sprints." },
-    { num: "03", icon: MonitorCheck, title: "Monitoring Setup", desc: "We configure uptime monitoring, error tracking, and alerting so issues are caught before users report them." },
-    { num: "04", icon: Wrench, title: "Ongoing Fixes & Updates", desc: "Bugs are fixed, dependencies updated, and security patches applied on a continuous, scheduled basis." },
-    { num: "05", icon: GitMerge, title: "Feature Enhancements", desc: "Incremental improvements and new features are developed and deployed safely using CI/CD pipelines." },
-    { num: "06", icon: BarChart3, title: "Reporting & Review", desc: "Monthly reports cover incidents resolved, uptime metrics, performance improvements, and planned work." },
+    { num: "01", icon: MessageSquare, title: "Discovery & Strategy", desc: "Define your target users, core features, monetisation model, and technical architecture." },
+    { num: "02", icon: PencilRuler, title: "UI/UX Design", desc: "Platform-native designs with interactive prototypes reviewed and validated before development." },
+    { num: "03", icon: Code2, title: "App Development", desc: "Iterative builds across iOS and Android with regular demo builds delivered for testing." },
+    { num: "04", icon: Settings, title: "Backend & API Integration", desc: "Secure, scalable APIs, push notifications, auth, and third-party service integrations." },
+    { num: "05", icon: Search, title: "QA & Testing", desc: "Functional, performance, and device-compatibility testing across real devices and simulators." },
+    { num: "06", icon: Rocket, title: "Launch & Support", desc: "App Store / Play Store submission, production monitoring, and post-launch maintenance." },
   ];
 
   const testimonials = [
     {
-      quote: "PSV took over maintenance of our legacy CRM and reduced production incidents by 70% in the first three months. They treat it like their own product.",
-      name: "Nathan G.",
-      role: "Head of Technology",
-      company: "SalesPath",
-      avatar: "https://i.pravatar.cc/150?img=14",
+      quote: "PSV delivered our iOS and Android apps on time and within budget. The UX is intuitive and our users gave it 4.8 stars on launch week.",
+      name: "Arya S.",
+      role: "Founder",
+      company: "FitTrack",
+      avatar: "https://i.pravatar.cc/150?img=5",
     },
     {
-      quote: "We've had zero downtime incidents since PSV took over our infrastructure monitoring. Their SLA response time is consistently under 30 minutes for critical issues.",
-      name: "Priya M.",
+      quote: "We needed a React Native app fast. PSV built and shipped it in 10 weeks with clean code we can maintain ourselves. Outstanding work.",
+      name: "Chris M.",
       role: "CTO",
-      company: "BookingGrid",
-      avatar: "https://i.pravatar.cc/150?img=49",
-    },
-    {
-      quote: "The monthly reports are incredibly detailed. We know exactly what was fixed, what was deployed, and what's coming next. Total transparency.",
-      name: "Lucas B.",
-      role: "Product Director",
-      company: "FinTrack",
-      avatar: "https://i.pravatar.cc/150?img=60",
+      company: "LogiMove",
+      avatar: "https://i.pravatar.cc/150?img=11",
     },
   ];
 
   const blogPosts = [
     {
-      tag: "Maintenance",
-      title: "Why Software Maintenance Is the Most Underrated Engineering Investment",
-      snippet: "The hidden cost of ignored technical debt—and how proactive maintenance saves money long-term.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop",
-      author: "PSV Team",
-      date: "Oct 2024",
-      avatar: "https://i.pravatar.cc/150?img=12",
-    },
-    {
-      tag: "DevOps",
-      title: "Building a Zero-Downtime Deployment Pipeline for Production Apps",
-      snippet: "A practical guide to blue-green deployments, canary releases, and feature flags.",
-      image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=240&fit=crop",
-      author: "PSV Team",
-      date: "Sep 2024",
-      avatar: "https://i.pravatar.cc/150?img=12",
-    },
-    {
-      tag: "Security",
-      title: "The 5 Most Common Security Vulnerabilities Found in Production Web Apps",
-      snippet: "Real patterns from security audits and how to eliminate them from your codebase.",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=240&fit=crop",
+      tag: "Mobile Dev",
+      title: "React Native vs Flutter: Choosing the Right Cross-Platform Framework",
+      snippet: "A practical comparison of the two leading cross-platform frameworks for 2024.",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=240&fit=crop",
       author: "PSV Team",
       date: "Aug 2024",
+      avatar: "https://i.pravatar.cc/150?img=12",
+    },
+    {
+      tag: "iOS",
+      title: "SwiftUI vs UIKit: What Should You Use for Your Next iOS App?",
+      snippet: "How to decide between Apple's two UI frameworks for your next native iOS project.",
+      image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&h=240&fit=crop",
+      author: "PSV Team",
+      date: "Jul 2024",
+      avatar: "https://i.pravatar.cc/150?img=12",
+    },
+    {
+      tag: "UX Design",
+      title: "Mobile UX Patterns That Drive App Retention and Engagement",
+      snippet: "The design decisions that separate apps users return to from apps they delete.",
+      image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=400&h=240&fit=crop",
+      author: "PSV Team",
+      date: "Jun 2024",
       avatar: "https://i.pravatar.cc/150?img=12",
     },
   ];
@@ -164,23 +160,25 @@ export default function MaintenancePage() {
         <span className="mx-2">/</span>
         <Link href="/what-we-do" className="hover:text-slate-900">What we do</Link>
         <span className="mx-2">/</span>
-        <Link href="/what-we-do" className="hover:text-slate-900">Other Services</Link>
+        <Link href="/what-we-do" className="hover:text-slate-900">Software Development</Link>
         <span className="mx-2">/</span>
-        <span className="font-semibold text-slate-900">Support and Maintenance Services</span>
+        <span className="font-semibold text-slate-900">Mobile App Development Company</span>
       </nav>
 
       {/* ─── HERO ────────────────────────────────────────────────── */}
       <section className="rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="text-sm font-medium uppercase tracking-wide text-slate-500">Other Services</p>
+            <p className="text-sm font-medium uppercase tracking-wide text-slate-500">
+              Software Development
+            </p>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Support and Maintenance Services
+              Mobile App Development Company
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
-              Keep your software running at peak performance. We provide proactive monitoring, rapid
-              bug fixing, security patching, performance optimisation, and feature enhancements—so your
-              product stays reliable, secure, and competitive.
+              We build high-performance iOS and Android apps that users love. From consumer apps and
+              enterprise mobility solutions to React Native MVPs and cross-platform platforms, we
+              deliver polished, production-ready mobile products on time.
             </p>
             <div className="mt-8">
               <ButtonLink
@@ -193,73 +191,49 @@ export default function MaintenancePage() {
             </div>
           </div>
 
-          {/* Right — dashboard / monitoring visual */}
-          <div className="relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-4 shadow-[0_4px_20px_rgba(2,6,23,0.08)]">
-            <div className="rounded-xl bg-slate-100 p-3">
-              <div className="mb-2 flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                <span className="ml-3 flex items-center gap-1.5 rounded-full bg-white px-3 py-0.5 text-xs font-medium text-slate-600 shadow-sm">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  System Monitoring
-                </span>
-              </div>
-              <div className="relative h-44 overflow-hidden rounded-lg bg-gradient-to-br from-slate-800 to-slate-900">
+          {/* Phone mockups visual */}
+          <div className="flex items-end justify-center gap-4">
+            {/* Tall phone mockup */}
+            <div className="relative w-36 overflow-hidden rounded-[2rem] border-4 border-slate-800 bg-slate-800 shadow-2xl">
+              <div className="absolute left-1/2 top-0 h-5 w-16 -translate-x-1/2 rounded-b-xl bg-slate-800 z-10" />
+              <div className="relative h-[280px] overflow-hidden rounded-[1.6rem] bg-slate-100">
                 <Image
-                  src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=400&fit=crop"
-                  alt="System monitoring dashboard"
+                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=300&h=600&fit=crop"
+                  alt="Mobile app"
                   fill
-                  className="object-cover opacity-20"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  sizes="144px"
                 />
-                {/* Mock uptime bars */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6">
-                  <div className="w-full">
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>API Server</span>
-                      <span className="text-emerald-400">99.99% uptime</span>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 40 }).map((_, i) => (
-                        <div key={i} className={`h-4 flex-1 rounded-sm ${i === 11 ? "bg-amber-400" : "bg-emerald-500"}`} />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="w-full">
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>Web App</span>
-                      <span className="text-emerald-400">100% uptime</span>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 40 }).map((_, i) => (
-                        <div key={i} className="h-4 flex-1 rounded-sm bg-emerald-500" />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="w-full">
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>Database</span>
-                      <span className="text-emerald-400">99.97% uptime</span>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 40 }).map((_, i) => (
-                        <div key={i} className={`h-4 flex-1 rounded-sm ${i === 23 ? "bg-red-400" : "bg-emerald-500"}`} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
-            <div className="mt-3 grid grid-cols-3 gap-2">
+            {/* Slightly shorter second phone */}
+            <div className="relative mb-6 w-32 overflow-hidden rounded-[2rem] border-4 border-slate-700 bg-slate-700 shadow-xl">
+              <div className="absolute left-1/2 top-0 h-4 w-12 -translate-x-1/2 rounded-b-xl bg-slate-700 z-10" />
+              <div className="relative h-[240px] overflow-hidden rounded-[1.6rem] bg-slate-100">
+                <Image
+                  src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=300&h=500&fit=crop"
+                  alt="Mobile app UI"
+                  fill
+                  className="object-cover"
+                  sizes="128px"
+                />
+              </div>
+            </div>
+            {/* Stats card */}
+            <div className="mb-2 flex flex-col gap-2">
               {[
-                { label: "Avg Response", value: "<1hr" },
-                { label: "Uptime SLA", value: "99.9%" },
-                { label: "Issues Fixed", value: "500+" },
-              ].map(({ label, value }) => (
-                <div key={label} className="rounded-lg bg-slate-50 p-2.5 text-center">
-                  <div className="text-lg font-bold text-slate-900">{value}</div>
-                  <div className="text-xs text-slate-500">{label}</div>
+                { icon: BarChart3, label: "App Rating", value: "4.9★" },
+                { icon: Users, label: "Users", value: "1M+" },
+                { icon: Globe, label: "Platforms", value: "iOS+Android" },
+              ].map(({ icon: Icon, label, value }) => (
+                <div key={label} className="rounded-xl border border-slate-200/70 bg-white px-4 py-2.5 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <Icon className="h-4 w-4 text-slate-500" />
+                    <div>
+                      <div className="text-xs font-bold text-slate-900">{value}</div>
+                      <div className="text-xs text-slate-500">{label}</div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -271,7 +245,7 @@ export default function MaintenancePage() {
       <section className="rounded-2xl border border-slate-200/70 bg-slate-50/60 px-6 py-4">
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Featured projects</p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-          {["SalesPath CRM", "BookingGrid Platform", "FinTrack Dashboard", "MediBook App", "LogiFlow API", "EduKids Portal"].map((name, i, arr) => (
+          {["FitTrack", "LogiMove", "MediBook", "ShopSnap", "EduKids", "RideNow"].map((name, i, arr) => (
             <span key={name} className="inline-flex items-center gap-4">
               <Link href="/our-work" className="font-medium text-slate-800 hover:text-indigo-600">{name}</Link>
               {i < arr.length - 1 && <span className="text-slate-300">|</span>}
@@ -280,48 +254,48 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ─── SUPPORT AND MAINTENANCE SERVICES WE PROVIDE ─────────── */}
+      {/* ─── MOBILE APP DEVELOPMENT SERVICES WE PROVIDE ─────────── */}
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Support and Maintenance Services We Provide{accentDot}
+            Mobile App Development Services We Provide{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Comprehensive post-launch support covering every aspect of keeping your software healthy,
-            secure, and continuously improving.
+            Whether you need a native iOS/Android app, a cross-platform solution, or an enterprise
+            mobility platform, we have the skills and experience to deliver it.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              icon: MonitorCheck,
-              title: "24/7 Uptime Monitoring",
-              desc: "Round-the-clock monitoring of your servers, APIs, and databases with instant alerting and on-call response for critical incidents.",
+              icon: Smartphone,
+              title: "iOS App Development",
+              desc: "Native Swift/SwiftUI apps built to Apple's Human Interface Guidelines—fast, beautiful, and App Store ready.",
             },
             {
-              icon: Bug,
-              title: "Bug Fixing & Hotfixes",
-              desc: "Rapid identification and resolution of production bugs with SLA-backed response times and thorough root cause analysis.",
+              icon: Tablet,
+              title: "Android App Development",
+              desc: "Native Kotlin apps with Material Design 3, optimised across the Android device ecosystem.",
             },
             {
-              icon: Shield,
-              title: "Security Patching",
-              desc: "Regular dependency audits, CVE monitoring, and proactive patching to keep your application protected from known vulnerabilities.",
+              icon: MonitorSmartphone,
+              title: "React Native Apps",
+              desc: "Shared codebase for iOS and Android—faster to build and maintain while delivering near-native performance.",
             },
             {
               icon: RefreshCw,
-              title: "Dependency & OS Updates",
-              desc: "Scheduled updates for frameworks, libraries, and runtime environments to prevent breaking changes and maintain compatibility.",
+              title: "Cross-Platform (Flutter)",
+              desc: "Dart-powered apps with a single codebase and pixel-perfect UI across iOS, Android, and web.",
             },
             {
-              icon: Zap,
-              title: "Performance Optimisation",
-              desc: "Database query tuning, caching strategy improvements, and frontend performance audits to keep response times fast.",
+              icon: Bell,
+              title: "Enterprise Mobile Apps",
+              desc: "Secure, MDM-compatible apps for field teams, logistics, and internal operations with offline support.",
             },
             {
-              icon: CloudCog,
-              title: "Infrastructure Management",
-              desc: "Cloud infrastructure monitoring, cost optimisation, scaling configuration, and backup management across AWS, GCP, and Azure.",
+              icon: CloudUpload,
+              title: "App Modernisation",
+              desc: "Redesign and re-engineer legacy apps for modern OS versions, new form factors, and improved performance.",
             },
           ].map(({ icon: Icon, title, desc }) => (
             <div
@@ -338,7 +312,7 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ─── FEATURED PROJECTS ────────────────────────────────────── */}
+      {/* ─── FEATURED PROJECTS – 3 large cards with device frames ── */}
       <section className="space-y-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -357,37 +331,40 @@ export default function MaintenancePage() {
           <article className="grid overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-[0_4px_20px_rgba(2,6,23,0.08)] lg:grid-cols-2">
             <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-indigo-600 to-sky-500">
               <Image
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=480&fit=crop"
-                alt="SalesPath CRM"
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=480&fit=crop"
+                alt="FitTrack App"
                 fill
                 className="object-cover opacity-30 mix-blend-overlay"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
+              {/* Phone mockup centred on gradient */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-56 overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-xl backdrop-blur-sm">
-                  <div className="relative h-36">
+                <div className="w-32 overflow-hidden rounded-[1.8rem] border-4 border-white/30 bg-white/10 shadow-2xl backdrop-blur-sm">
+                  <div className="relative h-56">
                     <Image
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=350&fit=crop"
-                      alt="CRM dashboard"
+                      src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=300&h=600&fit=crop"
+                      alt="FitTrack screen"
                       fill
-                      className="object-cover"
-                      sizes="224px"
+                      className="object-cover rounded-[1.4rem]"
+                      sizes="128px"
                     />
                   </div>
                 </div>
               </div>
               <div className="absolute left-5 top-5">
-                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">CRM Platform</span>
+                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                  Health & Fitness
+                </span>
               </div>
             </div>
             <div className="flex flex-col justify-center p-8">
-              <h3 className="text-2xl font-bold text-slate-900">SalesPath CRM – Ongoing Maintenance</h3>
+              <h3 className="text-2xl font-bold text-slate-900">FitTrack – Fitness & Wellness App</h3>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                Took over full maintenance of a legacy CRM platform with significant technical debt.
-                Resolved 140+ open bugs within the first quarter, reduced page load time by 55%, and
-                achieved 99.97% uptime with proactive monitoring.
+                Cross-platform fitness app with workout tracking, nutrition logging, wearable
+                integrations, and a social challenges feature. 4.9 stars on the App Store with 500K+
+                downloads in the first quarter.
               </p>
-              <p className="mt-4 text-sm font-medium text-slate-500">Node.js · React · PostgreSQL · Redis · AWS</p>
+              <p className="mt-4 text-sm font-medium text-slate-500">React Native · Node.js · Firebase · HealthKit / Google Fit</p>
               <div className="mt-6">
                 <Link
                   href="/our-work"
@@ -401,32 +378,74 @@ export default function MaintenancePage() {
 
           {/* Card 2 */}
           <article className="grid overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-[0_4px_20px_rgba(2,6,23,0.08)] lg:grid-cols-2">
-            <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-violet-600 to-purple-500 lg:order-last">
+            <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-emerald-600 to-teal-500 lg:order-last">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-56 overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-xl backdrop-blur-sm">
-                  <div className="relative h-36">
+                <div className="w-32 overflow-hidden rounded-[1.8rem] border-4 border-white/30 bg-white/10 shadow-2xl backdrop-blur-sm">
+                  <div className="relative h-56">
                     <Image
-                      src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=350&fit=crop"
-                      alt="Booking platform monitoring"
+                      src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=300&h=600&fit=crop"
+                      alt="LogiMove screen"
                       fill
-                      className="object-cover"
-                      sizes="224px"
+                      className="object-cover rounded-[1.4rem]"
+                      sizes="128px"
                     />
                   </div>
                 </div>
               </div>
               <div className="absolute left-5 top-5">
-                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">Booking Platform</span>
+                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                  Logistics
+                </span>
               </div>
             </div>
             <div className="flex flex-col justify-center p-8">
-              <h3 className="text-2xl font-bold text-slate-900">BookingGrid – Platform Reliability Retainer</h3>
+              <h3 className="text-2xl font-bold text-slate-900">LogiMove – Delivery Driver App</h3>
               <p className="mt-3 text-base leading-7 text-slate-600">
-                Continuous support and infrastructure management for a high-traffic booking platform
-                processing 50K+ transactions daily. Zero critical incidents in 18 months of
-                engagement, with monthly performance reports and quarterly architecture reviews.
+                Native Android field operations app for a last-mile delivery company. Features include
+                real-time route optimisation, barcode scanning, proof-of-delivery capture, and offline
+                sync. Reduced delivery time by 22%.
               </p>
-              <p className="mt-4 text-sm font-medium text-slate-500">Python · Django · MySQL · Celery · GCP</p>
+              <p className="mt-4 text-sm font-medium text-slate-500">Kotlin (Android) · REST APIs · Google Maps SDK · SQLite offline</p>
+              <div className="mt-6">
+                <Link
+                  href="/our-work"
+                  className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
+                >
+                  View Project <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </article>
+
+          {/* Card 3 */}
+          <article className="grid overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-[0_4px_20px_rgba(2,6,23,0.08)] lg:grid-cols-2">
+            <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-violet-600 to-purple-500">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-32 overflow-hidden rounded-[1.8rem] border-4 border-white/30 bg-white/10 shadow-2xl backdrop-blur-sm">
+                  <div className="relative h-56">
+                    <Image
+                      src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=300&h=600&fit=crop"
+                      alt="MediBook screen"
+                      fill
+                      className="object-cover rounded-[1.4rem]"
+                      sizes="128px"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="absolute left-5 top-5">
+                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                  Healthcare
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center p-8">
+              <h3 className="text-2xl font-bold text-slate-900">MediBook – Doctor Appointment App</h3>
+              <p className="mt-3 text-base leading-7 text-slate-600">
+                iOS and Android patient-facing app for booking appointments, video consultations, and
+                viewing medical records. HIPAA-compliant with end-to-end encrypted messaging and e-prescriptions.
+              </p>
+              <p className="mt-4 text-sm font-medium text-slate-500">Flutter · Django · WebRTC · HIPAA-compliant cloud</p>
               <div className="mt-6">
                 <Link
                   href="/our-work"
@@ -447,18 +466,18 @@ export default function MaintenancePage() {
             Industries We Serve{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            We maintain and support software across every major industry—from fintech and healthcare to
-            e-commerce and logistics.
+            We build mobile apps for businesses across every industry—from healthcare and logistics to
+            retail, education, and entertainment.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {[
             { icon: Stethoscope, name: "Healthcare" },
-            { icon: ShoppingCart, name: "E-Commerce" },
+            { icon: ShoppingCart, name: "Retail" },
             { icon: GraduationCap, name: "Education" },
             { icon: Truck, name: "Logistics" },
             { icon: Landmark, name: "Finance" },
-            { icon: Building2, name: "Enterprise" },
+            { icon: Gamepad2, name: "Gaming" },
           ].map(({ icon: Icon, name }) => (
             <div
               key={name}
@@ -474,16 +493,16 @@ export default function MaintenancePage() {
       </section>
 
       {/* ─── DARK CTA BANNER ─────────────────────────────────────── */}
-      <section className="rounded-3xl bg-slate-900 px-8 py-14 text-center">
+      <section className="rounded-3xl bg-slate-900 px-8 py-14 text-center sm:py-18">
         <p className="text-sm font-semibold uppercase tracking-widest text-lime-400">
-          Your Business Needs Reliable Support
+          Position is Ready
         </p>
         <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">
-          New Maintenance Needs in Your Business, Report!
+          Let&apos;s Build Your Dream Mobile App Together
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-slate-300">
-          Tell us about your application and we&apos;ll set up a maintenance plan that keeps it running
-          at 99.9%+ uptime with rapid response to every incident.
+          Tell us your app idea and we&apos;ll help you design, build, and launch it on the App Store and
+          Google Play.
         </p>
         <div className="mt-8">
           <Link
@@ -495,14 +514,14 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ─── OUR SUPPORT AND MAINTENANCE PROCESS ─────────────────── */}
+      {/* ─── OUR MOBILE APP DEVELOPMENT PROCESS ─────────────────── */}
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Our Support and Maintenance Service Process{accentDot}
+            Our Mobile App Development Process{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            A structured approach from initial audit to continuous, reliable operations.
+            A structured, iterative process that takes you from idea to App Store in confident steps.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -529,20 +548,21 @@ export default function MaintenancePage() {
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Why Shortlisted for Support and Maintenance Services?{accentDot}
+            Why Developers Choose Us for Mobile App Development{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            We&apos;re not just reactive—we&apos;re proactive. We prevent issues before they affect your users.
+            We combine deep mobile engineering expertise with a product mindset to ship apps your users
+            love and your business can scale.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { icon: Clock, title: "SLA-Backed Response", desc: "Guaranteed response times for every severity level with formal SLA agreements and penalty clauses for critical violations." },
-            { icon: MonitorCheck, title: "Proactive Monitoring", desc: "We catch issues before users do—24/7 monitoring with anomaly detection, alert thresholds, and on-call rotations." },
-            { icon: Shield, title: "Security-First", desc: "Regular security audits, dependency vulnerability scanning, and rapid patching keep your system protected year-round." },
-            { icon: Lightbulb, title: "Deep Product Knowledge", desc: "We invest time understanding your product's business logic and architecture—so we fix problems without creating new ones." },
-            { icon: Handshake, title: "Transparent Communication", desc: "Monthly reports, incident post-mortems, and a dedicated Slack channel mean you always know the status of your system." },
-            { icon: TrendingUp, title: "Continuous Improvement", desc: "We don't just maintain the status quo—we identify and implement incremental improvements that make your product better every quarter." },
+            { icon: Handshake, title: "Full-Cycle Development", desc: "Strategy, design, engineering, QA, launch, and post-launch support—all under one roof." },
+            { icon: Lightbulb, title: "User-Centred Design", desc: "We design for the end user first. Every interaction is validated with prototypes before development starts." },
+            { icon: Clock, title: "On-Time Delivery", desc: "Transparent planning, realistic estimates, and sprint-based delivery you can track in real time." },
+            { icon: Award, title: "Platform Expertise", desc: "Native iOS (Swift), native Android (Kotlin), React Native, and Flutter engineers on staff." },
+            { icon: Users, title: "Post-Launch Growth", desc: "App analytics, crash monitoring, and feature roadmaps to continuously improve after go-live." },
+            { icon: Shield, title: "Security & Compliance", desc: "GDPR, HIPAA, and PCI-DSS compliance, encrypted storage, and secure API design by default." },
           ].map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
@@ -562,29 +582,29 @@ export default function MaintenancePage() {
       <section className="space-y-10">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Key Benefits of Utilising Support and Maintenance Services{accentDot}
+            Key Benefits of Investing in Mobile App Development{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            A well-maintained system is faster, safer, and more cost-effective to operate than one
-            that&apos;s left to accumulate debt.
+            A well-built mobile app strengthens customer relationships, opens new revenue channels, and
+            gives your business a competitive edge.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {[
             {
-              icon: Rocket,
-              title: "Reduced Downtime",
-              desc: "Proactive monitoring and rapid incident response mean fewer outages and significantly less lost revenue from system failures.",
+              icon: TrendingUp,
+              title: "Increased Customer Engagement",
+              desc: "Push notifications, personalised experiences, and seamless UX drive daily active usage and long-term retention.",
             },
             {
               icon: Lock,
-              title: "Lower Long-Term Costs",
-              desc: "Fixing small issues before they become big ones is dramatically cheaper. Proactive maintenance reduces total cost of ownership by up to 40%.",
+              title: "New Revenue Streams",
+              desc: "In-app purchases, subscriptions, and digital services turn your mobile app into a direct revenue channel.",
             },
             {
-              icon: HeartHandshake,
-              title: "Better User Experience",
-              desc: "Faster, more reliable, and consistently bug-free software leads directly to higher user satisfaction, retention, and conversion rates.",
+              icon: Award,
+              title: "Stronger Brand Loyalty",
+              desc: "A polished, fast app builds trust and keeps your brand at the top of users' minds and home screens.",
             },
           ].map(({ icon: Icon, title, desc }) => (
             <div
@@ -608,10 +628,10 @@ export default function MaintenancePage() {
             What Our Clients Say{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Technology leaders who trust PSV Enterprises to keep their software running.
+            Founders and product leaders who shipped their mobile apps with PSV Enterprises.
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {testimonials.map((t) => (
             <div
               key={t.name}
@@ -637,10 +657,10 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ─── LOGO CLOUD ──────────────────────────────────────────── */}
+      {/* ─── LOGO CLOUD / LATEST WORK ────────────────────────────── */}
       <section className="space-y-8">
         <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900">
-          Get Insights from Our Latest News
+          Get Help from Our Latest News
         </h2>
         <LogoCloud hideTitle />
       </section>
@@ -702,7 +722,7 @@ export default function MaintenancePage() {
             </button>
           ))}
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {relatedFiltered.map((s) => (
             <Link
               key={s.href}
@@ -726,7 +746,7 @@ export default function MaintenancePage() {
             Frequently Asked Questions{accentDot}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            Common questions about our support and maintenance services, SLAs, and process.
+            Common questions about mobile app development, platforms, and timelines.
           </p>
         </div>
         <Accordion items={faqs} defaultOpenIndex={0} variant="arrow" />
@@ -740,15 +760,14 @@ export default function MaintenancePage() {
               Discover how we can help your business grow
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">
-              Tell us about your software and we&apos;ll put together a maintenance plan that fits your
-              business and budget.
+              Share your app idea and we&apos;ll help you build a mobile experience your users will love.
             </p>
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               {[
                 { icon: Briefcase, value: "4+", label: "Years of Experience" },
-                { icon: Users, value: "50+", label: "Apps Maintained" },
-                { icon: BarChart3, value: "99.9%", label: "Avg Uptime Delivered" },
-                { icon: CheckCircle2, value: "500+", label: "Issues Resolved" },
+                { icon: Users, value: "70+", label: "Apps Delivered" },
+                { icon: BarChart3, value: "6+", label: "Countries Served" },
+                { icon: CheckCircle2, value: "30+", label: "Happy Clients" },
               ].map(({ icon: Icon, value, label }) => (
                 <div key={label} className="flex items-center gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
@@ -765,7 +784,7 @@ export default function MaintenancePage() {
           <div className="rounded-2xl border border-slate-200/70 bg-slate-50/80 p-6 shadow-sm sm:p-8">
             <p className="text-sm font-semibold text-slate-900">Let&apos;s listen to your project idea!</p>
             <div className="mt-6">
-              <ContactForm source="support-maintenance" submitLabel="SEND MESSAGE" />
+              <ContactForm source="mobile-app-development" submitLabel="SEND MESSAGE" />
             </div>
           </div>
         </div>

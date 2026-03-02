@@ -13,48 +13,56 @@ import {
 
 const industries = [
   {
+    id: "healthcare",
     name: "Healthcare",
     icon: <HeartPulse className="h-4 w-4 text-emerald-600" />,
     desc: "Secure workflows, role-based access, and data-aware UX for clinics and health-tech products.",
     examples: ["Patient reminders", "Operational dashboards", "Document automation"],
   },
   {
+    id: "education",
     name: "Education",
     icon: <GraduationCap className="h-4 w-4 text-sky-600" />,
     desc: "Platforms that scale: content delivery, student management, and analytics.",
     examples: ["Learning portals", "Admin tools", "Progress tracking"],
   },
   {
+    id: "finance",
     name: "Finance",
     icon: <Landmark className="h-4 w-4 text-indigo-600" />,
     desc: "Reliable systems with audit-friendly patterns and careful data handling.",
     examples: ["Dashboards", "Reporting tools", "Automation workflows"],
   },
   {
+    id: "retail-e-commerce",
     name: "Retail / E‑commerce",
     icon: <ShoppingBag className="h-4 w-4 text-violet-600" />,
     desc: "Customer experiences that convert with fast performance and clean integrations.",
     examples: ["Catalog + search", "Order tracking", "Mobile apps"],
   },
   {
+    id: "logistics",
     name: "Logistics",
     icon: <Truck className="h-4 w-4 text-slate-700" />,
     desc: "Visibility and automation across operations—reduce manual work and improve accuracy.",
     examples: ["Invoice processing", "Fleet dashboards", "Integrations"],
   },
   {
+    id: "manufacturing",
     name: "Manufacturing",
     icon: <Wrench className="h-4 w-4 text-slate-700" />,
     desc: "Systems that streamline sales, operations, and internal workflows with measurable ROI.",
     examples: ["Lead automation", "Production dashboards", "Data pipelines"],
   },
   {
+    id: "real-estate",
     name: "Real Estate",
     icon: <Building2 className="h-4 w-4 text-sky-600" />,
     desc: "Lead funnels, CRM-style tools, and portals that improve speed-to-close.",
     examples: ["Listing portals", "Sales dashboards", "Automations"],
   },
   {
+    id: "b2b-services",
     name: "B2B Services",
     icon: <Package className="h-4 w-4 text-emerald-600" />,
     desc: "Internal tools and customer dashboards that reduce support load and improve service quality.",
@@ -82,6 +90,7 @@ export default function IndustriesPage() {
         {industries.map((i) => (
           <div
             key={i.name}
+            id={i.id}
             className="rounded-3xl border border-black/5 bg-white/70 p-7 shadow-sm"
           >
             <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
