@@ -1,6 +1,14 @@
 import { ContactForm } from "@/components/ContactForm";
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Let’s Talk",
+  description:
+    "Share your goals and requirements with PSV Enterprises. We’ll respond with a clear plan, timeline, and estimate.",
+  canonical: "/lets-talk",
+});
 
 export default function LetsTalkPage() {
   return (

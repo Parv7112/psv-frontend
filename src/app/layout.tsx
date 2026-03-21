@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CookieBanner } from "@/components/CookieBanner";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +16,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://psventerprises.com";
+
 export const metadata: Metadata = {
   title: {
     default: "PSV Enterprises | IT Services (MERN, AI, Mobile)",
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
   },
   description:
     "PSV Enterprises builds modern web apps with MERN stack, AI-powered solutions, and high-performance mobile applications.",
-  metadataBase: new URL("https://psventerprises.example"),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: "PSV Enterprises",
     description:
@@ -50,6 +53,7 @@ export default function RootLayout({
         </main>
         <SiteFooter />
         <CookieBanner />
+        <GoogleAnalytics />
       </body>
     </html>
   );

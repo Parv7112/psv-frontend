@@ -2,6 +2,14 @@ import Link from "next/link";
 import { ArrowRight, Brain, Code2, Smartphone } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "What We Do",
+  description:
+    "End-to-end product engineering across MERN, AI, and mobile. PSV Enterprises helps you move from idea to launch with a clear roadmap and quality standards.",
+  canonical: "/what-we-do",
+});
 
 const services = [
   {

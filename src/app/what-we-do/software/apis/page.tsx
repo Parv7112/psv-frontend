@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "API Development",
+  description:
+    "Secure API development services: REST APIs with validation, error handling, logging, and integration-ready architecture.",
+  canonical: "/what-we-do/software/apis",
+});
 
 export default function ApiDevelopmentPage() {
   return (

@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Performance Optimization",
+  description:
+    "Performance optimization for frontend, APIs, and databases. Improve Core Web Vitals, reduce latency, and increase reliability with a structured plan.",
+  canonical: "/what-we-do/other/performance",
+});
 
 export default function PerformancePage() {
   return (

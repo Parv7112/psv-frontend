@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
 import { TestimonialCarousel } from "@/components/marketing/TestimonialCarousel";
 import { StatRow } from "@/components/marketing/StatRow";
+import { buildMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   BarChart3,
@@ -22,6 +23,13 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+
+export const metadata = buildMetadata({
+  title: "AI Consulting",
+  description:
+    "AI consulting to identify high-impact use cases, design safe architectures, and ship production-ready AI solutions with measurable outcomes.",
+  canonical: "/what-we-do/ai/consulting",
+});
 
 export default function AiConsultingPage() {
   const benefits = [
@@ -152,7 +160,7 @@ export default function AiConsultingPage() {
       title: "Why Start with an AI Readiness Assessment",
       desc: "Before investing in tools and models, understand where you stand and where to focus first.",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "21 May 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
     },
@@ -161,7 +169,7 @@ export default function AiConsultingPage() {
       title: "MLOps in Practice: What We've Learned",
       desc: "Lessons from production ML: monitoring, retraining, and keeping models aligned with business goals.",
       image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "18 May 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
     },
@@ -170,7 +178,7 @@ export default function AiConsultingPage() {
       title: "Generative AI in the Enterprise: Use Cases That Work",
       desc: "Where gen AI delivers value today—and where to wait for the ecosystem to mature.",
       image: "https://images.unsplash.com/photo-1686191128892-c56aac8e0e0e?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "15 May 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
     },

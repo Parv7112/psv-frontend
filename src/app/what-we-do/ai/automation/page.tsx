@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
 import { TestimonialCarousel } from "@/components/marketing/TestimonialCarousel";
 import { StatRow } from "@/components/marketing/StatRow";
+import { buildMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   BarChart3,
@@ -28,6 +29,13 @@ import {
   Workflow,
   Zap,
 } from "lucide-react";
+
+export const metadata = buildMetadata({
+  title: "AI Automation",
+  description:
+    "AI automation services to streamline workflows and reduce manual work. We build reliable, secure automations with clear ROI and production-grade guardrails.",
+  canonical: "/what-we-do/ai/automation",
+});
 
 export default function AiAutomationPage() {
   const benefits = [
@@ -218,7 +226,7 @@ export default function AiAutomationPage() {
       title: "10 Business Processes You Should Automate Today",
       desc: "Discover the most common automation opportunities that deliver immediate ROI and how to get started.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "28 Feb 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
     },
@@ -227,7 +235,7 @@ export default function AiAutomationPage() {
       title: "RPA vs. Workflow Automation: Which is Right for You?",
       desc: "Understanding the differences and when to use each approach for maximum business impact.",
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "25 Feb 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
     },
@@ -236,7 +244,7 @@ export default function AiAutomationPage() {
       title: "How AI is Transforming Business Process Automation",
       desc: "The evolution from rule-based automation to intelligent, adaptive systems that learn and improve.",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "22 Feb 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
     },

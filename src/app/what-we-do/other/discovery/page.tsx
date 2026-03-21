@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Product Discovery",
+  description:
+    "Product discovery services to clarify scope, define an MVP, and build a milestone-based roadmap that reduces delivery risk.",
+  canonical: "/what-we-do/other/discovery",
+});
 
 export default function DiscoveryPage() {
   return (

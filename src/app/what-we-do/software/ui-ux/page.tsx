@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "UI/UX & Frontend Engineering",
+  description:
+    "UI/UX and frontend engineering services: modern, accessible components and conversion-focused design systems for web products.",
+  canonical: "/what-we-do/software/ui-ux",
+});
 
 export default function UiUxPage() {
   return (

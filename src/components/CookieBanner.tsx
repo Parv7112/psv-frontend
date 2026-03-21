@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { PSV_COOKIE_CONSENT_EVENT } from "./GoogleAnalytics";
 
 const KEY = "psv_cookie_consent_v1";
 
@@ -22,6 +23,7 @@ export function CookieBanner() {
     } catch {
       // ignore
     }
+    window.dispatchEvent(new Event(PSV_COOKIE_CONSENT_EVENT));
     setVisible(false);
   }
 

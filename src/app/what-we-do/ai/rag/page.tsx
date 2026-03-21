@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
 import { TestimonialCarousel } from "@/components/marketing/TestimonialCarousel";
 import { StatRow } from "@/components/marketing/StatRow";
+import { buildMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   BarChart3,
@@ -32,6 +33,13 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+
+export const metadata = buildMetadata({
+  title: "RAG & Enterprise Search",
+  description:
+    "Private RAG and enterprise search over your documents and data. We build retrieval pipelines with access controls, evaluation, and production reliability.",
+  canonical: "/what-we-do/ai/rag",
+});
 
 export default function RagPage() {
   const benefits = [
@@ -338,7 +346,7 @@ export default function RagPage() {
       title: "What is RAG and Why Does It Matter?",
       desc: "A comprehensive guide to Retrieval-Augmented Generation and how it improves AI accuracy.",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "1 Mar 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
       readTime: "8 min read",
@@ -348,7 +356,7 @@ export default function RagPage() {
       title: "Choosing the Right Vector Database for RAG",
       desc: "Compare popular vector databases and learn which one fits your use case and scale.",
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "27 Feb 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
       readTime: "10 min read",
@@ -358,7 +366,7 @@ export default function RagPage() {
       title: "Reducing Hallucinations in RAG Systems",
       desc: "Proven techniques to improve answer accuracy and build trust in your AI applications.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      author: "Parv Garg",
+      author: "Varsha Garg",
       date: "24 Feb 2024",
       authorAvatar: "https://i.pravatar.cc/150?img=12",
       readTime: "7 min read",

@@ -10,9 +10,12 @@ import {
   ChevronDown,
   ChevronRight,
   BarChart3,
+  Building2,
   Code2,
   Cpu,
+  FileText,
   Handshake,
+  Lightbulb,
   Menu,
   Sparkles,
   Smartphone,
@@ -22,6 +25,7 @@ import {
 
 type TopMenuKey = "what" | "industries" | "work" | "company";
 type WhatWeDoTab = "ai" | "software" | "other" | "engagement";
+type WorkTab = "solutions" | "caseStudies";
 
 const topNav: Array<{ key: TopMenuKey; label: string; href: string }> = [
   { key: "what", label: "What we do", href: "/what-we-do" },
@@ -29,6 +33,54 @@ const topNav: Array<{ key: TopMenuKey; label: string; href: string }> = [
   { key: "work", label: "Our work", href: "/our-work" },
   { key: "company", label: "Company", href: "/company" },
 ];
+
+const companyMenuItems = [
+  { href: "/company", title: "About Us", desc: "Leading with AI Excellence" },
+  { href: "/blog", title: "Blog", desc: "Your guide to technology" },
+  { href: "/career", title: "Career", desc: "Explore opportunities. Build future" },
+  { href: "/contact", title: "Contact Us", desc: "Reach Out for assistance" },
+];
+
+const workTabs = [
+  { key: "solutions" as const, label: "Solutions" },
+  { key: "caseStudies" as const, label: "Case Studies" },
+];
+
+const workContentByTab: Record<
+  WorkTab,
+  {
+    head: { title: string; subtitle: string };
+    items: Array<{ title: string; desc: string; href: string }>;
+  }
+> = {
+  solutions: {
+    head: { title: "Solutions", subtitle: "Delivering Results Through Innovation" },
+    items: [
+      { title: "AI Medical Scribe", desc: "Automating Clinical Documentation", href: "/our-work" },
+      { title: "AI Lab Report Analysis Platform", desc: "Automating Lab Report Insights", href: "/our-work" },
+      { title: "AI Clinical Chat Assistant", desc: "Smarter Care Through Conversations", href: "/our-work" },
+      { title: "Multi-Platform Dining Assistant", desc: "Advanced Conversational Chatbot", href: "/our-work" },
+      { title: "Medix ERP Platform", desc: "An Inventory Management System", href: "/our-work" },
+    ],
+  },
+  caseStudies: {
+    head: { title: "Case Studies", subtitle: "Delivering Results Through Innovation" },
+    items: [
+      { title: "Appointment Booking AI Chatbot", desc: "Patient scheduling with AI Chatbot", href: "/case-studies/appointment-booking-ai-chatbot-healthcare" },
+      { title: "AI Medication Reminder System", desc: "Smart medication reminder system", href: "/our-work" },
+      { title: "AI Chatbot Transforming Crypto", desc: "Chatbot solution for Automated Crypto", href: "/our-work" },
+      { title: "Smart AI Invoice Processing System", desc: "AI-Powered Invoice Automation system", href: "/our-work" },
+      { title: "Sales AI Workflow Automation Tool", desc: "Smart Sales Emailing Automation System", href: "/our-work" },
+      { title: "Virtual AI College Counsellor", desc: "Simplify student guidance with AI", href: "/our-work" },
+      { title: "Healthcare Service Platform", desc: "Efficient healthcare management solution", href: "/our-work" },
+      { title: "E-learning Academy Platform", desc: "Digitalize your learning journey", href: "/our-work" },
+      { title: "Educator Recruitment Platform", desc: "Hire top teaching talent with ease", href: "/our-work" },
+      { title: "Financial Analytics & Reporting Platform", desc: "Strategic Financial Decision-Making", href: "/our-work" },
+      { title: "Shoe Selling E-commerce Platform", desc: "Personalized Retail Solution", href: "/our-work" },
+      { title: "Self Service Order Management", desc: "Seamless Digital Storefront", href: "/our-work" },
+    ],
+  },
+};
 
 function useOnEscape(handler: () => void) {
   useEffect(() => {
@@ -44,10 +96,12 @@ export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState<TopMenuKey | null>(null);
   const [whatTab, setWhatTab] = useState<WhatWeDoTab>("ai");
+  const [workTab, setWorkTab] = useState<WorkTab>("solutions");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileView, setMobileView] = useState<"root" | "submenu">("root");
   const [mobileActive, setMobileActive] = useState<TopMenuKey>("what");
   const [mobileWhatOpen, setMobileWhatOpen] = useState<WhatWeDoTab | null>(null);
+  const [mobileWorkOpen, setMobileWorkOpen] = useState<WorkTab | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useOnEscape(() => {
@@ -55,6 +109,7 @@ export function SiteHeader() {
     setMobileMenuOpen(false);
     setMobileView("root");
     setMobileWhatOpen(null);
+    setMobileWorkOpen(null);
   });
 
   useEffect(() => {
@@ -96,6 +151,7 @@ export function SiteHeader() {
     setMobileMenuOpen(false);
     setMobileView("root");
     setMobileWhatOpen(null);
+    setMobileWorkOpen(null);
   };
 
   const whatWeDoContentByTab = useMemo(() => {
@@ -151,6 +207,7 @@ export function SiteHeader() {
   }, []);
 
   const whatWeDoContent = whatWeDoContentByTab[whatTab];
+  const workContent = workContentByTab[workTab];
 
   return (
     <>
@@ -322,33 +379,113 @@ export function SiteHeader() {
                         <IndustryLink
                           title="Healthcare"
                           desc="Advancing patient care with tech"
-                          href="/industries"
+                          href="/industries/healthcare"
                           onSelect={() => setOpen(null)}
                         />
                         <IndustryLink
                           title="Education"
                           desc="Enhancing learning via software solutions"
-                          href="/industries"
+                          href="/industries/education"
                           onSelect={() => setOpen(null)}
                         />
                         <IndustryLink
                           title="Retail & E-commerce"
                           desc="Innovating retail tech solutions"
-                          href="/industries"
+                          href="/industries/retail"
                           onSelect={() => setOpen(null)}
                         />
                         <IndustryLink
                           title="Manufacturing"
                           desc="Optimizing operations through software"
-                          href="/industries"
+                          href="/industries/manufacturing"
                           onSelect={() => setOpen(null)}
                         />
                         <IndustryLink
                           title="Finance"
                           desc="Revolutionizing financial services"
-                          href="/industries"
+                          href="/industries/finance"
                           onSelect={() => setOpen(null)}
                         />
+                      </div>
+                    </div>
+                  ) : open === "work" ? (
+                    <div className="grid grid-cols-12">
+                      <div className="col-span-3 border-r border-black/5 bg-slate-50 p-4">
+                        <div className="space-y-1">
+                          {workTabs.map((t) => (
+                            <button
+                              key={t.key}
+                              type="button"
+                              onMouseEnter={() => setWorkTab(t.key)}
+                              onFocus={() => setWorkTab(t.key)}
+                              className={[
+                                "flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm font-semibold",
+                                workTab === t.key
+                                  ? "bg-white text-slate-900 ring-1 ring-black/10"
+                                  : "text-slate-700 hover:bg-white/70",
+                              ].join(" ")}
+                            >
+                              <span>{t.label}</span>
+                              <span className="text-slate-400">→</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="col-span-9">
+                        <div className="border-b border-black/5 p-6">
+                          <div className="flex items-start gap-3">
+                            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-sm">
+                              {workTab === "solutions" ? <Lightbulb className="h-5 w-5" /> : <FileText className="h-5 w-5" />}
+                            </span>
+                            <div>
+                              <div className="text-sm font-semibold text-slate-900">{workContent.head.title}</div>
+                              <div className="text-xs text-slate-500">{workContent.head.subtitle}</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="p-6">
+                          <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+                            {workContent.items.map((item) => (
+                              <Link
+                                key={`${workTab}-${item.title}`}
+                                href={item.href}
+                                className="rounded-xl px-2 py-1 hover:bg-slate-50"
+                                onClick={() => setOpen(null)}
+                              >
+                                <div className="text-sm font-semibold text-slate-900">{item.title}</div>
+                                <div className="mt-1 text-sm leading-6 text-slate-600">{item.desc}</div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : open === "company" ? (
+                    <div className="p-6">
+                      <div className="flex items-start gap-3">
+                        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-sm">
+                          <Building2 className="h-5 w-5" />
+                        </span>
+                        <div>
+                          <div className="text-sm font-semibold text-slate-900">Company</div>
+                          <div className="text-xs text-slate-500">AI-powered software company</div>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-3">
+                        {companyMenuItems.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="rounded-xl px-2 py-2 hover:bg-slate-50"
+                            onClick={() => setOpen(null)}
+                          >
+                            <div className="text-sm font-semibold text-slate-900">{item.title}</div>
+                            <div className="mt-0.5 text-xs text-slate-500">{item.desc}</div>
+                          </Link>
+                        ))}
                       </div>
                     </div>
                   ) : (
@@ -440,21 +577,29 @@ export function SiteHeader() {
               mobileActive={mobileActive}
               mobileWhatOpen={mobileWhatOpen}
               activeWhatTab={whatTab}
+              workTab={workTab}
               whatWeDoTabs={whatWeDoTabs}
               whatWeDoContentByTab={whatWeDoContentByTab}
+              mobileWorkOpen={mobileWorkOpen}
               onClose={closeMobile}
               onBack={() => {
                 setMobileView("root");
                 setMobileWhatOpen(null);
+                setMobileWorkOpen(null);
               }}
               onSelectRoot={(k) => {
                 setMobileActive(k);
                 setMobileView("submenu");
                 setMobileWhatOpen(null);
+                setMobileWorkOpen(null);
               }}
               onToggleWhat={(k) => {
                 setMobileWhatOpen((prev) => (prev === k ? null : k));
                 setWhatTab(k);
+              }}
+              onToggleWork={(k) => {
+                setMobileWorkOpen((prev) => (prev === k ? null : k));
+                setWorkTab(k);
               }}
             />,
             document.body
@@ -469,26 +614,32 @@ function MobileDrawer({
   mobileActive,
   mobileWhatOpen,
   activeWhatTab,
+  workTab,
   whatWeDoTabs,
   whatWeDoContentByTab,
+  mobileWorkOpen,
   onClose,
   onBack,
   onSelectRoot,
   onToggleWhat,
+  onToggleWork,
 }: {
   mobileView: "root" | "submenu";
   mobileActive: TopMenuKey;
   mobileWhatOpen: WhatWeDoTab | null;
   activeWhatTab: WhatWeDoTab;
+  workTab: WorkTab;
   whatWeDoTabs: Array<{ key: WhatWeDoTab; label: string }>;
   whatWeDoContentByTab: Record<
     WhatWeDoTab,
     { head: { title: string; subtitle: string }; items: Array<{ title: string; desc: string; href: string }> }
   >;
+  mobileWorkOpen: WorkTab | null;
   onClose: () => void;
   onBack: () => void;
   onSelectRoot: (k: TopMenuKey) => void;
   onToggleWhat: (k: WhatWeDoTab) => void;
+  onToggleWork: (k: WorkTab) => void;
 }) {
   return (
     <div className="fixed inset-0 z-[80] bg-white md:hidden">
@@ -631,45 +782,108 @@ function MobileDrawer({
                   </div>
 
                   <div className="space-y-4">
-                    <Link href="/industries#healthcare" className="block" onClick={onClose}>
+                    <Link href="/industries/healthcare" className="block" onClick={onClose}>
                       <div className="text-sm font-bold text-slate-900">Healthcare</div>
                       <div className="mt-1 text-xs leading-5 text-slate-500">Advancing patient care with tech</div>
                     </Link>
-                    <Link href="/industries#education" className="block" onClick={onClose}>
+                    <Link href="/industries/education" className="block" onClick={onClose}>
                       <div className="text-sm font-bold text-slate-900">Education</div>
                       <div className="mt-1 text-xs leading-5 text-slate-500">
                         Enhancing learning via software solutions
                       </div>
                     </Link>
-                    <Link href="/industries#retail-e-commerce" className="block" onClick={onClose}>
+                    <Link href="/industries/retail" className="block" onClick={onClose}>
                       <div className="text-sm font-bold text-slate-900">Retail &amp; E-commerce</div>
                       <div className="mt-1 text-xs leading-5 text-slate-500">Innovating retail tech solutions</div>
                     </Link>
-                    <Link href="/industries#manufacturing" className="block" onClick={onClose}>
+                    <Link href="/industries/manufacturing" className="block" onClick={onClose}>
                       <div className="text-sm font-bold text-slate-900">Manufacturing</div>
                       <div className="mt-1 text-xs leading-5 text-slate-500">
                         Optimizing operations through software
                       </div>
                     </Link>
-                    <Link href="/industries#finance" className="block" onClick={onClose}>
+                    <Link href="/industries/finance" className="block" onClick={onClose}>
                       <div className="text-sm font-bold text-slate-900">Finance</div>
                       <div className="mt-1 text-xs leading-5 text-slate-500">Revolutionizing financial services</div>
                     </Link>
                   </div>
                 </div>
               ) : mobileActive === "work" ? (
-                <>
-                  <Link href="/our-work" className="block text-sm font-semibold text-slate-900" onClick={onClose}>
-                    Case studies
-                  </Link>
-                  <Link href="/work" className="block text-sm text-slate-600" onClick={onClose}>
-                    Work (detailed)
-                  </Link>
-                </>
+                <div className="space-y-4">
+                  {workTabs.map((t) => {
+                    const isOpen = mobileWorkOpen === t.key;
+                    const content = workContentByTab[t.key];
+                    return (
+                      <div key={t.key} className="rounded-2xl border border-black/10 bg-white">
+                        <button
+                          type="button"
+                          onClick={() => onToggleWork(t.key)}
+                          className="flex w-full items-center justify-between px-4 py-4"
+                        >
+                          <span className="flex items-center gap-3 text-sm font-semibold text-slate-900">
+                            <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-50 ring-1 ring-black/5">
+                              {t.key === "solutions" ? (
+                                <Lightbulb className="h-4 w-4 text-slate-700" />
+                              ) : (
+                                <FileText className="h-4 w-4 text-slate-700" />
+                              )}
+                            </span>
+                            {t.label}
+                          </span>
+                          <ChevronDown
+                            className={[
+                              "h-4 w-4 text-slate-500 transition-transform",
+                              isOpen ? "rotate-180" : "",
+                            ].join(" ")}
+                          />
+                        </button>
+
+                        {isOpen ? (
+                          <div className="border-t border-black/10 px-4 pb-4">
+                            <div className="pt-4">
+                              <div className="text-sm font-semibold text-slate-900">{content.head.title}</div>
+                              <div className="mt-1 text-xs text-slate-500">{content.head.subtitle}</div>
+                            </div>
+                            <div className="mt-4 space-y-4">
+                              {content.items.map((item) => (
+                                <Link key={`${t.key}-${item.title}`} href={item.href} className="block" onClick={onClose}>
+                                  <div className="text-sm font-bold text-slate-900">{item.title}</div>
+                                  <div className="mt-1 text-xs leading-5 text-slate-500">{item.desc}</div>
+                                </Link>
+                              ))}
+                            </div>
+                            {t.key !== workTab ? <div className="mt-4 text-xs text-slate-500"> </div> : null}
+                          </div>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : mobileActive === "company" ? (
+                <div className="space-y-5">
+                  <div className="flex items-start gap-3">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-sm">
+                      <Building2 className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <div className="text-sm font-semibold text-slate-900">Company</div>
+                      <div className="text-xs text-slate-500">AI-powered software company</div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {companyMenuItems.map((item) => (
+                      <Link key={item.href} href={item.href} className="block" onClick={onClose}>
+                        <div className="text-sm font-bold text-slate-900">{item.title}</div>
+                        <div className="mt-1 text-xs leading-5 text-slate-500">{item.desc}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ) : (
                 <>
                   <Link href="/company" className="block text-sm font-semibold text-slate-900" onClick={onClose}>
-                    About PSV
+                    About Us
                   </Link>
                   <Link href="/about" className="block text-sm text-slate-600" onClick={onClose}>
                     About (detailed)

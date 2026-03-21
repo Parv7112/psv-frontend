@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { Bell, Layout, Smartphone, Zap } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Mobile App Development",
+  description:
+    "Mobile app development services focused on performance and UX—integrations, notifications, and release readiness for iOS and Android.",
+  canonical: "/services/mobile",
+});
 
 export default function MobileServicePage() {
   return (

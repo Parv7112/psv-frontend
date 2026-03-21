@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { Brain, FileText, MessageSquare, Search } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "AI Solutions",
+  description:
+    "Practical AI solutions for production: assistants, RAG search, document workflows, and analytics—built with safety, reliability, and observability.",
+  canonical: "/services/ai",
+});
 
 export default function AiServicePage() {
   return (

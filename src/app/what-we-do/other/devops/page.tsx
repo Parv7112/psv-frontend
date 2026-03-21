@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "DevOps & Deployment",
+  description:
+    "DevOps and deployment services to ship confidently: environment setup, CI/CD guidance, monitoring-ready architecture, and reliability practices.",
+  canonical: "/what-we-do/other/devops",
+});
 
 export default function DevopsPage() {
   return (

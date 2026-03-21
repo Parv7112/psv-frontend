@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
 import { LogoCloud } from "@/components/marketing/LogoCloud";
+import { buildMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   Award,
@@ -31,6 +32,13 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
+
+export const metadata = buildMetadata({
+  title: "AI Agents",
+  description:
+    "AI agent development services—design, tooling, and integration for reliable agent workflows that improve productivity with security and guardrails.",
+  canonical: "/what-we-do/ai/agents",
+});
 
 const lorem =
   "Lorem ipsum dolor sit amet consectetur. Sed in id pellentesque feugiat tristique vitae facilisis. Magna sit in diam lectus at. Velit eget donec ultrices facilisis. Eget dictumst turpis risus sed eu ipsum morbi. Volutpat viverra facilisi nibh eget. Semper morbi in.";
@@ -125,9 +133,9 @@ export default function AiAgentsPage() {
   ];
 
   const blogCards = [
-    { tag: "Trending", title: "AI Agent Development Services - Automation - Whole Cycle - Botman.", excerpt: "AI agents perceive environments, make decisions, and mimic human intelligence.", author: "Parv Garg", date: "21 May 2024", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=320&fit=crop", authorAvatar: "https://i.pravatar.cc/150?img=12" },
-    { tag: "AI", title: "AI Agent Development Services - Automation - Whole Cycle - Botman.", excerpt: "AI agents perceive environments, make decisions, and mimic human intelligence.", author: "Parv Garg", date: "21 May 2024", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=320&fit=crop", authorAvatar: "https://i.pravatar.cc/150?img=12" },
-    { tag: "AI AGENTS FOR HOSPITALITY", title: "AI Agents for Hospitality.", excerpt: "AI agents perceive environments, make decisions, and mimic human intelligence.", author: "Parv Garg", date: "21 May 2024", image: "https://images.unsplash.com/photo-1531746795393-6c60a77edea9?w=600&h=320&fit=crop", authorAvatar: "https://i.pravatar.cc/150?img=12" },
+    { tag: "Trending", title: "AI Agent Development Services - Automation - Whole Cycle - Botman.", excerpt: "AI agents perceive environments, make decisions, and mimic human intelligence.", author: "Varsha Garg", date: "21 May 2024", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=320&fit=crop", authorAvatar: "https://i.pravatar.cc/150?img=12" },
+    { tag: "AI", title: "AI Agent Development Services - Automation - Whole Cycle - Botman.", excerpt: "AI agents perceive environments, make decisions, and mimic human intelligence.", author: "Varsha Garg", date: "21 May 2024", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=320&fit=crop", authorAvatar: "https://i.pravatar.cc/150?img=12" },
+    { tag: "AI AGENTS FOR HOSPITALITY", title: "AI Agents for Hospitality.", excerpt: "AI agents perceive environments, make decisions, and mimic human intelligence.", author: "Varsha Garg", date: "21 May 2024", image: "https://images.unsplash.com/photo-1531746795393-6c60a77edea9?w=600&h=320&fit=crop", authorAvatar: "https://i.pravatar.cc/150?img=12" },
   ];
 
   const featuredProjects = [

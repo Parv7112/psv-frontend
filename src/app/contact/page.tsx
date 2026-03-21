@@ -1,145 +1,135 @@
+import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
+import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
-import { ButtonLink } from "@/components/Button";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact PSV Enterprises to discuss your project. Share your goals and we’ll reply with a clear plan and realistic estimate.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact PSV Enterprises",
+    description:
+      "Tell us what you want to build. We’ll reply with a clear plan and a realistic estimate.",
+    url: "/contact",
+    type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        alt: "PSV Enterprises",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact PSV Enterprises",
+    description:
+      "Tell us what you want to build. We’ll reply with a clear plan and a realistic estimate.",
+    images: ["/logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function ContactPage() {
   return (
-    <div className="grid gap-8 lg:grid-cols-5">
-      <div className="lg:col-span-2">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Contact
-        </h1>
-        <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
-          Tell us what you want to build. We’ll reply with a clear plan and a
-          realistic estimate.
-        </p>
-
-        <div className="mt-8 space-y-4">
-          <InfoRow
-            icon={<Mail className="h-4 w-4 text-sky-300" />}
-            title="Email"
-            value="hr@psventerprises.com"
-          />
-          <InfoRow
-            icon={<Phone className="h-4 w-4 text-emerald-300" />}
-            title="Phone"
-            value="+91 (your number)"
-          />
-          <InfoRow
-            icon={<MapPin className="h-4 w-4 text-violet-300" />}
-            title="Location"
-            value="India (remote-friendly)"
-          />
+    <div className="space-y-10 py-8 sm:space-y-12 sm:py-12">
+      <section className="mx-auto max-w-5xl">
+        <div className="text-xs text-slate-400">
+          <Link href="/" className="hover:text-slate-600">
+            Home
+          </Link>
+          <span className="px-2">›</span>
+          <span className="text-slate-600">Contact</span>
         </div>
 
-        <div className="mt-8 rounded-3xl border border-black/5 bg-white/70 p-6 text-sm text-slate-600 shadow-sm">
-          <div className="font-semibold text-slate-900">What to include</div>
-          <ul className="mt-3 space-y-2">
-            {[
-              "What you’re building and who it’s for",
-              "Key features (must-haves vs nice-to-haves)",
-              "Timeline and desired launch date",
-              "Any existing codebase or design assets",
-              "Budget range (optional, but helpful)",
-            ].map((i) => (
-              <li key={i} className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-                <span className="leading-6">{i}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-8 rounded-3xl border border-black/5 bg-white/70 p-6 text-sm text-slate-600 shadow-sm">
-          <div className="font-semibold text-slate-900">What happens next?</div>
-          <ol className="mt-3 space-y-2">
-            <li className="flex gap-2">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-              <span className="leading-6">We review your message and goals.</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-              <span className="leading-6">We schedule a short call if needed.</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-              <span className="leading-6">You get a proposal with timeline & cost.</span>
-            </li>
-          </ol>
-        </div>
-
-        <div className="mt-8 rounded-3xl border border-black/5 bg-gradient-to-br from-white to-slate-50 p-6 shadow-sm">
-          <div className="text-sm font-semibold text-slate-900">
-            Not sure which service you need?
-          </div>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
-            That’s okay. Share your goal—we’ll suggest the best approach (MERN,
-            AI, mobile, or a combined roadmap).
+        <div className="mx-auto mt-10 max-w-3xl text-center">
+          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+            We’d Love To Hear From You!
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+            Please fill out the form below or contact us through email or phone, and we will
+            get back to you promptly regarding your request.
           </p>
-          <div className="mt-4">
-            <ButtonLink href="/services" variant="secondary" className="px-5 py-2.5">
-              Explore services
-            </ButtonLink>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(2,6,23,0.08)]">
+        <div className="grid lg:grid-cols-[320px_1fr]">
+          <div className="border-b border-slate-200 bg-slate-50 p-8 lg:border-b-0 lg:border-r">
+            <h2 className="max-w-[220px] text-3xl font-semibold tracking-tight text-slate-900">
+              Brainstorming Next Big Thing?
+            </h2>
+            <p className="mt-5 text-sm leading-7 text-slate-600">
+              Connect with PSV Enterprises for tailored software solutions and seamless
+              collaboration. Let&apos;s turn your ideas into powerful realities together.
+            </p>
+
+            <div className="mt-8 space-y-5">
+              <InfoRow
+                icon={<Phone className="h-4 w-4 text-slate-700" />}
+                value="+91 81415 17087"
+              />
+              <InfoRow
+                icon={<Mail className="h-4 w-4 text-slate-700" />}
+                value="hr@psventerprises.com"
+              />
+              <InfoRow
+                icon={<MapPin className="h-4 w-4 text-slate-700" />}
+                value="India (remote-friendly)"
+              />
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 gap-3">
+              {["Clutch 5.0", "GoodFirms 5.0"].map((badge) => (
+                <div
+                  key={badge}
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-5 text-center text-sm font-semibold text-slate-700"
+                >
+                  {badge}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-8 sm:p-10">
+            <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-slate-900">
+              Let&apos;s listen to what you&apos;ve got and we are here to provide you a
+              solution.
+            </h2>
+
+            <div className="mt-8">
+              <ContactForm
+                source="contact-page"
+                variant="contact-page"
+                submitLabel="SUBMIT"
+              />
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="rounded-3xl border border-black/5 bg-white/70 p-6 shadow-sm lg:col-span-3 sm:p-8">
-        <ContactForm source="contact-page" />
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {[
-            {
-              q: "Do you sign NDAs?",
-              a: "Yes, we can sign an NDA before reviewing sensitive details.",
-            },
-            {
-              q: "Do you provide post‑launch support?",
-              a: "Yes. We offer maintenance and ongoing development with clear response expectations.",
-            },
-            {
-              q: "Do you work with startups?",
-              a: "Yes—MVPs, iterations, product-market fit loops, and scaling roadmaps are common for us.",
-            },
-            {
-              q: "Do you work with enterprises?",
-              a: "Yes—internal tools, dashboards, integrations, and modernization projects.",
-            },
-          ].map((f) => (
-            <div
-              key={f.q}
-              className="rounded-2xl border border-black/5 bg-white/80 p-5 shadow-sm"
-            >
-              <div className="text-sm font-semibold text-slate-900">{f.q}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{f.a}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
 
 function InfoRow({
   icon,
-  title,
   value,
 }: {
   icon: React.ReactNode;
-  title: string;
   value: string;
 }) {
   return (
-    <div className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white/70 p-4 shadow-sm">
-      <div className="grid h-9 w-9 place-items-center rounded-xl bg-white ring-1 ring-black/5">
+    <div className="flex items-start gap-3 text-sm text-slate-600">
+      <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white ring-1 ring-slate-200">
         {icon}
       </div>
-      <div>
-        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-          {title}
-        </div>
-        <div className="mt-1 text-sm text-slate-700">{value}</div>
-      </div>
+      <div className="pt-1 leading-6 text-slate-700">{value}</div>
     </div>
   );
 }

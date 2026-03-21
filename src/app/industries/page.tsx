@@ -1,5 +1,6 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
 import {
   Building2,
   GraduationCap,
@@ -10,6 +11,13 @@ import {
   Truck,
   Wrench,
 } from "lucide-react";
+
+export const metadata = buildMetadata({
+  title: "Industries",
+  description:
+    "Industry-focused software solutions by PSV Enterprises. We balance security, UX, compliance, and delivery speed across domains.",
+  canonical: "/industries",
+});
 
 const industries = [
   {

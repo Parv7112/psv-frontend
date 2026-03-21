@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { Code2, Database, Server, ShieldCheck } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "MERN Stack Development",
+  description:
+    "Full-stack MERN development services using Next.js/React, Node/Express, and MongoDB—focused on performance, security, and maintainable architecture.",
+  canonical: "/services/mern",
+});
 
 export default function MernServicePage() {
   return (

@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, Brain, Code2, Smartphone } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Services",
+  description:
+    "Explore PSV Enterprises services: MERN stack development, AI solutions, and mobile app development—built for performance, security, and maintainability.",
+  canonical: "/services",
+});
 
 const services = [
   {

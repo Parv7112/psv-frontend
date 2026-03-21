@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "E‑commerce Platforms",
+  description:
+    "E-commerce development for fast storefronts and operational systems: catalog, search, checkout, order workflows, and integrations.",
+  canonical: "/what-we-do/software/ecommerce",
+});
 
 export default function EcommercePage() {
   return (

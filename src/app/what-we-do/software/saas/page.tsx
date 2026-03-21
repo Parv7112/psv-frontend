@@ -1,5 +1,13 @@
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "SaaS & Dashboards",
+  description:
+    "SaaS and dashboard development for multi-tenant platforms, admin panels, and internal tools that scale with your organization.",
+  canonical: "/what-we-do/software/saas",
+});
 
 export default function SaasPage() {
   return (

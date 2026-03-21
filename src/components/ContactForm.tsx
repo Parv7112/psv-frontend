@@ -23,18 +23,31 @@ type FormState = {
   message: string;
 };
 
-const initialState: FormState = {
-  name: "",
-  email: "",
-  company: "",
-  phone: "",
-  service: "AI",
-  budget: "Not sure",
-  message: "",
-};
+function createInitialState(service = "AI"): FormState {
+  return {
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    service,
+    budget: "Not sure",
+    message: "",
+  };
+}
 
-export function ContactForm({ source = "website", submitLabel }: { source?: string; submitLabel?: string }) {
-  const [state, setState] = useState<FormState>(initialState);
+export function ContactForm({
+  source = "website",
+  submitLabel,
+  variant = "default",
+}: {
+  source?: string;
+  submitLabel?: string;
+  variant?: "default" | "contact-page";
+}) {
+  const isContactPage = variant === "contact-page";
+  const [state, setState] = useState<FormState>(() =>
+    createInitialState(isContactPage ? "" : "AI")
+  );
   const [status, setStatus] = useState<
     | { kind: "idle" }
     | { kind: "submitting" }
@@ -75,7 +88,7 @@ export function ContactForm({ source = "website", submitLabel }: { source?: stri
         kind: "success",
         message: "Thanks! We received your message and will reply soon.",
       });
-      setState(initialState);
+      setState(createInitialState(isContactPage ? "" : "AI"));
     } catch {
       setStatus({
         kind: "error",
@@ -85,41 +98,46 @@ export function ContactForm({ source = "website", submitLabel }: { source?: stri
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
+    <form onSubmit={onSubmit} className={isContactPage ? "space-y-4" : "space-y-5"}>
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Full name" required>
+        <Field label="Full Name" required variant={variant}>
           <input
             value={state.name}
             onChange={(e) => setState((s) => ({ ...s, name: e.target.value }))}
-            className="h-11 w-full rounded-xl bg-white px-3 text-sm text-slate-900 ring-1 ring-black/10 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25"
-            placeholder="Your name"
+            className={getInputClassName(variant)}
+            placeholder={isContactPage ? "Full Name" : "Your name"}
           />
         </Field>
-        <Field label="Business email" required>
+        <Field label="Email" required variant={variant}>
           <input
             type="email"
             value={state.email}
             onChange={(e) => setState((s) => ({ ...s, email: e.target.value }))}
-            className="h-11 w-full rounded-xl bg-white px-3 text-sm text-slate-900 ring-1 ring-black/10 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25"
-            placeholder="you@company.com"
+            className={getInputClassName(variant)}
+            placeholder={isContactPage ? "Email" : "you@company.com"}
           />
         </Field>
-        <Field label="Phone">
+        <Field label="Phone" variant={variant}>
           <input
             value={state.phone}
             onChange={(e) => setState((s) => ({ ...s, phone: e.target.value }))}
-            className="h-11 w-full rounded-xl bg-white px-3 text-sm text-slate-900 ring-1 ring-black/10 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25"
+            className={getInputClassName(variant)}
             placeholder="+91 ..."
           />
         </Field>
-        <Field label="Select service" required>
+        <Field label="Select Service" required variant={variant}>
           <select
             value={state.service}
             onChange={(e) =>
               setState((s) => ({ ...s, service: e.target.value }))
             }
-            className="h-11 w-full rounded-xl bg-white px-3 text-sm text-slate-900 ring-1 ring-black/10 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25"
+            className={getInputClassName(variant)}
           >
+            {isContactPage ? (
+              <option value="" disabled>
+                Select Service
+              </option>
+            ) : null}
             <option>AI</option>
             <option>MERN Stack</option>
             <option>Mobile App</option>
@@ -128,29 +146,38 @@ export function ContactForm({ source = "website", submitLabel }: { source?: stri
         </Field>
 
         <div className="sm:col-span-2">
-          <Field label="Company name">
+          <Field label="Company Name" variant={variant}>
             <input
               value={state.company}
               onChange={(e) =>
                 setState((s) => ({ ...s, company: e.target.value }))
               }
-              className="h-11 w-full rounded-xl bg-white px-3 text-sm text-slate-900 ring-1 ring-black/10 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25"
-              placeholder="Company (optional)"
+              className={getInputClassName(variant)}
+              placeholder={isContactPage ? "Company Name" : "Company (optional)"}
             />
           </Field>
         </div>
       </div>
 
-      <Field label="Brief your requirement" required>
+      <Field label="Brief Your Requirement" required variant={variant}>
         <textarea
           value={state.message}
           onChange={(e) => setState((s) => ({ ...s, message: e.target.value }))}
-          className="min-h-32 w-full resize-y rounded-xl bg-white px-3 py-2 text-sm text-slate-900 ring-1 ring-black/10 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25"
-          placeholder="Share your goals, timeline, and any context..."
+          className={getTextareaClassName(variant)}
+          placeholder={
+            isContactPage
+              ? "Brief Your Requirement"
+              : "Share your goals, timeline, and any context..."
+          }
         />
       </Field>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div
+        className={[
+          "flex flex-col gap-3",
+          isContactPage ? "items-start" : "sm:flex-row sm:items-center sm:justify-between",
+        ].join(" ")}
+      >
         <div className="text-sm">
           {status.kind === "success" ? (
             <div className="rounded-xl border border-emerald-300/50 bg-emerald-50 px-4 py-3 text-emerald-900">
@@ -165,7 +192,11 @@ export function ContactForm({ source = "website", submitLabel }: { source?: stri
         <Button
           type="submit"
           variant="dark"
-          className="w-full px-5 py-3"
+          className={
+            isContactPage
+              ? "min-w-32 rounded-full px-8 py-3 text-xs font-bold uppercase tracking-wide"
+              : "w-full px-5 py-3"
+          }
           disabled={!canSubmit || status.kind === "submitting"}
         >
           {status.kind === "submitting" ? "Submitting..." : submitLabel ?? "Submit"}
@@ -178,19 +209,39 @@ export function ContactForm({ source = "website", submitLabel }: { source?: stri
 function Field({
   label,
   required,
+  variant = "default",
   children,
 }: {
   label: string;
   required?: boolean;
+  variant?: "default" | "contact-page";
   children: React.ReactNode;
 }) {
   return (
     <label className="block space-y-2">
-      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+      <div
+        className={
+          variant === "contact-page"
+            ? "text-[11px] font-medium text-slate-500"
+            : "text-xs font-semibold uppercase tracking-wide text-slate-500"
+        }
+      >
         {label} {required ? <span className="text-rose-300">*</span> : null}
       </div>
       {children}
     </label>
   );
+}
+
+function getInputClassName(variant: "default" | "contact-page") {
+  return variant === "contact-page"
+    ? "h-11 w-full rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
+    : "h-11 w-full rounded-xl bg-white px-3 text-sm text-slate-900 ring-1 ring-black/10 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25";
+}
+
+function getTextareaClassName(variant: "default" | "contact-page") {
+  return variant === "contact-page"
+    ? "min-h-28 w-full resize-y rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
+    : "min-h-32 w-full resize-y rounded-xl bg-white px-3 py-2 text-sm text-slate-900 ring-1 ring-black/10 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/25";
 }
 

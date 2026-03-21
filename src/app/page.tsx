@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import {
   ArrowRight,
   Brain,
@@ -19,6 +20,17 @@ import { LogoCloud } from "@/components/marketing/LogoCloud";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { TestimonialCarousel } from "@/components/marketing/TestimonialCarousel";
 import { ContactForm } from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    url: "/",
+    images: [{ url: "/logo.png", alt: "PSV Enterprises" }],
+  },
+  twitter: {
+    images: ["/logo.png"],
+  },
+};
 
 export default function Home() {
   return (

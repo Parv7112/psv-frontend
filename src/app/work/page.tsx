@@ -1,4 +1,12 @@
 import { ButtonLink } from "@/components/Button";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Work",
+  description:
+    "Case studies and examples of what PSV Enterprises builds—modern web apps, AI workflows, and mobile products with strong engineering fundamentals.",
+  canonical: "/work",
+});
 
 const caseStudies = [
   {

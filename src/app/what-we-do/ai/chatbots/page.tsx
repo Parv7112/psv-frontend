@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
+import { buildMetadata } from "@/lib/seo";
 import {
   ArrowRight,
   Bot,
@@ -17,6 +18,13 @@ import {
   Users,
   Workflow,
 } from "lucide-react";
+
+export const metadata = buildMetadata({
+  title: "AI Chatbots",
+  description:
+    "Custom AI chatbots and assistants for support, sales, and internal operations—multilingual, integration-ready, and built with security and guardrails.",
+  canonical: "/what-we-do/ai/chatbots",
+});
 
 export default function AiChatbotsPage() {
   const faqs = [

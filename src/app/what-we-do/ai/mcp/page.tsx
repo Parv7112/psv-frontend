@@ -348,9 +348,9 @@ export default function McpPage() {
   ];
 
   const blogPosts = [
-    { tag: "AI", title: "Revolutionizing Industries with AI-Powered Agents", desc: "How MCP and AI agents are changing the way businesses automate workflows.", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=320&fit=crop", author: "Parv Garg", date: "21 May 2024", avatar: "https://i.pravatar.cc/150?img=12" },
-    { tag: "Cloud", title: "The Future of AI Consulting", desc: "Integrating MCP servers with cloud infrastructure for scalable AI applications.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=320&fit=crop", author: "Parv Garg", date: "18 May 2024", avatar: "https://i.pravatar.cc/150?img=12" },
-    { tag: "MCP", title: "Building Tool Servers for LLM Applications", desc: "Best practices for designing and deploying MCP servers in production.", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=320&fit=crop", author: "Parv Garg", date: "15 May 2024", avatar: "https://i.pravatar.cc/150?img=12" },
+    { tag: "AI", title: "Revolutionizing Industries with AI-Powered Agents", desc: "How MCP and AI agents are changing the way businesses automate workflows.", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=320&fit=crop", author: "Varsha Garg", date: "21 May 2024", avatar: "https://i.pravatar.cc/150?img=12" },
+    { tag: "Cloud", title: "The Future of AI Consulting", desc: "Integrating MCP servers with cloud infrastructure for scalable AI applications.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=320&fit=crop", author: "Varsha Garg", date: "18 May 2024", avatar: "https://i.pravatar.cc/150?img=12" },
+    { tag: "MCP", title: "Building Tool Servers for LLM Applications", desc: "Best practices for designing and deploying MCP servers in production.", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=320&fit=crop", author: "Varsha Garg", date: "15 May 2024", avatar: "https://i.pravatar.cc/150?img=12" },
   ];
 
   const relatedServicesAll = [
@@ -371,7 +371,7 @@ export default function McpPage() {
 
   return (
     <div className="space-y-16">
-      {/* Hero - Bitontree style: light bg, left = breadcrumbs + title + paragraph + CTA, right = MCP architecture diagram */}
+      {/* Hero - PSV Enterprises style: light bg, left = breadcrumbs + title + paragraph + CTA, right = MCP architecture diagram */}
       <section className="rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 shadow-[0_4px_20px_rgba(2,6,23,0.06)] sm:p-12">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
@@ -666,7 +666,7 @@ export default function McpPage() {
         <Accordion items={faqs} defaultOpenIndex={0} variant="arrow" />
       </section>
 
-      {/* Discover how we can help - Bitontree-style two columns: left stats, right form */}
+      {/* Discover how we can help - PSV Enterprises-style two columns: left stats, right form */}
       <section className="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div>
