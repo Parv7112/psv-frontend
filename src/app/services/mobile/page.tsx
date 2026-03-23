@@ -1,4 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { Bell, Layout, Smartphone, Zap } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 
@@ -12,29 +14,28 @@ export const metadata = buildMetadata({
 export default function MobileServicePage() {
   return (
     <div className="space-y-10">
-      <div className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-        <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-black/10">
-          <Smartphone className="h-4 w-4 text-emerald-600" />
-          Mobile App Development
-        </div>
-        <h1 className="mt-5 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Mobile apps with performance, polish, and product thinking
-        </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-          We build mobile experiences that users love—fast, reliable, and ready
-          for the app stores. Great UX, robust APIs, and smooth releases.
-        </p>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/contact" variant="primary" className="px-5 py-2.5">
-            Build a mobile app
-          </ButtonLink>
-          <ButtonLink href="/services" variant="ghost" className="px-5 py-2.5">
-            Back to services
-          </ButtonLink>
-        </div>
-      </div>
+      <PageHero
+        eyebrow={
+          <>
+            <Smartphone className="h-4 w-4 text-emerald-400" />
+            Mobile App Development
+          </>
+        }
+        title="Mobile apps with performance, polish, and product thinking"
+        description="We build mobile experiences that users love—fast, reliable, and ready for the app stores. Great UX, robust APIs, and smooth releases."
+        actions={
+          <>
+            <ButtonLink href="/contact" variant="primary" className="px-5 py-2.5">
+              Build a mobile app <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
+            <ButtonLink href="/services" variant="outlineLight" className="px-5 py-2.5">
+              Back to services
+            </ButtonLink>
+          </>
+        }
+      />
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="relative z-10 -mt-10 grid gap-6 pt-2 md:grid-cols-2">
         {[
           {
             icon: <Layout className="h-5 w-5 text-sky-600" />,

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
@@ -37,60 +38,54 @@ export const metadata = buildMetadata({
 export default function ManufacturingPage() {
   return (
     <div className="space-y-16 py-12">
-      <section className="rounded-3xl border border-slate-200/70 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500">
-          <Link href="/" className="hover:text-slate-700">
-            Home
-          </Link>
-          <span className="text-slate-300">›</span>
-          <Link href="/industries" className="hover:text-slate-700">
-            Industries
-          </Link>
-          <span className="text-slate-300">›</span>
-          <span className="text-slate-700">Manufacturing</span>
-        </div>
+      <PageHero
+        breadcrumb={
+          <>
+            <Link href="/">Home</Link>
+            <span className="px-2">›</span>
+            <Link href="/industries">Industries</Link>
+            <span className="px-2">›</span>
+            <span className="text-zinc-300">Manufacturing</span>
+          </>
+        }
+        eyebrow={
+          <>
+            <Factory className="h-4 w-4 text-orange-400" />
+            Manufacturing
+          </>
+        }
+        title="Manufacturing software that improves visibility and operational flow"
+        description="PSV Enterprises builds internal tools, dashboards, and workflow automation for manufacturing teams—designed to reduce manual work, improve traceability, and support decision-making across operations."
+        actions={
+          <>
+            <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
+              Book a consultation <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
+            <ButtonLink href="/work" variant="outlineLight" className="px-6 py-3">
+              View work
+            </ButtonLink>
+          </>
+        }
+      />
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-200">
-              <Factory className="h-4 w-4 text-orange-600" />
-              Manufacturing
-            </div>
-            <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-              Manufacturing software that improves visibility and operational flow
-            </h1>
-            <p className="mt-4 max-w-xl text-pretty text-base leading-7 text-slate-600 sm:text-lg">
-              PSV Enterprises builds internal tools, dashboards, and workflow automation for
-              manufacturing teams—designed to reduce manual work, improve traceability, and support
-              decision-making across operations.
-            </p>
-
-            <ul className="mt-7 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
-              {[
-                "Production, inventory, and workflow dashboards",
-                "Automation for repetitive operational tasks",
-                "Integrations across ERP, CRM, and internal tools",
-                "Scalable role-based systems for growing operations",
-              ].map((t) => (
-                <li
-                  key={t}
-                  className="flex gap-2 rounded-2xl border border-slate-200/70 bg-white/70 p-4"
-                >
-                  <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-orange-600" />
-                  <span className="leading-6">{t}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
-                Book a consultation <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-              <ButtonLink href="/work" variant="secondary" className="px-6 py-3">
-                View work
-              </ButtonLink>
-            </div>
-          </div>
+      <section className="relative z-10 -mt-10">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <ul className="grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+            {[
+              "Production, inventory, and workflow dashboards",
+              "Automation for repetitive operational tasks",
+              "Integrations across ERP, CRM, and internal tools",
+              "Scalable role-based systems for growing operations",
+            ].map((t) => (
+              <li
+                key={t}
+                className="flex gap-2 rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-sm"
+              >
+                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-orange-600" />
+                <span className="leading-6">{t}</span>
+              </li>
+            ))}
+          </ul>
 
           <div className="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_10px_30px_rgba(2,6,23,0.08)] sm:p-8">
             <div className="text-sm font-semibold text-slate-900">Tell us what you’re building.</div>

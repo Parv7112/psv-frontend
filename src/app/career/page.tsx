@@ -12,6 +12,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -113,33 +114,26 @@ const lifeAtPsv = [
 export default function CareerPage() {
   return (
     <div className="space-y-14 py-8 sm:space-y-16 sm:py-12">
-      <section className="mx-auto max-w-5xl text-center">
-        <div className="text-left text-xs text-slate-400">
-          <Link href="/" className="hover:text-slate-600">
-            Home
-          </Link>
-          <span className="px-2">›</span>
-          <span className="text-slate-600">Career</span>
-        </div>
+      <PageHero
+        eyebrow="Career"
+        breadcrumb={
+          <>
+            <Link href="/">Home</Link>
+            <span className="px-2">›</span>
+            <span className="text-zinc-300">Career</span>
+          </>
+        }
+        title="Be One of Us, Where Passion Meets Profession"
+        description="PSV Enterprises always looks for talented and skilled people ready to show enthusiasm to join our vibrant team."
+        actions={
+          <ButtonLink href="/contact" variant="primary" className="rounded-full px-6 py-3">
+            Get In Touch With Us
+            <ArrowRight className="h-4 w-4" />
+          </ButtonLink>
+        }
+      />
 
-        <div className="mx-auto mt-10 max-w-3xl">
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-            Be One of Us, Where Passion Meets Profession
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-            PSV Enterprises always looks for talented and skilled people ready to show
-            enthusiasm to join our vibrant team.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <ButtonLink href="/contact" variant="dark" className="rounded-full px-6 py-3">
-              Get In Touch With Us
-              <ArrowRight className="h-4 w-4" />
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl">
+      <section className="relative z-10 -mt-10 mx-auto max-w-5xl pt-2">
         <div className="max-w-3xl">
           <h2 className="text-3xl font-semibold tracking-tight text-slate-900">
             Perks and Benefits

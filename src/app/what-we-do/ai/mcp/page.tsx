@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { Accordion } from "@/components/marketing/Accordion";
 import {
@@ -371,30 +372,28 @@ export default function McpPage() {
 
   return (
     <div className="space-y-16">
-      {/* Hero - PSV Enterprises style: light bg, left = breadcrumbs + title + paragraph + CTA, right = MCP architecture diagram */}
-      <section className="rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 shadow-[0_4px_20px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <nav className="text-sm text-slate-500">
-              <Link href="/" className="hover:text-slate-700">Home</Link>
-              <span className="mx-1.5">&#62;</span>
-              <Link href="/what-we-do" className="hover:text-slate-700">Services</Link>
-              <span className="mx-1.5">&#62;</span>
-              <span className="text-slate-800 font-medium">Mcp Server Development Company</span>
-            </nav>
-            <h1 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              MCP Server Development Company
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
-              We build robust MCP servers with AI integration and 99.99% uptime. Our focus is on performance, scalability, security, and automation—so your applications are ready for AI-driven use cases. From tool orchestration to resource management, we deliver production-grade MCP infrastructure that fits your stack.
-            </p>
-            <div className="mt-8">
-              <ButtonLink href="/lets-talk" variant="dark" className="rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide">
-                Consult our AI experts
-              </ButtonLink>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200/70 bg-slate-50/90 p-6 shadow-sm lg:p-8">
+      <PageHero
+        breadcrumb={
+          <nav className="text-sm">
+            <Link href="/">Home</Link>
+            <span className="mx-1.5">&#62;</span>
+            <Link href="/what-we-do">Services</Link>
+            <span className="mx-1.5">&#62;</span>
+            <span className="text-zinc-300">Mcp Server Development Company</span>
+          </nav>
+        }
+        eyebrow="MCP"
+        title="MCP Server Development Company"
+        description="We build robust MCP servers with AI integration and 99.99% uptime. Our focus is on performance, scalability, security, and automation—so your applications are ready for AI-driven use cases. From tool orchestration to resource management, we deliver production-grade MCP infrastructure that fits your stack."
+        actions={
+          <ButtonLink href="/lets-talk" variant="primary" className="rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide">
+            Consult our AI experts
+          </ButtonLink>
+        }
+      />
+
+      <section className="relative z-10 -mt-10 rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 pt-2 shadow-[0_4px_20px_rgba(2,6,23,0.06)] sm:p-12">
+        <div className="rounded-2xl border border-slate-200/70 bg-slate-50/90 p-6 shadow-sm lg:p-8">
             {/* MCP architecture diagram: Host Application > MCP Client > MCP Server > Tools | Resources > icons */}
             <div className="flex flex-col items-center gap-0">
               <div className="w-full rounded-lg border border-slate-200 bg-white p-4">
@@ -439,7 +438,6 @@ export default function McpPage() {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
 

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 export type TestimonialItem = {
   quote: string;
@@ -52,21 +52,28 @@ export function TestimonialCarousel({
   const current = items[idx]!;
 
   return (
-    <div className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-      <div className="flex items-start justify-between gap-4">
+    <section className="relative overflow-hidden rounded-[2rem] border-2 border-zinc-900/10 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-8 shadow-2xl ring-1 ring-white/10 sm:p-12">
+      <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-amber-500/15 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-violet-500/10 blur-3xl" />
+
+      <div className="relative flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
         <div>
-          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            What our clients say
+          <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-amber-300">
+            Voices
           </div>
-          <div className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-            Real feedback from real teams
-          </div>
+          <h2 className="font-display mt-4 max-w-md text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Trusted by teams who ship
+          </h2>
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-zinc-400">
+            Swipe or use arrows—every engagement is built on clarity and delivery you can measure.
+          </p>
         </div>
-        <div className="flex items-center gap-2">
+
+        <div className="flex gap-2 self-end lg:self-start">
           <button
             type="button"
             onClick={() => setIdx((i) => (i - 1 + items.length) % items.length)}
-            className="grid h-10 w-10 place-items-center rounded-xl bg-white text-slate-900 ring-1 ring-black/10 hover:bg-slate-50"
+            className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/5 text-white transition-all hover:border-amber-500/40 hover:bg-white/10"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -74,7 +81,7 @@ export function TestimonialCarousel({
           <button
             type="button"
             onClick={() => setIdx((i) => (i + 1) % items.length)}
-            className="grid h-10 w-10 place-items-center rounded-xl bg-white text-slate-900 ring-1 ring-black/10 hover:bg-slate-50"
+            className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/5 text-white transition-all hover:border-amber-500/40 hover:bg-white/10"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-5 w-5" />
@@ -82,45 +89,51 @@ export function TestimonialCarousel({
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
-        <div className="text-base leading-7 text-slate-700">“{current.quote}”</div>
-        <div className="mt-5 flex flex-wrap items-center gap-3 text-sm">
+      <div className="relative mt-10 rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm sm:p-10">
+        <Quote className="absolute right-6 top-6 h-10 w-10 text-amber-500/25 sm:h-14 sm:w-14" aria-hidden />
+        <blockquote
+          key={idx}
+          className="animate-hero-enter relative pr-4 text-lg font-medium leading-relaxed text-zinc-100 sm:text-xl md:pr-20"
+        >
+          “{current.quote}”
+        </blockquote>
+        <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
           {current.avatar ? (
             <Image
               src={current.avatar}
               alt=""
-              width={48}
-              height={48}
-              className="h-12 w-12 rounded-full object-cover"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-2xl object-cover ring-2 ring-amber-500/30"
             />
           ) : (
-            <div className="h-12 w-12 rounded-full bg-slate-300" />
+            <div className="h-14 w-14 rounded-2xl bg-zinc-700" />
           )}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span className="font-semibold text-slate-900">{current.name}</span>
-            <span className="text-slate-500">•</span>
-            <span className="text-slate-600">{current.role}</span>
-            <span className="text-slate-500">•</span>
-            <span className="text-slate-600">{current.industry}</span>
+          <div>
+            <div className="font-display text-lg font-bold text-white">{current.name}</div>
+            <div className="mt-0.5 text-sm text-zinc-400">
+              {current.role}
+              <span className="mx-2 text-zinc-600">·</span>
+              {current.industry}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-6 flex gap-2">
+      <div className="mt-6 flex justify-center gap-2">
         {items.map((_, i) => (
           <button
             key={i}
             type="button"
             onClick={() => setIdx(i)}
             className={[
-              "h-2 w-2 rounded-full",
-              i === idx ? "bg-indigo-600" : "bg-slate-300",
+              "h-2 rounded-full transition-all duration-300",
+              i === idx ? "w-8 bg-amber-400" : "w-2 bg-zinc-600 hover:bg-zinc-500",
             ].join(" ")}
             aria-label={`Go to testimonial ${i + 1}`}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
-

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Brain, Code2, Smartphone } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 
@@ -38,29 +39,23 @@ const services = [
 export default function WhatWeDoPage() {
   return (
     <div className="space-y-12">
-      <section className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-        <div className="max-w-3xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            What we do
-          </h1>
-          <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
-            PSV Enterprises delivers end-to-end product engineering across MERN,
-            AI, and mobile. We help you move from idea to launch with a clear
-            roadmap, weekly delivery, and quality standards that hold up in
-            production.
-          </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+      <PageHero
+        eyebrow="Capabilities"
+        title="What we do"
+        description="PSV Enterprises delivers end-to-end product engineering across MERN, AI, and mobile. We help you move from idea to launch with a clear roadmap, weekly delivery, and quality standards that hold up in production."
+        actions={
+          <>
             <ButtonLink href="/lets-talk" variant="primary" className="px-5 py-2.5">
               Talk to our experts <ArrowRight className="h-4 w-4" />
             </ButtonLink>
-            <ButtonLink href="/our-work" variant="secondary" className="px-5 py-2.5">
+            <ButtonLink href="/our-work" variant="outlineLight" className="px-5 py-2.5">
               Explore case studies
             </ButtonLink>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
-      <section className="space-y-8">
+      <section className="relative z-10 -mt-10 space-y-8 pt-2">
         <SectionHeading
           eyebrow="Services"
           title="Software and development services"

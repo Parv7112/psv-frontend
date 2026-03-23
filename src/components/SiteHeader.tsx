@@ -103,6 +103,7 @@ export function SiteHeader() {
   const [mobileWhatOpen, setMobileWhatOpen] = useState<WhatWeDoTab | null>(null);
   const [mobileWorkOpen, setMobileWorkOpen] = useState<WorkTab | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useOnEscape(() => {
     setOpen(null);
@@ -114,6 +115,13 @@ export function SiteHeader() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -215,14 +223,17 @@ export function SiteHeader() {
         ref={(n) => {
           headerRef.current = n;
         }}
-        className="sticky top-0 z-50 border-b border-black/5 bg-white/65 backdrop-blur"
+        className={[
+          "sticky top-0 z-50 border-b border-white/10 bg-zinc-950 text-white transition-[box-shadow] duration-300",
+          scrolled ? "shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]" : "",
+        ].join(" ")}
         onMouseLeave={() => setOpen(null)}
       >
         <Container>
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center justify-between py-3.5 sm:py-4">
             <Link
               href="/"
-              className="group inline-flex items-center rounded-xl bg-white/80 px-2 py-1 ring-1 ring-black/10 hover:bg-white"
+              className="group inline-flex items-center rounded-xl bg-white px-3 py-2 shadow-md ring-1 ring-white/30 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg"
             >
               <span className="sr-only">PSV Enterprises</span>
               <Image
@@ -235,7 +246,7 @@ export function SiteHeader() {
               />
             </Link>
 
-            <nav className="relative hidden items-center gap-6 md:flex">
+            <nav className="relative hidden items-center gap-2 md:flex">
               {topNav.map((item) => (
                 <div key={item.key} className="relative">
                   <Link
@@ -243,16 +254,16 @@ export function SiteHeader() {
                     onMouseEnter={() => setOpen(item.key)}
                     onFocus={() => setOpen(item.key)}
                     onClick={() => setOpen(null)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-600 hover:text-slate-900"
+                    className="group inline-flex items-center gap-1 rounded-lg px-2.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-400 transition-colors hover:bg-white/10 hover:text-white"
                   >
                     {item.label}
-                    <ChevronDown className="h-3.5 w-3.5" />
+                    <ChevronDown className="h-3.5 w-3.5 opacity-70 transition-transform duration-200 group-hover:rotate-180" />
                   </Link>
                 </div>
               ))}
 
               {open ? (
-                <div className="absolute left-1/2 top-[calc(100%+14px)] w-[min(1040px,calc(100vw-64px))] -translate-x-1/2 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl">
+                <div className="absolute left-1/2 top-[calc(100%+12px)] w-[min(1040px,calc(100vw-64px))] -translate-x-1/2 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 shadow-[0_24px_80px_-20px_rgba(15,23,42,0.2)] backdrop-blur-xl animate-[fadeDown_0.22s_ease-out]">
                   {open === "what" ? (
                     <div className="grid grid-cols-12">
                       <div className="col-span-4 border-r border-black/5 bg-slate-50 p-4">
@@ -535,16 +546,16 @@ export function SiteHeader() {
 
             <div className="flex items-center gap-3">
               <div className="hidden items-center gap-2 lg:flex">
-                <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-xs text-slate-700 ring-1 ring-black/10">
-                  <Code2 className="h-3.5 w-3.5" />
+                <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold text-amber-100/90 ring-1 ring-white/15">
+                  <Code2 className="h-3.5 w-3.5 text-amber-400" />
                   MERN
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-xs text-slate-700 ring-1 ring-black/10">
-                  <Cpu className="h-3.5 w-3.5" />
+                <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold text-amber-100/90 ring-1 ring-white/15">
+                  <Cpu className="h-3.5 w-3.5 text-amber-400" />
                   AI
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-xs text-slate-700 ring-1 ring-black/10">
-                  <Smartphone className="h-3.5 w-3.5" />
+                <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold text-amber-100/90 ring-1 ring-white/15">
+                  <Smartphone className="h-3.5 w-3.5 text-amber-400" />
                   Mobile
                 </span>
               </div>
@@ -555,7 +566,7 @@ export function SiteHeader() {
               </div>
               <button
                 type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 bg-white text-slate-700 md:hidden"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white transition-all duration-200 hover:bg-white/20 md:hidden"
                 onClick={() => {
                   setMobileMenuOpen(true);
                   setMobileView("root");
@@ -642,20 +653,20 @@ function MobileDrawer({
   onToggleWork: (k: WorkTab) => void;
 }) {
   return (
-    <div className="fixed inset-0 z-[80] bg-white md:hidden">
+    <div className="fixed inset-0 z-[80] bg-zinc-950 text-white md:hidden">
       <div className="mx-auto flex h-full w-full max-w-[420px] flex-col">
-        <div className="flex items-center justify-between border-b border-black/10 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
           {mobileView === "submenu" ? (
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-zinc-300 hover:bg-white/10"
               aria-label="Back"
               onClick={onBack}
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
           ) : (
-            <span className="inline-flex items-center gap-2 rounded-xl bg-white/80 px-2 py-1 ring-1 ring-black/10">
+            <span className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 shadow-md ring-1 ring-white/20">
               <Image
                 src="/logo.png"
                 alt="PSV Enterprises"
@@ -667,7 +678,7 @@ function MobileDrawer({
           )}
 
           {mobileView === "submenu" ? (
-            <div className="text-xs font-extrabold uppercase tracking-widest text-slate-800">
+            <div className="text-xs font-extrabold uppercase tracking-widest text-amber-200/90">
               {mobileActive === "what"
                 ? "What we do"
                 : mobileActive === "industries"
@@ -682,7 +693,7 @@ function MobileDrawer({
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-700"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-zinc-300 hover:bg-white/10"
             aria-label="Close menu"
             onClick={onClose}
           >
@@ -703,12 +714,12 @@ function MobileDrawer({
                   key={item.key}
                   type="button"
                   onClick={() => onSelectRoot(item.key)}
-                  className="flex w-full items-center justify-between border-b border-black/10 py-4 text-left"
+                  className="flex w-full items-center justify-between border-b border-white/10 py-4 text-left"
                 >
-                  <span className="text-sm font-extrabold uppercase tracking-widest text-slate-800">
+                  <span className="text-sm font-extrabold uppercase tracking-widest text-white">
                     {item.label}
                   </span>
-                  <ChevronRight className="h-5 w-5 text-slate-400" />
+                  <ChevronRight className="h-5 w-5 text-zinc-500" />
                 </button>
               ))}
             </div>
@@ -718,48 +729,48 @@ function MobileDrawer({
                 const isOpen = mobileWhatOpen === t.key;
                 const content = whatWeDoContentByTab[t.key];
                 return (
-                  <div key={t.key} className="rounded-2xl border border-black/10 bg-white">
+                  <div key={t.key} className="rounded-2xl border border-white/10 bg-white/5">
                     <button
                       type="button"
                       onClick={() => onToggleWhat(t.key)}
                       className="flex w-full items-center justify-between px-4 py-4"
                     >
-                      <span className="flex items-center gap-3 text-sm font-semibold text-slate-900">
-                        <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-50 ring-1 ring-black/5">
+                      <span className="flex items-center gap-3 text-sm font-semibold text-white">
+                        <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 ring-1 ring-white/10">
                           {t.key === "software" ? (
-                            <Code2 className="h-4 w-4 text-slate-700" />
+                            <Code2 className="h-4 w-4 text-amber-400" />
                           ) : t.key === "engagement" ? (
-                            <Handshake className="h-4 w-4 text-slate-700" />
+                            <Handshake className="h-4 w-4 text-amber-400" />
                           ) : (
-                            <Sparkles className="h-4 w-4 text-slate-700" />
+                            <Sparkles className="h-4 w-4 text-amber-400" />
                           )}
                         </span>
                         {t.label}
                       </span>
                       <ChevronDown
                         className={[
-                          "h-4 w-4 text-slate-500 transition-transform",
+                          "h-4 w-4 text-zinc-500 transition-transform",
                           isOpen ? "rotate-180" : "",
                         ].join(" ")}
                       />
                     </button>
 
                     {isOpen ? (
-                      <div className="border-t border-black/10 px-4 pb-4">
+                      <div className="border-t border-white/10 px-4 pb-4">
                         <div className="pt-4">
-                          <div className="text-sm font-semibold text-slate-900">{content.head.title}</div>
-                          <div className="mt-1 text-xs text-slate-500">{content.head.subtitle}</div>
+                          <div className="text-sm font-semibold text-white">{content.head.title}</div>
+                          <div className="mt-1 text-xs text-zinc-400">{content.head.subtitle}</div>
                         </div>
                         <div className="mt-4 space-y-4">
                           {content.items.map((i) => (
                             <Link key={i.href} href={i.href} className="block" onClick={onClose}>
-                              <div className="text-sm font-bold text-slate-900">{i.title}</div>
-                              <div className="mt-1 text-xs leading-5 text-slate-500">{i.desc}</div>
+                              <div className="text-sm font-bold text-white">{i.title}</div>
+                              <div className="mt-1 text-xs leading-5 text-zinc-400">{i.desc}</div>
                             </Link>
                           ))}
                         </div>
                         {t.key !== activeWhatTab ? (
-                          <div className="mt-4 text-xs text-slate-500"> </div>
+                          <div className="mt-4 text-xs text-zinc-500"> </div>
                         ) : null}
                       </div>
                     ) : null}
@@ -776,35 +787,35 @@ function MobileDrawer({
                       <BarChart3 className="h-5 w-5" />
                     </span>
                     <div>
-                      <div className="text-sm font-semibold text-slate-900">Industries We Serve</div>
-                      <div className="text-xs text-slate-500">Next-Gen Software Solutions</div>
+                      <div className="text-sm font-semibold text-white">Industries We Serve</div>
+                      <div className="text-xs text-zinc-400">Next-Gen Software Solutions</div>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <Link href="/industries/healthcare" className="block" onClick={onClose}>
-                      <div className="text-sm font-bold text-slate-900">Healthcare</div>
-                      <div className="mt-1 text-xs leading-5 text-slate-500">Advancing patient care with tech</div>
+                      <div className="text-sm font-bold text-white">Healthcare</div>
+                      <div className="mt-1 text-xs leading-5 text-zinc-400">Advancing patient care with tech</div>
                     </Link>
                     <Link href="/industries/education" className="block" onClick={onClose}>
-                      <div className="text-sm font-bold text-slate-900">Education</div>
-                      <div className="mt-1 text-xs leading-5 text-slate-500">
+                      <div className="text-sm font-bold text-white">Education</div>
+                      <div className="mt-1 text-xs leading-5 text-zinc-400">
                         Enhancing learning via software solutions
                       </div>
                     </Link>
                     <Link href="/industries/retail" className="block" onClick={onClose}>
-                      <div className="text-sm font-bold text-slate-900">Retail &amp; E-commerce</div>
-                      <div className="mt-1 text-xs leading-5 text-slate-500">Innovating retail tech solutions</div>
+                      <div className="text-sm font-bold text-white">Retail &amp; E-commerce</div>
+                      <div className="mt-1 text-xs leading-5 text-zinc-400">Innovating retail tech solutions</div>
                     </Link>
                     <Link href="/industries/manufacturing" className="block" onClick={onClose}>
-                      <div className="text-sm font-bold text-slate-900">Manufacturing</div>
-                      <div className="mt-1 text-xs leading-5 text-slate-500">
+                      <div className="text-sm font-bold text-white">Manufacturing</div>
+                      <div className="mt-1 text-xs leading-5 text-zinc-400">
                         Optimizing operations through software
                       </div>
                     </Link>
                     <Link href="/industries/finance" className="block" onClick={onClose}>
-                      <div className="text-sm font-bold text-slate-900">Finance</div>
-                      <div className="mt-1 text-xs leading-5 text-slate-500">Revolutionizing financial services</div>
+                      <div className="text-sm font-bold text-white">Finance</div>
+                      <div className="mt-1 text-xs leading-5 text-zinc-400">Revolutionizing financial services</div>
                     </Link>
                   </div>
                 </div>
@@ -814,45 +825,45 @@ function MobileDrawer({
                     const isOpen = mobileWorkOpen === t.key;
                     const content = workContentByTab[t.key];
                     return (
-                      <div key={t.key} className="rounded-2xl border border-black/10 bg-white">
+                      <div key={t.key} className="rounded-2xl border border-white/10 bg-white/5">
                         <button
                           type="button"
                           onClick={() => onToggleWork(t.key)}
                           className="flex w-full items-center justify-between px-4 py-4"
                         >
-                          <span className="flex items-center gap-3 text-sm font-semibold text-slate-900">
-                            <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-50 ring-1 ring-black/5">
+                          <span className="flex items-center gap-3 text-sm font-semibold text-white">
+                            <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 ring-1 ring-white/10">
                               {t.key === "solutions" ? (
-                                <Lightbulb className="h-4 w-4 text-slate-700" />
+                                <Lightbulb className="h-4 w-4 text-amber-400" />
                               ) : (
-                                <FileText className="h-4 w-4 text-slate-700" />
+                                <FileText className="h-4 w-4 text-amber-400" />
                               )}
                             </span>
                             {t.label}
                           </span>
                           <ChevronDown
                             className={[
-                              "h-4 w-4 text-slate-500 transition-transform",
+                              "h-4 w-4 text-zinc-500 transition-transform",
                               isOpen ? "rotate-180" : "",
                             ].join(" ")}
                           />
                         </button>
 
                         {isOpen ? (
-                          <div className="border-t border-black/10 px-4 pb-4">
+                          <div className="border-t border-white/10 px-4 pb-4">
                             <div className="pt-4">
-                              <div className="text-sm font-semibold text-slate-900">{content.head.title}</div>
-                              <div className="mt-1 text-xs text-slate-500">{content.head.subtitle}</div>
+                              <div className="text-sm font-semibold text-white">{content.head.title}</div>
+                              <div className="mt-1 text-xs text-zinc-400">{content.head.subtitle}</div>
                             </div>
                             <div className="mt-4 space-y-4">
                               {content.items.map((item) => (
                                 <Link key={`${t.key}-${item.title}`} href={item.href} className="block" onClick={onClose}>
-                                  <div className="text-sm font-bold text-slate-900">{item.title}</div>
-                                  <div className="mt-1 text-xs leading-5 text-slate-500">{item.desc}</div>
+                                  <div className="text-sm font-bold text-white">{item.title}</div>
+                                  <div className="mt-1 text-xs leading-5 text-zinc-400">{item.desc}</div>
                                 </Link>
                               ))}
                             </div>
-                            {t.key !== workTab ? <div className="mt-4 text-xs text-slate-500"> </div> : null}
+                            {t.key !== workTab ? <div className="mt-4 text-xs text-zinc-500"> </div> : null}
                           </div>
                         ) : null}
                       </div>
@@ -866,26 +877,26 @@ function MobileDrawer({
                       <Building2 className="h-5 w-5" />
                     </span>
                     <div>
-                      <div className="text-sm font-semibold text-slate-900">Company</div>
-                      <div className="text-xs text-slate-500">AI-powered software company</div>
+                      <div className="text-sm font-semibold text-white">Company</div>
+                      <div className="text-xs text-zinc-400">AI-powered software company</div>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     {companyMenuItems.map((item) => (
                       <Link key={item.href} href={item.href} className="block" onClick={onClose}>
-                        <div className="text-sm font-bold text-slate-900">{item.title}</div>
-                        <div className="mt-1 text-xs leading-5 text-slate-500">{item.desc}</div>
+                        <div className="text-sm font-bold text-white">{item.title}</div>
+                        <div className="mt-1 text-xs leading-5 text-zinc-400">{item.desc}</div>
                       </Link>
                     ))}
                   </div>
                 </div>
               ) : (
                 <>
-                  <Link href="/company" className="block text-sm font-semibold text-slate-900" onClick={onClose}>
+                  <Link href="/company" className="block text-sm font-semibold text-white" onClick={onClose}>
                     About Us
                   </Link>
-                  <Link href="/about" className="block text-sm text-slate-600" onClick={onClose}>
+                  <Link href="/about" className="block text-sm text-zinc-400" onClick={onClose}>
                     About (detailed)
                   </Link>
                 </>
@@ -912,7 +923,7 @@ function MegaLink({
   return (
     <Link
       href={href}
-      className="rounded-2xl border border-black/5 bg-white p-4 shadow-sm hover:bg-slate-50"
+      className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-200/50 hover:bg-slate-50/90 hover:shadow-md"
       onClick={onSelect}
     >
       <div className="text-sm font-semibold text-slate-900">{title}</div>
@@ -935,7 +946,7 @@ function IndustryLink({
   return (
     <Link
       href={href}
-      className="rounded-xl px-2 py-2 hover:bg-slate-50"
+      className="rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-slate-50"
       onClick={onSelect}
     >
       <div className="text-sm font-semibold text-slate-900">{title}</div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -126,12 +127,14 @@ const relatedCaseStudies = [
 export default function AppointmentBookingCaseStudyPage() {
   return (
     <div className="space-y-0">
-      {/* Hero */}
-      <section className="mx-auto max-w-5xl pb-12 pt-4 text-center sm:pb-16 sm:pt-8">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-          Appointment Booking AI Chatbot for Healthcare
-        </h1>
-        <div className="relative mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-lg">
+      <PageHero
+        eyebrow="Case study"
+        title="Appointment Booking AI Chatbot for Healthcare"
+        description="HIPAA-aware scheduling automation that reduced admin load, improved patient self-service, and scaled with multi-location demand."
+      />
+
+      <section className="relative z-10 -mt-10 mx-auto max-w-5xl px-4 pb-12 pt-2 text-center sm:pb-16">
+        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-lg">
           <Image
             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=700&fit=crop"
             alt="Appointment booking dashboard and healthcare scheduling interface"

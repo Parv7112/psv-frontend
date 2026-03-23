@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
 import { LogoCloud } from "@/components/marketing/LogoCloud";
@@ -153,51 +154,34 @@ export default function StaffAugmentationPage() {
 
   return (
     <div className="space-y-20">
-      {/* ─── BREADCRUMBS ─────────────────────────────────────────── */}
-      <nav className="text-sm text-slate-600">
-        <Link href="/" className="hover:text-slate-900">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do" className="hover:text-slate-900">
-          What we do
-        </Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do" className="hover:text-slate-900">
-          Engagement Models
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="font-semibold text-slate-900">Staff Augmentation</span>
-      </nav>
+      <PageHero
+        breadcrumb={
+          <nav className="text-sm">
+            <Link href="/">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/what-we-do">What we do</Link>
+            <span className="mx-2">/</span>
+            <Link href="/what-we-do">Engagement Models</Link>
+            <span className="mx-2">/</span>
+            <span className="text-zinc-300">Staff Augmentation</span>
+          </nav>
+        }
+        eyebrow="Engagement Models"
+        title="Staff Augmentation Services for Software Teams"
+        description="Extend your team with vetted engineers—fast. Our staff augmentation model helps you fill critical skill gaps, scale delivery capacity, and keep your roadmap moving without the delays of traditional hiring."
+        actions={
+          <ButtonLink
+            href="/lets-talk"
+            variant="primary"
+            className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide"
+          >
+            Get Started <ArrowRight className="h-4 w-4" />
+          </ButtonLink>
+        }
+      />
 
-      {/* ─── HERO ────────────────────────────────────────────────── */}
-      <section className="rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-wide text-slate-500">
-              Engagement Models
-            </p>
-            <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Staff Augmentation Services for Software Teams
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
-              Extend your team with vetted engineers—fast. Our staff augmentation model helps you fill
-              critical skill gaps, scale delivery capacity, and keep your roadmap moving without the
-              delays of traditional hiring.
-            </p>
-            <div className="mt-8">
-              <ButtonLink
-                href="/lets-talk"
-                variant="dark"
-                className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide"
-              >
-                Get Started <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-            </div>
-          </div>
-
-          {/* Right visual */}
-          <div className="relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-4 shadow-[0_4px_20px_rgba(2,6,23,0.08)]">
+      <section className="relative z-10 -mt-10 rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 pt-2 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
+        <div className="relative mx-auto max-w-xl overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-4 shadow-[0_4px_20px_rgba(2,6,23,0.08)]">
             <div className="relative h-52 overflow-hidden rounded-xl bg-gradient-to-br from-indigo-600 to-sky-500">
               <Image
                 src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900&h=500&fit=crop"
@@ -223,7 +207,6 @@ export default function StaffAugmentationPage() {
                 </div>
               ))}
             </div>
-          </div>
         </div>
       </section>
 

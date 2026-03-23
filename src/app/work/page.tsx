@@ -1,4 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -80,22 +82,18 @@ const caseStudies = [
 export default function WorkPage() {
   return (
     <div className="space-y-12">
-      <div className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Work
-        </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-          A snapshot of what we build—modern products with strong engineering
-          fundamentals and a premium user experience.
-        </p>
-        <div className="mt-7">
+      <PageHero
+        eyebrow="Portfolio"
+        title="Work"
+        description="A snapshot of what we build—modern products with strong engineering fundamentals and a premium user experience."
+        actions={
           <ButtonLink href="/contact" variant="primary" className="px-5 py-2.5">
-            Discuss your project
+            Discuss your project <ArrowRight className="h-4 w-4" />
           </ButtonLink>
-        </div>
-      </div>
+        }
+      />
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="relative z-10 -mt-10 grid gap-6 pt-2 lg:grid-cols-3">
         {caseStudies.map((c) => (
           <div
             key={c.title}

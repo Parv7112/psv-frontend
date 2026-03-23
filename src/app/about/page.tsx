@@ -1,4 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -30,39 +32,36 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="space-y-12">
-      <div className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          About PSV Enterprises
-        </h1>
-        <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:text-base">
-          PSV Enterprises is an IT services company focused on building modern
-          digital products. We specialize in MERN stack development, AI solutions,
-          and mobile app development—helping businesses turn ideas into reliable,
-          scalable software.
-        </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          {[
-            { k: "Product thinking", v: "We focus on outcomes, not just tickets." },
-            { k: "Engineering quality", v: "Clean structure, validations, and stability." },
-            { k: "Weekly delivery", v: "A cadence that keeps you in control." },
-          ].map((m) => (
-            <div
-              key={m.k}
-              className="rounded-2xl border border-black/5 bg-white/80 p-5 shadow-sm"
-            >
-              <div className="text-sm font-semibold text-slate-900">{m.k}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{m.v}</div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/contact" variant="primary" className="px-5 py-2.5">
-            Work with us
-          </ButtonLink>
-          <ButtonLink href="/services" variant="ghost" className="px-5 py-2.5">
-            View services
-          </ButtonLink>
-        </div>
+      <PageHero
+        eyebrow="About"
+        title="About PSV Enterprises"
+        description="PSV Enterprises is an IT services company focused on building modern digital products. We specialize in MERN stack development, AI solutions, and mobile app development—helping businesses turn ideas into reliable, scalable software."
+        actions={
+          <>
+            <ButtonLink href="/contact" variant="primary" className="px-5 py-2.5">
+              Work with us <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
+            <ButtonLink href="/services" variant="outlineLight" className="px-5 py-2.5">
+              View services
+            </ButtonLink>
+          </>
+        }
+      />
+
+      <div className="relative z-10 -mt-10 grid gap-4 sm:grid-cols-3">
+        {[
+          { k: "Product thinking", v: "We focus on outcomes, not just tickets." },
+          { k: "Engineering quality", v: "Clean structure, validations, and stability." },
+          { k: "Weekly delivery", v: "A cadence that keeps you in control." },
+        ].map((m) => (
+          <div
+            key={m.k}
+            className="rounded-2xl border border-black/5 bg-white/80 p-5 shadow-sm"
+          >
+            <div className="text-sm font-semibold text-slate-900">{m.k}</div>
+            <div className="mt-2 text-sm leading-6 text-slate-600">{m.v}</div>
+          </div>
+        ))}
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">

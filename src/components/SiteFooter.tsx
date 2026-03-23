@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "./Container";
 import { ButtonLink } from "./Button";
-import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 const aiLinks = [
   { href: "/what-we-do/ai/agents", label: "AI Agent Development" },
@@ -31,129 +31,126 @@ const companyLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-slate-950 text-slate-200">
+    <footer className="relative mt-8 border-t border-zinc-800 bg-zinc-950 text-zinc-300">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"
+        aria-hidden
+      />
       <Container>
-        <div className="grid gap-10 py-12 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <Link href="/" className="inline-flex items-center">
+        <div className="grid gap-12 py-16 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-flex items-center rounded-xl bg-white px-4 py-3 shadow-lg ring-1 ring-white/20">
               <Image
                 src="/logo.png"
                 alt="PSV Enterprises"
                 width={380}
                 height={130}
-                className="h-12 w-auto"
+                className="h-11 w-auto"
               />
             </Link>
-            <div className="mt-2 text-xs text-slate-400">MERN • AI • Mobile Apps</div>
-
-            <p className="mt-4 text-sm leading-6 text-slate-400">
-              We build modern web platforms, AI-enabled solutions, and
-              high-performance mobile applications—designed for measurable
-              business impact.
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-zinc-400">
+              MERN • AI • Mobile — we ship products with measurable impact and code your team can own.
             </p>
-
-            <div className="mt-5 flex items-center gap-3 text-xs text-slate-400">
-              <Mail className="h-4 w-4" />
+            <div className="mt-6 flex items-center gap-2 text-sm text-zinc-500">
+              <Mail className="h-4 w-4 text-amber-500" />
               <span>hr@psventerprises.com</span>
             </div>
-
-            <div className="mt-6 flex items-center gap-3">
-              <a
-                href="#"
-                className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 hover:bg-white/10"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5 text-slate-200" />
-              </a>
-              <a
-                href="#"
-                className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 hover:bg-white/10"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5 text-slate-200" />
-              </a>
-              <a
-                href="#"
-                className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 hover:bg-white/10"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5 text-slate-200" />
-              </a>
+            <div className="mt-8 flex gap-3">
+              {[
+                { Icon: Linkedin, label: "LinkedIn" },
+                { Icon: Instagram, label: "Instagram" },
+                { Icon: Github, label: "GitHub" },
+              ].map(({ Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="grid h-11 w-11 place-items-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-400 transition-all duration-200 hover:border-amber-500/40 hover:text-amber-400"
+                  aria-label={label}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-6 lg:grid-cols-3">
-            <div className="space-y-3 text-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                AI Development
+          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-5">
+            <div>
+              <div className="font-display text-xs font-bold uppercase tracking-[0.2em] text-amber-500/90">
+                AI
               </div>
-              {aiLinks.map((l) => (
-                <Link key={l.href} href={l.href} className="block text-slate-300 hover:text-white">
-                  {l.label}
-                </Link>
-              ))}
+              <ul className="mt-4 space-y-3 text-sm">
+                {aiLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="group inline-flex items-center gap-1 text-zinc-400 transition-colors hover:text-white">
+                      {l.label}
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="space-y-3 text-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                Software Development
+            <div>
+              <div className="font-display text-xs font-bold uppercase tracking-[0.2em] text-amber-500/90">
+                Software
               </div>
-              {softwareLinks.map((l) => (
-                <Link key={l.href} href={l.href} className="block text-slate-300 hover:text-white">
-                  {l.label}
-                </Link>
-              ))}
+              <ul className="mt-4 space-y-3 text-sm">
+                {softwareLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="group inline-flex items-center gap-1 text-zinc-400 transition-colors hover:text-white">
+                      {l.label}
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="space-y-3 text-sm">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-                Regarding us
+            <div>
+              <div className="font-display text-xs font-bold uppercase tracking-[0.2em] text-amber-500/90">
+                Company
               </div>
-              {companyLinks.map((l) => (
-                <Link key={l.href} href={l.href} className="block text-slate-300 hover:text-white">
-                  {l.label}
-                </Link>
-              ))}
+              <ul className="mt-4 space-y-3 text-sm">
+                {companyLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="group inline-flex items-center gap-1 text-zinc-400 transition-colors hover:text-white">
+                      {l.label}
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
           <div className="lg:col-span-3">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="text-sm font-semibold text-white">
-                Looking for a career opportunity?
-              </div>
-              <p className="mt-2 text-sm leading-6 text-slate-300">
-                We’re always interested in strong engineers and builders. Share
-                your profile and we’ll get back to you.
+            <div className="rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 ring-1 ring-white/5">
+              <div className="font-display text-lg font-bold text-white">Join the team</div>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                We hire builders who care about craft. Tell us what you ship.
               </p>
-              <div className="mt-5">
-                <ButtonLink href="/lets-talk" variant="dark" className="w-full justify-center px-5 py-2.5">
-                  Apply now
+              <div className="mt-6">
+                <ButtonLink href="/career" variant="primary" className="w-full justify-center py-3">
+                  View careers
                 </ButtonLink>
               </div>
-
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                {["Clutch", "GoodFirms", "Upwork", "Top Rated"].map((b) => (
-                  <div
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["Clutch", "GoodFirms", "Upwork"].map((b) => (
+                  <span
                     key={b}
-                    className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3 text-center text-xs font-semibold text-slate-200"
+                    className="rounded-lg border border-zinc-700 bg-zinc-900/80 px-3 py-2 text-xs font-semibold text-zinc-500"
                   >
                     {b}
-                  </div>
+                  </span>
                 ))}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 py-6 text-xs text-slate-400">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <div>© {new Date().getFullYear()} PSV Enterprises. All rights reserved.</div>
-            <div>Built with Next.js • Node.js • MongoDB</div>
-          </div>
+        <div className="flex flex-col gap-3 border-t border-zinc-800 py-8 text-xs text-zinc-600 md:flex-row md:items-center md:justify-between">
+          <div>© {new Date().getFullYear()} PSV Enterprises. All rights reserved.</div>
+          <div className="text-zinc-500">Next.js · Node.js · MongoDB</div>
         </div>
       </Container>
     </footer>
   );
 }
-

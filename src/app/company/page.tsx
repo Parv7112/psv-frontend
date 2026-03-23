@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { ContactForm } from "@/components/ContactForm";
+import { PageHero } from "@/components/marketing/PageHero";
 import { buildMetadata } from "@/lib/seo";
 import {
   BadgeCheck,
@@ -45,23 +47,18 @@ const coreValues = [
 export default function CompanyPage() {
   return (
     <div className="space-y-14 py-8 sm:py-12">
-      <section className="rounded-3xl border border-slate-200/70 bg-gradient-to-br from-white via-slate-50 to-indigo-50 p-8 text-center shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Company</div>
-        <h1 className="mx-auto mt-4 max-w-3xl text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-          Your trusted partner in engineering intelligence for a smarter tomorrow
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-          PSV Enterprises helps teams design, build, and scale modern products with a
-          practical mix of product thinking, engineering quality, and delivery discipline.
-        </p>
-        <div className="mt-8 flex justify-center">
-          <ButtonLink href="/lets-talk" variant="dark" className="px-6 py-3">
-            Let&apos;s understand your needs
+      <PageHero
+        eyebrow="Company"
+        title="Your trusted partner in engineering intelligence for a smarter tomorrow"
+        description="PSV Enterprises helps teams design, build, and scale modern products with a practical mix of product thinking, engineering quality, and delivery discipline."
+        actions={
+          <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
+            Let&apos;s understand your needs <ArrowRight className="h-4 w-4" />
           </ButtonLink>
-        </div>
-      </section>
+        }
+      />
 
-      <section className="grid gap-8 lg:grid-cols-2 lg:items-center">
+      <section className="relative z-10 -mt-10 grid gap-8 pt-2 lg:grid-cols-2 lg:items-center">
         <div className="overflow-hidden rounded-3xl border border-slate-200/70 bg-slate-200 shadow-[0_10px_30px_rgba(2,6,23,0.06)]">
           <Image
             src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&h=900&fit=crop"

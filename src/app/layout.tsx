@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { PageBackground } from "@/components/PageBackground";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://psventerprises.com";
@@ -42,14 +45,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-dvh text-slate-900 antialiased`}
+        className={`${plusJakarta.variable} ${syne.variable} min-h-dvh bg-[var(--background)] text-[var(--foreground)] antialiased`}
       >
-        <div className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(70%_45%_at_50%_0%,rgba(99,102,241,0.16)_0%,rgba(255,255,255,0)_60%),radial-gradient(55%_35%_at_10%_10%,rgba(14,165,233,0.10)_0%,rgba(255,255,255,0)_55%)]" />
-        </div>
+        <PageBackground />
         <SiteHeader />
-        <main className="mx-auto w-full max-w-6xl px-5 pb-20 pt-10 sm:px-8 sm:pt-14">
-          {children}
+        <main className="relative w-full pb-28 pt-0">
+          <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">{children}</div>
         </main>
         <SiteFooter />
         <CookieBanner />

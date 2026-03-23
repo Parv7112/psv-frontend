@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
@@ -149,38 +150,34 @@ export default function AiAgentsPage() {
 
   return (
     <div className="space-y-16">
-      {/* Hero */}
-      <section className="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-200">
-              <Sparkles className="h-4 w-4 text-indigo-600" />
-              AI Development
-            </div>
-            <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-              AI Agents Development Company
-            </h1>
-            <p className="mt-4 max-w-xl text-pretty text-base leading-7 text-slate-600 sm:text-lg">
-              {loremShort}
-            </p>
-            <div className="mt-8">
-              <ButtonLink href="/lets-talk" variant="dark" className="px-6 py-3">
-                Get Started
-              </ButtonLink>
-            </div>
-          </div>
-          <div className="rounded-3xl border border-slate-200/70 bg-slate-50 p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
-            <h3 className="text-lg font-semibold text-slate-900">What is an AI Agent?</h3>
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {["Task Definition", "Memory", "Planning", "Tools", "Execution", "Reflection"].map((label, i) => (
-                <div key={label} className="flex items-center gap-2 rounded-xl border border-slate-200/70 bg-white px-3 py-2.5">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-slate-100 text-slate-600">
-                    {[<Target key="t" className="h-4 w-4" />, <Brain key="b" className="h-4 w-4" />, <LayoutGrid key="l" className="h-4 w-4" />, <Wrench key="w" className="h-4 w-4" />, <Zap key="z" className="h-4 w-4" />, <CheckCircle2 key="c" className="h-4 w-4" />][i]}
-                  </span>
-                  <span className="text-sm font-medium text-slate-800">{label}</span>
-                </div>
-              ))}
-            </div>
+      <PageHero
+        eyebrow={
+          <>
+            <Sparkles className="h-4 w-4 text-indigo-400" />
+            AI Development
+          </>
+        }
+        title="AI Agents Development Company"
+        description={loremShort}
+        actions={
+          <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
+            Get Started
+          </ButtonLink>
+        }
+      />
+
+      <section className="relative z-10 -mt-10 rounded-3xl border border-slate-200/70 bg-white p-8 pt-2 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
+        <div className="rounded-3xl border border-slate-200/70 bg-slate-50 p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
+          <h3 className="text-lg font-semibold text-slate-900">What is an AI Agent?</h3>
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {["Task Definition", "Memory", "Planning", "Tools", "Execution", "Reflection"].map((label, i) => (
+              <div key={label} className="flex items-center gap-2 rounded-xl border border-slate-200/70 bg-white px-3 py-2.5">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-slate-100 text-slate-600">
+                  {[<Target key="t" className="h-4 w-4" />, <Brain key="b" className="h-4 w-4" />, <LayoutGrid key="l" className="h-4 w-4" />, <Wrench key="w" className="h-4 w-4" />, <Zap key="z" className="h-4 w-4" />, <CheckCircle2 key="c" className="h-4 w-4" />][i]}
+                </span>
+                <span className="text-sm font-medium text-slate-800">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -1,7 +1,5 @@
-import { ButtonLink } from "@/components/Button";
-import { SectionHeading } from "@/components/marketing/SectionHeading";
-import { buildMetadata } from "@/lib/seo";
 import {
+  ArrowRight,
   Building2,
   GraduationCap,
   HeartPulse,
@@ -11,6 +9,10 @@ import {
   Truck,
   Wrench,
 } from "lucide-react";
+import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
+import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Industries",
@@ -81,20 +83,18 @@ const industries = [
 export default function IndustriesPage() {
   return (
     <div className="space-y-12">
-      <section className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-        <SectionHeading
-          eyebrow="Industries"
-          title="Serving software solutions across industries"
-          description="We tailor modern engineering to domain needs—balancing security, UX, compliance, and speed to delivery."
-          right={
-            <ButtonLink href="/lets-talk" variant="primary" className="px-5 py-2.5">
-              Let’s talk
-            </ButtonLink>
-          }
-        />
-      </section>
+      <PageHero
+        eyebrow="Industries"
+        title="Serving software solutions across industries"
+        description="We tailor modern engineering to domain needs—balancing security, UX, compliance, and speed to delivery."
+        actions={
+          <ButtonLink href="/lets-talk" variant="primary" className="px-5 py-2.5">
+            Let’s talk <ArrowRight className="h-4 w-4" />
+          </ButtonLink>
+        }
+      />
 
-      <section className="grid gap-6 lg:grid-cols-2">
+      <section className="relative z-10 -mt-10 grid gap-6 pt-2 lg:grid-cols-2">
         {industries.map((i) => (
           <div
             key={i.name}

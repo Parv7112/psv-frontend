@@ -20,6 +20,7 @@ import { LogoCloud } from "@/components/marketing/LogoCloud";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { TestimonialCarousel } from "@/components/marketing/TestimonialCarousel";
 import { ContactForm } from "@/components/ContactForm";
+import { GradientHighlight, PageHero } from "@/components/marketing/PageHero";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -34,111 +35,120 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="space-y-20">
-      <section className="relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.08)] sm:p-12">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_0%,rgba(99,102,241,0.10)_0%,rgba(255,255,255,0)_60%),radial-gradient(55%_45%_at_0%_0%,rgba(14,165,233,0.08)_0%,rgba(255,255,255,0)_55%)]" />
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-200">
-            <Sparkles className="h-4 w-4 text-indigo-600" />
-            Building future‑ready digital products
-          </div>
-          <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-6xl">
-            Transforming businesses with modern MERN, AI, and mobile solutions
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-7 text-slate-600 sm:text-lg">
-            PSV Enterprises helps teams ship high-quality software faster: web platforms,
-            AI automation, and mobile apps—built with reliable architecture and clean UX.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
-              Talk to our experts <ArrowRight className="h-4 w-4" />
+    <div className="space-y-24 pb-8">
+      <PageHero
+        size="home"
+        eyebrow={
+          <>
+            <Sparkles className="h-4 w-4 text-amber-400" />
+            MERN · AI · Mobile
+          </>
+        }
+        title={
+          <>
+            Build products that <GradientHighlight>scale</GradientHighlight> and ship fast
+          </>
+        }
+        description="PSV Enterprises delivers modern web platforms, AI workflows, and mobile apps—with architecture you can trust and UX your users feel."
+        actions={
+          <>
+            <ButtonLink
+              href="/lets-talk"
+              variant="primary"
+              className="px-8 py-3.5 text-base shadow-[0_0_40px_-6px_rgba(245,158,11,0.55)]"
+            >
+              Start a project <ArrowRight className="h-4 w-4" />
             </ButtonLink>
-            <ButtonLink href="/our-work" variant="secondary" className="px-6 py-3">
-              Explore our work
+            <ButtonLink href="/our-work" variant="outlineLight" className="px-8 py-3.5 text-base">
+              See our work
             </ButtonLink>
-          </div>
-        </div>
+          </>
+        }
+        footer={<StatRow variant="dark" />}
+      />
 
-        <div className="relative mt-10 space-y-6">
-          <StatRow />
-          <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
-            <div className="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                Trusted by leading startups and growing teams
-              </div>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                We collaborate with ambitious founders and product teams to build solutions
-                that reduce manual work, unlock insights, and improve decision‑making.
-              </p>
-              <div className="mt-5">
-                <ButtonLink href="/company" variant="secondary" className="px-5 py-2.5">
-                  Know more about us
-                </ButtonLink>
-              </div>
+      {/* Overlap intro */}
+      <div className="relative z-10 -mt-10 space-y-6">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
+          <div className="flex flex-col justify-center rounded-3xl border-2 border-zinc-900/5 bg-white p-8 shadow-xl shadow-zinc-900/5">
+            <p className="font-display text-xl font-bold text-zinc-900 sm:text-2xl">
+              Trusted by founders &amp; product teams who need velocity without chaos.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-base">
+              We embed with your roadmap—clear milestones, weekly demos, and documentation your
+              team can run with.
+            </p>
+            <div className="mt-8">
+              <ButtonLink href="/company" variant="secondary" className="px-6 py-3">
+                About PSV
+              </ButtonLink>
             </div>
-            <LogoCloud />
           </div>
+          <LogoCloud />
         </div>
-      </section>
+      </div>
 
-      <section className="space-y-8">
+      <section className="space-y-10">
         <SectionHeading
-          eyebrow="What we do"
-          title="Our software and development services"
-          description="End-to-end delivery across MERN, AI, and mobile—optimized for speed, reliability, and long-term maintainability."
+          eyebrow="Capabilities"
+          title="What we build"
+          description="End-to-end delivery across AI, MERN, and mobile—structured for speed and long-term maintainability."
           right={
-            <ButtonLink href="/what-we-do" variant="primary" className="px-5 py-2.5">
-              View all services <ArrowRight className="h-4 w-4" />
+            <ButtonLink href="/what-we-do" variant="primary" className="px-6 py-3">
+              All services <ArrowRight className="h-4 w-4" />
             </ButtonLink>
           }
         />
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-5 lg:grid-cols-12 lg:gap-6">
           {[
             {
               href: "/services/ai",
-              icon: <Brain className="h-5 w-5 text-violet-600" />,
+              icon: <Brain className="h-7 w-7 text-amber-500" />,
               title: "AI Development",
-              desc: "AI assistants, RAG search, automation workflows, and analytics—built with guardrails.",
-              chips: ["RAG", "Agents", "Automation", "Evaluation"],
+              desc: "Assistants, RAG, agents, automation—with guardrails and evaluation.",
+              chips: ["RAG", "Agents", "Automation"],
+              span: "lg:col-span-5",
             },
             {
               href: "/services/mern",
-              icon: <Code2 className="h-5 w-5 text-sky-600" />,
-              title: "Software Development",
-              desc: "MERN stack web apps with clean APIs, scalable data models, and modern UI/UX.",
-              chips: ["Next.js", "Node.js", "MongoDB", "APIs"],
+              icon: <Code2 className="h-7 w-7 text-amber-500" />,
+              title: "Software (MERN)",
+              desc: "APIs, dashboards, SaaS foundations—clean models and scalable UI.",
+              chips: ["Next.js", "Node", "MongoDB"],
+              span: "lg:col-span-4",
             },
             {
               href: "/services/mobile",
-              icon: <Smartphone className="h-5 w-5 text-emerald-600" />,
-              title: "Mobile App Development",
-              desc: "High-performance mobile experiences with integrations, notifications, and launch readiness.",
-              chips: ["iOS/Android", "Push", "Integrations", "Analytics"],
+              icon: <Smartphone className="h-7 w-7 text-amber-500" />,
+              title: "Mobile apps",
+              desc: "Performance, push, integrations—ready for store submission.",
+              chips: ["iOS/Android", "Analytics"],
+              span: "lg:col-span-3",
             },
           ].map((s) => (
             <div
               key={s.title}
-              className="group rounded-3xl border border-slate-200/70 bg-white p-7 shadow-[0_1px_2px_rgba(2,6,23,0.06)] transition-shadow hover:shadow-[0_12px_26px_rgba(2,6,23,0.08)]"
+              className={`group relative flex flex-col overflow-hidden rounded-3xl border-2 border-zinc-900/5 bg-white p-8 shadow-lg shadow-zinc-900/5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/25 hover:shadow-2xl ${s.span}`}
             >
               <div className="flex items-start justify-between gap-4">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-white ring-1 ring-slate-200">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-zinc-950 text-white shadow-md">
                   {s.icon}
                 </div>
                 <Link
                   href={s.href}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-slate-700"
+                  className="inline-flex items-center gap-1 text-sm font-bold text-zinc-900 opacity-0 transition-opacity group-hover:opacity-100"
                 >
-                  Know more <ArrowRight className="h-4 w-4" />
+                  Explore <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-              <div className="mt-4 text-lg font-semibold text-slate-900">{s.title}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{s.desc}</div>
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="font-display mt-6 text-xl font-bold text-zinc-900">{s.title}</div>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600">{s.desc}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
                 {s.chips.map((c) => (
                   <span
                     key={c}
-                    className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-200"
+                    className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-bold text-zinc-700"
                   >
                     {c}
                   </span>
@@ -149,14 +159,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-10">
         <SectionHeading
-          eyebrow="Featured projects"
-          title="Our track record reflects our delivery"
-          description="A snapshot of systems we build: automation tools, AI workflows, dashboards, and high-performance apps."
+          eyebrow="Work"
+          title="Selected outcomes"
+          description="Automation, AI, and platforms we’ve shipped—built for reliability and measurable impact."
           right={
-            <ButtonLink href="/our-work" variant="secondary" className="px-5 py-2.5">
-              View all case studies
+            <ButtonLink href="/our-work" variant="secondary" className="px-6 py-3">
+              Case studies
             </ButtonLink>
           }
         />
@@ -164,236 +174,175 @@ export default function Home() {
         <div className="grid gap-6 lg:grid-cols-3">
           {[
             {
-              title: "Sales workflow automation tool",
+              title: "Sales workflow automation",
               industry: "Manufacturing",
-              desc: "Automates follow-ups and tracking to reduce lead response time and operational overhead.",
-              tags: ["Automation", "Integrations", "Dashboards"],
+              desc: "Follow-ups and tracking that cut response time and manual overhead.",
+              tags: ["Automation", "Integrations"],
             },
             {
               title: "AI document assistant",
               industry: "Healthcare",
-              desc: "Knowledge search over internal documents with guardrails, review flows, and analytics.",
-              tags: ["RAG", "Safety", "Analytics"],
+              desc: "Private search over documents with review flows and analytics.",
+              tags: ["RAG", "Safety"],
             },
             {
-              title: "Smart invoice processing system",
+              title: "Invoice processing system",
               industry: "Logistics",
-              desc: "Structured processing workflow that reduces manual effort and improves accuracy at scale.",
-              tags: ["Pipelines", "OCR-ready", "Automation"],
+              desc: "Structured pipelines that scale accuracy and reduce manual work.",
+              tags: ["Pipelines", "Automation"],
             },
-          ].map((p) => (
-            <div
+          ].map((p, i) => (
+            <article
               key={p.title}
-              className="group rounded-3xl border border-slate-200/70 bg-white p-7 shadow-[0_1px_2px_rgba(2,6,23,0.06)] transition-shadow hover:shadow-[0_12px_26px_rgba(2,6,23,0.08)]"
+              className="group relative overflow-hidden rounded-3xl border-2 border-zinc-900/5 bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-2xl"
             >
-              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                {p.industry}
+              <div className="font-display text-5xl font-extrabold tabular-nums text-zinc-100 transition-colors group-hover:text-amber-400/30">
+                {String(i + 1).padStart(2, "0")}
               </div>
-              <div className="mt-2 text-lg font-semibold text-slate-900">{p.title}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{p.desc}</div>
+              <div className="mt-4 text-xs font-bold uppercase tracking-wider text-amber-600">{p.industry}</div>
+              <h3 className="font-display mt-2 text-lg font-bold text-zinc-900">{p.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600">{p.desc}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-200"
-                  >
+                  <span key={t} className="rounded-md bg-zinc-100 px-2.5 py-1 text-xs font-semibold text-zinc-700">
                     {t}
                   </span>
                 ))}
               </div>
-              <div className="mt-6">
-                <Link
-                  href="/our-work"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-slate-700"
-                >
-                  Read full case study <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
+              <Link
+                href="/our-work"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-zinc-900 underline decoration-amber-400/50 underline-offset-4 hover:decoration-amber-500"
+              >
+                Details <ArrowRight className="h-4 w-4" />
+              </Link>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-10">
         <SectionHeading
-          eyebrow="Roadmap"
-          title="A structured, delivery-first process"
-          description="We combine strategic planning with agile execution to ship production-ready systems."
+          eyebrow="Process"
+          title="How we deliver"
+          description="A delivery rhythm you can plan around—clear scope, visible progress, production-grade quality."
         />
-
-        <div className="grid gap-6 lg:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            {
-              icon: <LayoutGrid className="h-5 w-5 text-sky-600" />,
-              title: "Requirement analysis",
-              desc: "Understand needs, define scope, and gather specifications.",
-            },
-            {
-              icon: <Code2 className="h-5 w-5 text-indigo-600" />,
-              title: "Development & design",
-              desc: "Build iteratively with UI/UX and continuous improvement.",
-            },
-            {
-              icon: <ShieldCheck className="h-5 w-5 text-emerald-600" />,
-              title: "Testing & deployment",
-              desc: "Quality checks, bug fixes, and launch support.",
-            },
-            {
-              icon: <FileText className="h-5 w-5 text-violet-600" />,
-              title: "Support & maintenance",
-              desc: "Updates, fixes, and enhancements post‑launch.",
-            },
+            { icon: <LayoutGrid className="h-6 w-6" />, title: "Discovery", desc: "Goals, constraints, and a milestone plan." },
+            { icon: <Code2 className="h-6 w-6" />, title: "Build", desc: "Iterative shipping with demos and reviews." },
+            { icon: <ShieldCheck className="h-6 w-6" />, title: "Harden", desc: "Testing, security defaults, launch readiness." },
+            { icon: <FileText className="h-6 w-6" />, title: "Handover", desc: "Docs and patterns your team can own." },
           ].map((s) => (
             <div
               key={s.title}
-              className="rounded-3xl border border-slate-200/70 bg-white p-7 shadow-[0_1px_2px_rgba(2,6,23,0.06)]"
+              className="rounded-3xl border-2 border-dashed border-zinc-300/80 bg-zinc-50/80 p-6 transition-all hover:border-amber-400/50 hover:bg-white"
             >
-              <div className="grid h-11 w-11 place-items-center rounded-2xl bg-white ring-1 ring-slate-200">
-                {s.icon}
-              </div>
-              <div className="mt-4 text-base font-semibold text-slate-900">{s.title}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{s.desc}</div>
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-zinc-950 text-amber-400">{s.icon}</div>
+              <div className="font-display mt-4 text-base font-bold text-zinc-900">{s.title}</div>
+              <p className="mt-2 text-sm text-zinc-600">{s.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="rounded-3xl border border-slate-900/20 bg-gradient-to-br from-slate-950 to-slate-900 p-8 shadow-[0_14px_40px_rgba(2,6,23,0.22)] sm:p-12">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-2xl">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-300">
-              Build smarter
+      <section className="rounded-[2rem] border border-zinc-800 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-10 shadow-2xl sm:p-14">
+        <SectionHeading
+          dark
+          eyebrow="AI"
+          title="Operational AI that pays off"
+          description="Workflows, assistants, and automation grounded in your data—with measurable ROI."
+          right={
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
+                Plan an AI build
+              </ButtonLink>
+              <ButtonLink href="/services/ai" variant="outlineLight" className="px-6 py-3">
+                AI services
+              </ButtonLink>
             </div>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              Streamline your operations with custom AI solutions
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-slate-300 sm:text-base">
-              Make AI a practical part of your business with workflows that reduce manual effort
-              and produce measurable outcomes.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
-              Build your AI solution <ArrowRight className="h-4 w-4" />
-            </ButtonLink>
-            <ButtonLink href="/services/ai" variant="secondary" className="px-6 py-3">
-              Explore AI services
-            </ButtonLink>
-          </div>
-        </div>
+          }
+        />
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-10">
         <SectionHeading
-          eyebrow="Industries"
-          title="Serving software solutions across industries"
-          description="We build domain-aware products that balance UX, reliability, security, and speed."
+          eyebrow="Sectors"
+          title="Industries"
+          description="Domain-aware engineering—same rigor, adapted to your constraints."
           right={
-            <ButtonLink href="/industries" variant="secondary" className="px-5 py-2.5">
-              View industries
+            <ButtonLink href="/industries" variant="secondary" className="px-6 py-3">
+              Explore
             </ButtonLink>
           }
         />
-
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="flex flex-wrap gap-3">
           {[
-            { name: "Healthcare", icon: <HeartPulse className="h-4 w-4 text-emerald-600" /> },
-            { name: "Education", icon: <GraduationCap className="h-4 w-4 text-sky-600" /> },
-            { name: "Finance", icon: <Landmark className="h-4 w-4 text-indigo-600" /> },
-            { name: "Retail", icon: <LayoutGrid className="h-4 w-4 text-violet-600" /> },
-            { name: "Manufacturing", icon: <Wrench className="h-4 w-4 text-slate-700" /> },
+            { name: "Healthcare", icon: <HeartPulse className="h-5 w-5" /> },
+            { name: "Education", icon: <GraduationCap className="h-5 w-5" /> },
+            { name: "Finance", icon: <Landmark className="h-5 w-5" /> },
+            { name: "Retail", icon: <LayoutGrid className="h-5 w-5" /> },
+            { name: "Manufacturing", icon: <Wrench className="h-5 w-5" /> },
           ].map((i) => (
             <div
               key={i.name}
-              className="flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white px-4 py-3 text-sm font-semibold text-slate-800 shadow-[0_1px_2px_rgba(2,6,23,0.06)]"
+              className="flex items-center gap-3 rounded-2xl border-2 border-zinc-900/5 bg-white px-5 py-3 font-display font-bold text-zinc-900 shadow-md transition-all hover:-translate-y-0.5 hover:border-amber-400/40"
             >
-              {i.icon}
+              <span className="text-amber-500">{i.icon}</span>
               {i.name}
             </div>
           ))}
         </div>
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-10">
         <SectionHeading
-          eyebrow="Why choose PSV"
-          title="Why teams choose PSV Enterprises"
-          description="We focus on business outcomes and long-term maintainability—not short-term hacks."
+          eyebrow="Why PSV"
+          title="What partners get"
+          description="Outcomes and engineering discipline—so you’re not refactoring regret in six months."
         />
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {[
-            {
-              title: "Cross-domain expertise",
-              desc: "We adapt quickly to new industries and workflows.",
-            },
-            {
-              title: "End-to-end delivery",
-              desc: "Discovery, design, engineering, and launch support in one team.",
-            },
-            {
-              title: "Security & compliance mindset",
-              desc: "Validation, safe defaults, and thoughtful data boundaries.",
-            },
-            {
-              title: "Business-first AI strategy",
-              desc: "We align AI solutions to measurable ROI and operational impact.",
-            },
-            {
-              title: "Scalable quality",
-              desc: "Readable, modular code that your team can own and extend.",
-            },
-            {
-              title: "Clear communication",
-              desc: "Weekly delivery cadence with demos and written updates.",
-            },
-          ].map((c) => (
+            "Cross-domain expertise",
+            "End-to-end delivery",
+            "Security-minded defaults",
+            "Business-first AI",
+            "Scalable code quality",
+            "Clear communication",
+          ].map((title) => (
             <div
-              key={c.title}
-              className="rounded-3xl border border-slate-200/70 bg-white p-7 shadow-[0_1px_2px_rgba(2,6,23,0.06)]"
+              key={title}
+              className="rounded-3xl border-2 border-zinc-900/5 bg-white p-7 shadow-md transition-all hover:shadow-xl"
             >
-              <div className="text-base font-semibold text-slate-900">{c.title}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{c.desc}</div>
+              <div className="font-display text-lg font-bold text-zinc-900">{title}</div>
+              <div className="mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-amber-400 to-orange-500" />
+              <p className="mt-4 text-sm text-zinc-600">
+                Practical execution, documentation, and ownership-ready handover.
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-10">
         <SectionHeading
-          eyebrow="Engagement models"
-          title="Smart engagement models for scalable partnerships"
-          description="Choose a model that fits your delivery rhythm and team structure."
+          eyebrow="Engagement"
+          title="Ways to work together"
+          description="Pick a model that matches your roadmap and team structure."
         />
-
         <div className="grid gap-6 lg:grid-cols-3">
           {[
-            {
-              title: "Software outsourcing",
-              desc: "End‑to‑end project ownership with clear milestones.",
-              bullets: ["Project ownership", "Specialized expertise", "Cost-efficient scaling"],
-            },
-            {
-              title: "Dedicated team",
-              desc: "Monthly capacity for continuous product development.",
-              bullets: ["Full-time resources", "Direct collaboration", "Flexible scaling"],
-            },
-            {
-              title: "Staff augmentation",
-              desc: "Add experts to accelerate your existing team.",
-              bullets: ["On-demand specialists", "Quick ramp-up", "Seamless integration"],
-            },
+            { title: "Outsourcing", desc: "End-to-end ownership with milestones.", bullets: ["Scope & delivery", "Specialist team", "Predictable cost"] },
+            { title: "Dedicated team", desc: "Monthly capacity for continuous product work.", bullets: ["Embedded rhythm", "Direct collaboration", "Flexible scale"] },
+            { title: "Staff augmentation", desc: "Experts who ramp fast on your stack.", bullets: ["On-demand skills", "Quick onboarding", "Your process"] },
           ].map((m) => (
-            <div
-              key={m.title}
-              className="rounded-3xl border border-slate-200/70 bg-white p-7 shadow-[0_1px_2px_rgba(2,6,23,0.06)]"
-            >
-              <div className="text-lg font-semibold text-slate-900">{m.title}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{m.desc}</div>
-              <ul className="mt-5 space-y-2 text-sm text-slate-600">
+            <div key={m.title} className="rounded-3xl bg-zinc-950 p-8 text-white ring-1 ring-white/10">
+              <div className="font-display text-xl font-bold">{m.title}</div>
+              <p className="mt-2 text-sm text-zinc-400">{m.desc}</p>
+              <ul className="mt-6 space-y-2 text-sm text-zinc-300">
                 {m.bullets.map((b) => (
                   <li key={b} className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-                    <span className="leading-6">{b}</span>
+                    <span className="text-amber-400">▸</span>
+                    {b}
                   </li>
                 ))}
               </ul>
@@ -404,108 +353,73 @@ export default function Home() {
 
       <TestimonialCarousel />
 
-      <section className="space-y-8">
+      <section className="space-y-10">
         <SectionHeading
-          eyebrow="Latest buzz"
-          title="Get insights from our latest articles"
-          description="Short, practical reads on engineering, AI automation, and product delivery."
+          eyebrow="Insights"
+          title="From the blog"
+          description="Short reads on shipping, AI, and sustainable engineering."
           right={
-            <ButtonLink href="/company" variant="secondary" className="px-5 py-2.5">
+            <ButtonLink href="/company" variant="secondary" className="px-6 py-3">
               View all
             </ButtonLink>
           }
         />
-
         <div className="grid gap-6 lg:grid-cols-3">
           {[
-            {
-              category: "AI & Technology",
-              read: "15 min read",
-              title: "How AI automation transforms enterprise workflows",
-              excerpt:
-                "Teams lose hours to repetitive tasks. Here’s how to identify workflows worth automating and ship safely.",
-              author: "PSV Team",
-              date: "Feb 2026",
-              tint: "from-indigo-600/15 to-sky-500/10",
-            },
-            {
-              category: "AI & Operations",
-              read: "12 min read",
-              title: "Practical RAG: private search over your documents",
-              excerpt:
-                "A production-focused guide to retrieval pipelines, access controls, and evaluation.",
-              author: "PSV Team",
-              date: "Feb 2026",
-              tint: "from-emerald-600/15 to-indigo-600/10",
-            },
-            {
-              category: "Engineering",
-              read: "10 min read",
-              title: "Shipping weekly without breaking quality",
-              excerpt:
-                "A lightweight process for predictable delivery, stable releases, and maintainable code.",
-              author: "PSV Team",
-              date: "Jan 2026",
-              tint: "from-violet-600/15 to-sky-500/10",
-            },
+            { title: "AI automation in enterprise workflows", excerpt: "Find high-leverage workflows and ship safely.", tint: "from-amber-500/20 to-orange-600/10" },
+            { title: "Practical RAG in production", excerpt: "Retrieval, access control, and evaluation loops.", tint: "from-zinc-800/40 to-zinc-950/20" },
+            { title: "Weekly shipping without quality debt", excerpt: "Cadence, reviews, and maintainable code.", tint: "from-amber-400/15 to-yellow-500/10" },
           ].map((b) => (
-            <div
+            <article
               key={b.title}
-              className="group rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)] transition-shadow hover:shadow-[0_12px_26px_rgba(2,6,23,0.08)]"
+              className="overflow-hidden rounded-3xl border-2 border-zinc-900/5 bg-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className={`h-28 rounded-2xl bg-gradient-to-br ${b.tint} ring-1 ring-slate-200`} />
-              <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                <span>{b.category}</span>
-                <span className="text-slate-300">•</span>
-                <span>{b.read}</span>
+              <div className={`h-32 bg-gradient-to-br ${b.tint}`} />
+              <div className="p-6">
+                <h3 className="font-display text-lg font-bold text-zinc-900">{b.title}</h3>
+                <p className="mt-2 text-sm text-zinc-600">{b.excerpt}</p>
+                <span className="mt-4 inline-block text-sm font-bold text-amber-600">Read →</span>
               </div>
-              <div className="mt-2 text-lg font-semibold text-slate-900">{b.title}</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">{b.excerpt}</div>
-              <div className="mt-4 text-xs text-slate-500">
-                {b.author} • {b.date}
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
+      <section className="overflow-hidden rounded-[2rem] border-2 border-zinc-900/5 bg-white p-8 shadow-2xl sm:p-12">
         <SectionHeading
-          eyebrow="Let’s talk"
-          title="Let’s understand your needs"
-          description="Tell us what you’re building. We’ll reply with a clear plan, timeline, and estimate."
+          eyebrow="Contact"
+          title="Tell us what you’re building"
+          description="We’ll reply with a clear plan, timeline, and estimate."
           right={
-            <ButtonLink href="/contact" variant="secondary" className="px-5 py-2.5">
-              Open contact page
+            <ButtonLink href="/contact" variant="secondary" className="px-6 py-3">
+              Contact page
             </ButtonLink>
           }
         />
-
-        <div className="mt-8 grid gap-8 lg:grid-cols-5">
+        <div className="mt-10 grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <div className="rounded-3xl border border-slate-200/70 bg-slate-50 p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
-              <div className="text-sm font-semibold text-slate-900">What you’ll get</div>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
+            <div className="rounded-3xl bg-zinc-950 p-8 text-white">
+              <div className="font-display text-lg font-bold">What you get</div>
+              <ul className="mt-4 space-y-3 text-sm text-zinc-400">
                 {[
-                  "A milestone-based roadmap and estimate",
-                  "Weekly delivery cadence and demos",
-                  "Security-first patterns and clean architecture",
-                  "Ownership-ready code and documentation",
+                  "Roadmap + estimate aligned to goals",
+                  "Weekly demos and written updates",
+                  "Security-first patterns",
+                  "Ownership-ready delivery",
                 ].map((i) => (
                   <li key={i} className="flex gap-2">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-                    <span className="leading-6">{i}</span>
+                    <span className="text-amber-400">✓</span>
+                    {i}
                   </li>
                 ))}
               </ul>
-              <div className="mt-6">
-                <ButtonLink href="/what-we-do" variant="secondary" className="px-5 py-2.5">
+              <div className="mt-8">
+                <ButtonLink href="/what-we-do" variant="outlineLight" className="px-6 py-3">
                   Browse services
                 </ButtonLink>
               </div>
             </div>
           </div>
-
           <div className="lg:col-span-3">
             <ContactForm source="home" />
           </div>

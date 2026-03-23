@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
@@ -78,32 +79,29 @@ export default function AiChatbotsPage() {
 
   return (
     <div className="space-y-16">
-      <section className="rounded-3xl border border-slate-200/70 bg-white p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-200">
-              <Sparkles className="h-4 w-4 text-indigo-600" />
-              AI Development
-            </div>
-            <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-              AI Chatbot Development
-            </h1>
-            <p className="mt-4 max-w-xl text-pretty text-base leading-7 text-slate-600 sm:text-lg">
-              Build helpful, safe, and reliable chat experiences for support,
-              sales, and internal operations—grounded in your data and optimized
-              for measurable business outcomes.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
-                Talk to our experts <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-              <ButtonLink href="/our-work" variant="secondary" className="px-6 py-3">
-                Explore our work
-              </ButtonLink>
-            </div>
-          </div>
+      <PageHero
+        eyebrow={
+          <>
+            <Sparkles className="h-4 w-4 text-indigo-400" />
+            AI Development
+          </>
+        }
+        title="AI Chatbot Development"
+        description="Build helpful, safe, and reliable chat experiences for support, sales, and internal operations—grounded in your data and optimized for measurable business outcomes."
+        actions={
+          <>
+            <ButtonLink href="/lets-talk" variant="primary" className="px-6 py-3">
+              Talk to our experts <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
+            <ButtonLink href="/our-work" variant="outlineLight" className="px-6 py-3">
+              Explore our work
+            </ButtonLink>
+          </>
+        }
+      />
 
-          <div className="rounded-3xl border border-slate-200/70 bg-slate-50 p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
+      <section className="relative z-10 -mt-10 rounded-3xl border border-slate-200/70 bg-white p-8 pt-2 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
+        <div className="rounded-3xl border border-slate-200/70 bg-slate-50 p-6 shadow-[0_1px_2px_rgba(2,6,23,0.06)]">
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 {
@@ -156,7 +154,6 @@ export default function AiChatbotsPage() {
                 </div>
               ))}
             </div>
-          </div>
         </div>
       </section>
 

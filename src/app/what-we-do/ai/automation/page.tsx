@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
@@ -294,29 +295,29 @@ export default function AiAutomationPage() {
 
   return (
     <div className="space-y-16 py-12">
-      {/* Hero Section */}
-      <section className="rounded-3xl border border-slate-200/70 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200">
-              <Sparkles className="h-4 w-4 text-violet-600" />
-              AI Automation Services
-            </div>
-            <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-              AI Automation
-            </h1>
-            <p className="mt-5 max-w-xl text-pretty text-lg leading-8 text-slate-600">
-              Automate repetitive business processes with intelligent workflows. Save time, reduce errors, and scale operations with AI-powered automation.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <ButtonLink href="/lets-talk" variant="primary" className="px-8 py-4 text-base">
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
-              </ButtonLink>
-              <ButtonLink href="/our-work" variant="secondary" className="px-8 py-4 text-base">
-                View Examples
-              </ButtonLink>
-            </div>
-          </div>
+      <PageHero
+        eyebrow={
+          <>
+            <Sparkles className="h-4 w-4 text-violet-400" />
+            AI Automation Services
+          </>
+        }
+        title="AI Automation"
+        description="Automate repetitive business processes with intelligent workflows. Save time, reduce errors, and scale operations with AI-powered automation."
+        actions={
+          <>
+            <ButtonLink href="/lets-talk" variant="primary" className="px-8 py-4 text-base">
+              Get Started <ArrowRight className="ml-2 h-5 w-5" />
+            </ButtonLink>
+            <ButtonLink href="/our-work" variant="outlineLight" className="px-8 py-4 text-base">
+              View Examples
+            </ButtonLink>
+          </>
+        }
+      />
+
+      <section className="relative z-10 -mt-10 px-4">
+        <div className="mx-auto max-w-lg">
           <div className="relative">
             <div className="aspect-square overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-2xl">
               <Image

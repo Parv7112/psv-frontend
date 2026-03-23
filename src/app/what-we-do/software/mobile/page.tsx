@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
 import { LogoCloud } from "@/components/marketing/LogoCloud";
@@ -154,45 +155,34 @@ export default function MobilePage() {
 
   return (
     <div className="space-y-20">
-      {/* ─── BREADCRUMBS ─────────────────────────────────────────── */}
-      <nav className="text-sm text-slate-600">
-        <Link href="/" className="hover:text-slate-900">Home</Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do" className="hover:text-slate-900">What we do</Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do" className="hover:text-slate-900">Software Development</Link>
-        <span className="mx-2">/</span>
-        <span className="font-semibold text-slate-900">Mobile App Development Company</span>
-      </nav>
+      <PageHero
+        breadcrumb={
+          <nav className="text-sm">
+            <Link href="/">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/what-we-do">What we do</Link>
+            <span className="mx-2">/</span>
+            <Link href="/what-we-do">Software Development</Link>
+            <span className="mx-2">/</span>
+            <span className="text-zinc-300">Mobile App Development Company</span>
+          </nav>
+        }
+        eyebrow="Software Development"
+        title="Mobile App Development Company"
+        description="We build high-performance iOS and Android apps that users love. From consumer apps and enterprise mobility solutions to React Native MVPs and cross-platform platforms, we deliver polished, production-ready mobile products on time."
+        actions={
+          <ButtonLink
+            href="/lets-talk"
+            variant="primary"
+            className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide"
+          >
+            Get Started <ArrowRight className="h-4 w-4" />
+          </ButtonLink>
+        }
+      />
 
-      {/* ─── HERO ────────────────────────────────────────────────── */}
-      <section className="rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-wide text-slate-500">
-              Software Development
-            </p>
-            <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Mobile App Development Company
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
-              We build high-performance iOS and Android apps that users love. From consumer apps and
-              enterprise mobility solutions to React Native MVPs and cross-platform platforms, we
-              deliver polished, production-ready mobile products on time.
-            </p>
-            <div className="mt-8">
-              <ButtonLink
-                href="/lets-talk"
-                variant="dark"
-                className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide"
-              >
-                Get Started <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-            </div>
-          </div>
-
-          {/* Phone mockups visual */}
-          <div className="flex items-end justify-center gap-4">
+      <section className="relative z-10 -mt-10 rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 pt-2 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
+        <div className="mx-auto flex max-w-3xl items-end justify-center gap-4">
             {/* Tall phone mockup */}
             <div className="relative w-36 overflow-hidden rounded-[2rem] border-4 border-slate-800 bg-slate-800 shadow-2xl">
               <div className="absolute left-1/2 top-0 h-5 w-16 -translate-x-1/2 rounded-b-xl bg-slate-800 z-10" />
@@ -237,7 +227,6 @@ export default function MobilePage() {
                 </div>
               ))}
             </div>
-          </div>
         </div>
       </section>
 

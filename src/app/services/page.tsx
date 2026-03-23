@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Brain, Code2, Smartphone } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -37,29 +38,23 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="space-y-12">
-      <section className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-        <div className="max-w-3xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Services
-          </h1>
-          <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-base">
-            PSV Enterprises helps teams go from idea to production with modern
-            engineering. Choose a lane—or combine them for a complete product.
-            We optimize for business outcomes: speed to launch, stable
-            architecture, and a great user experience.
-          </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+      <PageHero
+        eyebrow="Services"
+        title="Services"
+        description="PSV Enterprises helps teams go from idea to production with modern engineering. Choose a lane—or combine them for a complete product. We optimize for business outcomes: speed to launch, stable architecture, and a great user experience."
+        actions={
+          <>
             <ButtonLink href="/contact" variant="primary" className="px-5 py-2.5">
               Request a proposal <ArrowRight className="h-4 w-4" />
             </ButtonLink>
-            <ButtonLink href="/work" variant="secondary" className="px-5 py-2.5">
+            <ButtonLink href="/work" variant="outlineLight" className="px-5 py-2.5">
               View work
             </ButtonLink>
-          </div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
-      <section className="grid gap-6 lg:grid-cols-3">
+      <section className="relative z-10 -mt-10 grid gap-6 pt-2 lg:grid-cols-3">
         {services.map((s) => (
           <div
             key={s.title}

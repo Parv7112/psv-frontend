@@ -1,5 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
-import { SectionHeading } from "@/components/marketing/SectionHeading";
+import { PageHero } from "@/components/marketing/PageHero";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -12,17 +13,18 @@ export const metadata = buildMetadata({
 export default function UiUxPage() {
   return (
     <div className="space-y-12">
-      <section className="rounded-3xl border border-black/5 bg-white/70 p-8 shadow-sm sm:p-12">
-        <SectionHeading
-          eyebrow="Software Development"
-          title="UI/UX & Frontend Engineering"
-          description="Modern UI, accessible components, and conversion-focused design systems for web products."
-          right={
-            <ButtonLink href="/lets-talk" variant="primary" className="px-5 py-2.5">
-              Let’s talk
-            </ButtonLink>
-          }
-        />
+      <PageHero
+        eyebrow="Software Development"
+        title="UI/UX & Frontend Engineering"
+        description="Modern UI, accessible components, and conversion-focused design systems for web products."
+        actions={
+          <ButtonLink href="/lets-talk" variant="primary" className="px-5 py-2.5">
+            Let’s talk <ArrowRight className="h-4 w-4" />
+          </ButtonLink>
+        }
+      />
+
+      <section className="relative z-10 -mt-10 rounded-3xl border border-black/5 bg-white/70 p-8 pt-2 shadow-sm sm:p-12">
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {[
             { t: "Design systems", d: "Reusable components for consistent UI at speed." },
@@ -43,4 +45,3 @@ export default function UiUxPage() {
     </div>
   );
 }
-

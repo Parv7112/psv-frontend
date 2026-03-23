@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { ButtonLink } from "@/components/Button";
+import { PageHero } from "@/components/marketing/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { Accordion } from "@/components/marketing/Accordion";
 import { TestimonialCarousel } from "@/components/marketing/TestimonialCarousel";
@@ -66,53 +67,46 @@ export default function MlopsPage() {
 
   return (
     <div className="space-y-20">
-      {/* Breadcrumbs */}
-      <nav className="text-sm text-slate-600">
-        <Link href="/" className="hover:text-slate-900">Home</Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do" className="hover:text-slate-900">What we do</Link>
-        <span className="mx-2">/</span>
-        <Link href="/what-we-do/ai" className="hover:text-slate-900">AI</Link>
-        <span className="mx-2">/</span>
-        <span className="font-semibold text-slate-900">MLOps</span>
-      </nav>
+      <PageHero
+        breadcrumb={
+          <nav className="text-sm">
+            <Link href="/">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/what-we-do">What we do</Link>
+            <span className="mx-2">/</span>
+            <Link href="/what-we-do/ai">AI</Link>
+            <span className="mx-2">/</span>
+            <span className="text-zinc-300">MLOps</span>
+          </nav>
+        }
+        eyebrow="AI & ML / MLOps"
+        title="MLOps Development Services"
+        description="We help you operationalize machine learning from experiment to production. Our MLOps services cover pipeline automation, model deployment, monitoring, and continuous improvement—so your ML initiatives deliver reliable, scalable results."
+        actions={
+          <ButtonLink href="/lets-talk" variant="primary" className="rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide">
+            Get Started
+          </ButtonLink>
+        }
+      />
 
-      {/* Hero */}
-      <section className="rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-wide text-slate-500">AI & ML / MLOps</p>
-            <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              MLOps Development Services
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
-              We help you operationalize machine learning from experiment to production. Our MLOps services cover pipeline automation, model deployment, monitoring, and continuous improvement—so your ML initiatives deliver reliable, scalable results.
-            </p>
-            <div className="mt-8">
-              <ButtonLink href="/lets-talk" variant="dark" className="rounded-lg px-6 py-3 text-sm font-bold uppercase tracking-wide">
-                Get Started
-              </ButtonLink>
-            </div>
-          </div>
-          {/* Infinity loop: ML (left) | Ops (right) */}
-          <div className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_4px_20px_rgba(2,6,23,0.08)]">
-            <div className="flex items-center justify-center gap-4">
-              <div className="flex flex-col items-center rounded-2xl border-2 border-sky-200 bg-sky-50/50 p-6">
-                <span className="text-lg font-bold text-slate-800">ML</span>
-                <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-medium text-slate-600">
-                  <span className="flex items-center gap-1"><Database className="h-3.5 w-3.5" /> Data</span>
-                  <span className="flex items-center gap-1"><Box className="h-3.5 w-3.5" /> Model</span>
-                  <span className="flex items-center gap-1"><FlaskConical className="h-3.5 w-3.5" /> Experimentation</span>
-                  <span className="flex items-center gap-1"><Settings2 className="h-3.5 w-3.5" /> Feature Eng.</span>
-                </div>
+      <section className="relative z-10 -mt-10 rounded-3xl border border-slate-200/70 bg-slate-100/60 p-8 pt-2 shadow-[0_10px_30px_rgba(2,6,23,0.06)] sm:p-12">
+        <div className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_4px_20px_rgba(2,6,23,0.08)]">
+          <div className="flex items-center justify-center gap-4">
+            <div className="flex flex-col items-center rounded-2xl border-2 border-sky-200 bg-sky-50/50 p-6">
+              <span className="text-lg font-bold text-slate-800">ML</span>
+              <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-medium text-slate-600">
+                <span className="flex items-center gap-1"><Database className="h-3.5 w-3.5" /> Data</span>
+                <span className="flex items-center gap-1"><Box className="h-3.5 w-3.5" /> Model</span>
+                <span className="flex items-center gap-1"><FlaskConical className="h-3.5 w-3.5" /> Experimentation</span>
+                <span className="flex items-center gap-1"><Settings2 className="h-3.5 w-3.5" /> Feature Eng.</span>
               </div>
-              <div className="h-12 w-px bg-slate-200" />
-              <div className="flex flex-col items-center rounded-2xl border-2 border-slate-200 bg-slate-50/50 p-6">
-                <span className="text-lg font-bold text-slate-800">Ops</span>
-                <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-medium text-slate-600">
-                  <span className="flex items-center gap-1"><Rocket className="h-3.5 w-3.5" /> Deployment</span>
-                  <span className="flex items-center gap-1"><Monitor className="h-3.5 w-3.5" /> Monitoring</span>
-                </div>
+            </div>
+            <div className="h-12 w-px bg-slate-200" />
+            <div className="flex flex-col items-center rounded-2xl border-2 border-slate-200 bg-slate-50/50 p-6">
+              <span className="text-lg font-bold text-slate-800">Ops</span>
+              <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-medium text-slate-600">
+                <span className="flex items-center gap-1"><Rocket className="h-3.5 w-3.5" /> Deployment</span>
+                <span className="flex items-center gap-1"><Monitor className="h-3.5 w-3.5" /> Monitoring</span>
               </div>
             </div>
           </div>

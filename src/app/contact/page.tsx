@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { PageHero } from "@/components/marketing/PageHero";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -39,27 +40,20 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="space-y-10 py-8 sm:space-y-12 sm:py-12">
-      <section className="mx-auto max-w-5xl">
-        <div className="text-xs text-slate-400">
-          <Link href="/" className="hover:text-slate-600">
-            Home
-          </Link>
-          <span className="px-2">›</span>
-          <span className="text-slate-600">Contact</span>
-        </div>
+      <PageHero
+        eyebrow="Contact"
+        breadcrumb={
+          <>
+            <Link href="/">Home</Link>
+            <span className="px-2">›</span>
+            <span className="text-zinc-300">Contact</span>
+          </>
+        }
+        title="We’d Love To Hear From You!"
+        description="Please fill out the form below or contact us through email or phone, and we will get back to you promptly regarding your request."
+      />
 
-        <div className="mx-auto mt-10 max-w-3xl text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-            We’d Love To Hear From You!
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-            Please fill out the form below or contact us through email or phone, and we will
-            get back to you promptly regarding your request.
-          </p>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_18px_50px_rgba(2,6,23,0.08)]">
+      <section className="relative z-10 -mt-10 mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-slate-200 bg-white pt-2 shadow-[0_18px_50px_rgba(2,6,23,0.08)]">
         <div className="grid lg:grid-cols-[320px_1fr]">
           <div className="border-b border-slate-200 bg-slate-50 p-8 lg:border-b-0 lg:border-r">
             <h2 className="max-w-[220px] text-3xl font-semibold tracking-tight text-slate-900">
