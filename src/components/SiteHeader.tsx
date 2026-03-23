@@ -262,6 +262,14 @@ export function SiteHeader() {
                 </div>
               ))}
 
+              <Link
+                href="/blog"
+                onClick={() => setOpen(null)}
+                className="inline-flex items-center rounded-lg px-2.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-400 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                Blog
+              </Link>
+
               {open ? (
                 <div className="absolute left-1/2 top-[calc(100%+12px)] w-[min(1040px,calc(100vw-64px))] -translate-x-1/2 overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 shadow-[0_24px_80px_-20px_rgba(15,23,42,0.2)] backdrop-blur-xl animate-[fadeDown_0.22s_ease-out]">
                   {open === "what" ? (
@@ -722,6 +730,15 @@ function MobileDrawer({
                   <ChevronRight className="h-5 w-5 text-zinc-500" />
                 </button>
               ))}
+
+              <Link
+                href="/blog"
+                className="flex w-full items-center justify-between border-b border-white/10 py-4 text-left"
+                onClick={onClose}
+              >
+                <span className="text-sm font-extrabold uppercase tracking-widest text-white">Blog</span>
+                <ChevronRight className="h-5 w-5 text-zinc-500" />
+              </Link>
             </div>
           ) : mobileActive === "what" ? (
             <div className="space-y-4">

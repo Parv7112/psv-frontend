@@ -1,19 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PSV_COOKIE_CONSENT_EVENT } from "./GoogleAnalytics";
 
 const KEY = "psv_cookie_consent_v1";
 
+function hasConsent(): boolean {
+  try {
+    if (window.localStorage.getItem(KEY) === "accepted") return true;
+  } catch {
+    // ignore localStorage errors
+  }
+  try {
+    return document.cookie.split("; ").some((cookie) => cookie === `${KEY}=accepted`);
+  } catch {
+    return false;
+  }
+}
+
 export function CookieBanner() {
-  const [visible, setVisible] = useState(() => {
-    try {
-      const v = window.localStorage.getItem(KEY);
-      return !v;
-    } catch {
-      return true;
-    }
-  });
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(!hasConsent());
+  }, []);
 
   if (!visible) return null;
 
@@ -23,8 +33,13 @@ export function CookieBanner() {
     } catch {
       // ignore
     }
-    window.dispatchEvent(new Event(PSV_COOKIE_CONSENT_EVENT));
+    try {
+      document.cookie = `${KEY}=accepted; Path=/; Max-Age=31536000; SameSite=Lax`;
+    } catch {
+      // ignore cookie write errors
+    }
     setVisible(false);
+    window.dispatchEvent(new Event(PSV_COOKIE_CONSENT_EVENT));
   }
 
   return (
