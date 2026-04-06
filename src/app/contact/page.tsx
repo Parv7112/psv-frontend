@@ -71,7 +71,7 @@ export default function ContactPage() {
               />
               <InfoRow
                 icon={<Mail className="h-4 w-4 text-slate-700" />}
-                value="hr@psventerprises.com"
+                value="hr@psventerprises.org"
               />
               <InfoRow
                 icon={<MapPin className="h-4 w-4 text-slate-700" />}

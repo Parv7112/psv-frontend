@@ -53,7 +53,7 @@ export function SiteFooter() {
             </p>
             <div className="mt-6 flex items-center gap-2 text-sm text-zinc-500">
               <Mail className="h-4 w-4 text-amber-500" />
-              <span>hr@psventerprises.com</span>
+              <span>hr@psventerprises.org</span>
             </div>
             <div className="mt-8 flex gap-3">
               {[
