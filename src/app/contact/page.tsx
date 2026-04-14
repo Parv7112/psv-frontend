@@ -67,7 +67,7 @@ export default function ContactPage() {
             <div className="mt-8 space-y-5">
               <InfoRow
                 icon={<Phone className="h-4 w-4 text-slate-700" />}
-                {/* value="+91 81415 17087" */}
+                value="+91"
               />
               <InfoRow
                 icon={<Mail className="h-4 w-4 text-slate-700" />}
